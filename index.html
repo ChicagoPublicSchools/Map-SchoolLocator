@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 11:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+
+    <!-- Icons -->
+
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/nonretina76x76.png" sizes="76x76" />
+    <link rel="apple-touch-icon" href="images/iphone120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon" href="images/iPad152x152.png" sizes="152x152" />
+    <!-- <link rel="apple-touch-startup-image" href="images/startup.png"> -->
+
+    <title>CPS School Locator</title>
+    <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> sensor not required-->
+
+    <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
+    <script src="http://www.google.com/jsapi"></script>
+
+    <script src="scripts/jquery-1.11.1.min.js"></script>
+    <script src="scripts/map_2015_js.js?v=2.7" ></script>
+	  <script src="scripts/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+
+    <!-- hopscotch feature tour -->
+    <script src="scripts/hopscotch-dist/js/hopscotch.min.js"></script>
+    <script src="scripts/maptour1.js?v=1"></script>
+    <link rel="stylesheet" href="scripts/hopscotch-dist/css/hopscotch.min.css" />
+
+
+    <!--only for autocomplete and slide -->
+    <script src="scripts/jqueryui/jquery-ui.js"></script>
+
+    <!-- analytics and overlay hover -->
+    <script src="scripts/analytics_lib.js" ></script>
+    <!-- <script src="scripts/fusiontips.js" ></script> -->
+
+    <!--only for autocomplete and slide-->
+    <link href="scripts/jqueryui/jquery-ui.css" rel="stylesheet">
+
+
+    <link href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css" media="all" rel="stylesheet"  />
+    <link href="scripts/font-awesome-4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" >
+    <link href="styles/map.css?v=2.5" media="all" rel="stylesheet"  />
+
+    <script>
+      jQuery(document).ready(function () {
+
+        //initializeMap();
+
+        // init the compare info popovers
+        $(".compareInfo").popover({ trigger: 'click', html: true });
+
+        // close the popover by clicking anywhere
+        $('body').on('click', function (e) {
+            $('[data-toggle="popover"]').each(function () {
+                //the 'is' for buttons that trigger popups
+                //the 'has' for icons within a button that triggers a popup
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                }
+            });
+        });
+
+
+
+		    $(".markerhelp").tooltip({ trigger: 'hover', placement: "top"});
+        $(".markerhelp2").tooltip({trigger: 'hover', placement: "bottom"});
+        $(".markerhelp3").tooltip({trigger: 'hover', placement: "right"});
+        if ($(window).width() < 768) {
+        	$(".markerhelp2").tooltip('destroy')
+          $(".markerhelp3").tooltip('destroy')
+        }
+
+
+        // analytics event tracking
+        $(document).on("click", "button.btnMapLegend", function() {
+          _trackClickEventWithGA("Click", "Info", "Map Legend");
+        });
+        $(document).on("click", "a.btnPDF", function() {
+          _trackClickEventWithGA("Click", "Info", "Download PDF");
+        });
+        $(document).on("click", "button.btnFAQ", function() {
+          _trackClickEventWithGA("Click", "Info", "FAQ");
+        });
+
+
+
+        // show the buttons if the window goes from mobile to desktop
+        $( window ).resize(function() {
+          if ($(window).width() > 767) {
+            $('#collapseButtons').collapse('show');
+          }else{
+            //$('#collapseButtons').collapse('hide');
+          }
+
+          adjustResultsHeight();
+        });
+
+
+
+
+
+        //set the width of the help container based on window width
+        function setHelpContainerWidth() {
+          if ($( window ).width() < 768 ) {
+            $('#divHelpContainer').width( $( window ).width()-25 );
+          }else{
+            $('#divHelpContainer').width( "50%" );
+          }
+        }
+        //set the width of the advanced search container based on window width
+        function setAdvancedContainerWidth() {
+          if ($( window ).width() < 768 ) {
+            $('#divAdvancedContainer').width( $( window ).width() - 25 );
+          }else{
+            $('#divAdvancedContainer').width( "50%" );
+          }
+        }
+
+
+
+          $("#btnAdvancedSearch").click(function (e) {//open
+            e.stopPropagation();
+            setAdvancedContainerWidth();
+            var effect = 'slide';
+            var options = { direction: 'right', easing: 'swing', complete: coverFadeIn() };
+            var duration = 400;
+            $('#divAdvancedContainer').toggle(effect, options, duration);
+          });
+
+          $(".btnAdvancedSearch2").click(function (e) {//two buttons - close
+            e.stopPropagation();
+            var effect = 'slide';
+            var options = { direction: 'right', easing: 'swing', complete: coverFadeOut() };
+            var duration = 400;
+            $('#divAdvancedContainer').toggle(effect, options, duration);
+          });
+
+
+          $("#btnHelp").click(function (e) {//open
+            e.stopPropagation();
+            setHelpContainerWidth();
+            var effect = 'slide';
+            var options = { direction: 'right', easing: 'swing', complete: coverFadeIn() };
+            var duration = 400;
+            $('#divHelpContainer').toggle(effect, options, duration);
+          });
+
+          $(".btnHelp2").click(function (e) {//close - two buttons
+            e.stopPropagation();
+            var effect = 'slide';
+            var options = { direction: 'right', easing: 'swing', complete: coverFadeOut() };
+            var duration = 400;
+            $('#divHelpContainer').toggle(effect, options, duration);
+          });
+
+
+          $("#cover").click(function (e) {
+            e.stopPropagation();
+            var effect = 'slide';
+            var options = { direction: 'right',  complete: coverFadeOut() };
+            var duration = 400;
+
+            if($('#divHelpContainer').css('display') != 'none' ){
+              $('#divHelpContainer').toggle(effect, options, duration);
+            }else{
+              $('#divAdvancedContainer').toggle(effect, options, duration);
+            }
+          });
+
+
+
+
+          $("#btnCompare").click(function() {
+              $('#divCompareContainer').collapse("hide");
+              $('#btnCompareBig2').removeClass("hidden");
+          });
+
+          $("#btnCompareBig2").click(function() {
+              $('#divCompareContainer').collapse("show");
+              $('#btnCompareBig2').addClass("hidden");
+          });
+
+          $("#btnSearchRadius").click(function() {
+              _trackClickEventWithGA("Click", "Result List", "More Schools Button");
+              radiusSearch();
+          });
+
+          //zooms in and out of map
+          $("#btnZoomIn").click(function(){
+              _trackClickEventWithGA("Click", "Zoom", "Zoom In");
+              map.setZoom(map.getZoom() + 1);
+            });
+
+          $("#btnZoomOut").click(function(){
+              _trackClickEventWithGA("Click", "Zoom", "Zoom Out");
+              map.setZoom(map.getZoom() - 1);
+            });
+
+
+          //change placeholder text for smaller screens
+          $(function() {
+            var txt = $(window).width() < 400 ? 'Search' : 'school / address / zip';
+            $('#autocomplete').attr('placeholder', txt);
+          });
+
+
+          // closes the tour once user clicks on the input field
+          $("#autocomplete").on("focus", function () {
+            //show the clear button (x)
+            $("#btnClearSearch").css("display","block");
+            // highlight the entire line
+            //$(this).select();
+            // close the tour
+            if(hopscotch.getCurrTour() ){
+              if(hopscotch.getCurrTour().id=="maptour-xs") {
+                t="Mobile";
+              }else{
+                t="Desktop";
+              }
+               _trackClickEventWithGA("Tour", t, "Close Tour at Step "+hopscotch.getCurrStepNum().toString() );
+
+              hopscotch.endTour();
+            }
+          });
+
+          //hide the clear button (x) when clicking out of autocomplete
+          // $("#autocomplete").on("blur", function () {
+          //    $("#btnClearSearch").css("display","none");
+          // });
+
+
+
+          $('#divResultsContainer').on('shown.bs.collapse', function (e) {
+                 //console.log("shown collapseResultsHomeList");
+                 e.stopPropagation();
+                 adjustResultsHeight();
+             });
+
+
+
+          // set the top of the results
+          // var bottomofsearch = $('#divSearchContainer').position().top+$('#divSearchContainer').outerHeight(true);
+          // $('#collapseResults').css('top', bottomofsearch );
+
+
+      });
+
+    </script>
+
+  </head>
+
+  <body>
+    <a id="btnCPSedu" href="http://cps.edu" target="_blank" class="cpslogo">
+      <img class="hidden-xs" src="images/cpslogo.png"  />
+      <img class="visible-xs-block" src="images/cpslogo2.png"  />
+    </a>
+
+
+
+    <!-- SEARCH -->
+    <div id="divSearchContainer" class="container-search" >
+      <button id="btnSearch" type="search" onClick="searchInputField();" class="btnSearch" >
+        <i class="fa fa-search fa-2x"></i>
+      </button>
+      <button id="btnClearSearch" type="button" onClick="clearSearchInputField();" class="btnClearSearch" >
+        <i class="fa fa-times fa-lg"></i>
+      </button>
+      <form method="post" action=""> <!-- To display "Search" instead of "Return" on iDevice -->
+        <div class="form-group" style="margin-bottom:0;">
+          <label for="autocomplete" class="sr-only">Search</label>
+          <input id="autocomplete" type="search" name="search"
+          class="form-control input-lg autocomplete" />
+        </div>
+      </form>
+    </div>
+
+
+    <!-- If Javascript is not enabled -->
+    <noscript>
+      <div style="padding:40px;">
+      <h2>JavaScript is turned off in your web browser.</h2>
+      <h4>
+        Instructions on how to enable JavaScript are found at <strong> http://www.enable-javascript.com/</strong></h4>
+      </div>
+    </noscript>
+
+
+
+    <!-- RESULTS -->
+    <div id="divResultsContainer" class="container-fluid collapse in" >
+
+      <div id="pinLocAlertContainer" class="container-fluid"  >
+        <div class="row" >
+          <div id="pinLocAlert" class="alert alert-info-blue alert-dismissible clearfix" role="alert" >
+            <div class="col-xs-1" style="padding:0; margin-left:0; text-align: center;">
+              <img class="img" style="height:30px; margin-top:10px;"
+             src="images/yellow-pin-lg.png" alt="address location"></div>
+            <div class="col-xs-10" style="line-height:1.1em; padding:2px 0 0 5px;">
+              <span id="txtGeoLoc"></span>
+            </div>
+            <div class="col-xs-1" style="padding-left:0px; padding-right:5px;">
+              <button type="button" class="close close-lg closepinloc"
+                       onclick="$('#pinLocAlert').hide();" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home List displays 'attendable' Neighborhood schools on Address, LongPress, and FindMe searches -->
+      <div id="homeListContainer">
+        <div id="resultListPoly"></div>
+      </div>
+
+      <!-- Result Count displays schools on Radius, Zipcode, Advanced (Filtered), and URL searches -->
+      <div id="resultCountContainer" class="container-fluid" >
+        <div class="row">
+          <div id="resultCount"></div>
+        </div>
+      </div>
+
+      <div id="divResultsCollapse" class="collapse in" >
+
+        <div id="resultListContainer">
+          <div id="resultList"></div>
+        </div>
+
+        <!-- Extraswrapper contains the '*Attendance grades within boundary' message-->
+        <div id="extraswrapper" class="collapse in">
+          <div id="boundaryAsterisk"></div>
+            <!-- <div id="safepassdiv"></div>
+            -->
+        </div>
+
+        <!-- moreSchoolsRow contains buttons and filters -->
+        <div id="moreSchoolsRow" class="container-fluid" >
+
+          <!-- row contains the More Schools, School Ratings, and  Filter Results buttons-->
+          <div class="row" style="background-color:#fff; padding:5px 0px;">
+            <div class="col-xs-12">
+              <div class="clearfix" >
+
+                <!--  <button type="button" id="btnCompare" class="btn btn-default btn-xs pull-left"
+                          onClick="compareSchools();">
+                          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                          Compare
+                        </button>
+                -->
+                <button type="button" id="btnSearchRadius" class="btn btn-default btn-xs">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                More Schools
+                </button>
+
+                <button type="button" id="lnkRating" class="btn btn-default btn-xs pull-right ratings"
+                          onClick="setPerformanceRatingData();">
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                School Ratings
+                </button>
+
+                <button type="button" id="btnShowFilters" class="btn btn-default btn-xs"
+                data-toggle="collapse" data-target="#filterresults" aria-expanded="false" aria-controls="filterresults" >
+                Filter Results
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- filterresults contains the filter options and the buttons -->
+          <div id="filterresults" class="row collapse" style="background-color:#FFFFFF;">
+
+            <!-- filteraccordion contains the filter options -->
+            <div id="filteraccordion" class="panel-group refineDropdown" style="margin-bottom:0; padding-top:5px;" role="tablist"
+                   aria-multiselectable="true" >
+
+              <div class="panel panel-default panel-filtered">
+                <div class="panel-heading" role="tab" id="headingOneFiltered">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#filteraccordion" href="#collapseOneFiltered" aria-expanded="true" aria-controls="collapseOne">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      Grade Category
+                    </a>
+                    <span class="pull-right">
+                      <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseGradeCategoryHelp" aria-expanded="false" aria-controls="collapseGradeCategoryHelp">?</button>
+                    </span>
+                  </h4>
+
+                  <div class="collapse" id="collapseGradeCategoryHelp">
+
+                    <h4>
+                      Neighborhood schools
+                      <br />
+                      <img src="images/blue_blank.png" width="14" height="20" alt="Attendance Area Elementary School" title="Attendance Area Elementary School" />
+                      <img src="images/orange_blank.png" width="14" height="20" alt="Attendance Area Middle School" title="Attendance Area Middle School" />
+                      <img src="images/red_blank.png" width="14" height="20" alt="Attendance Area High School" title="Attendance Area High School" />
+                    </h4>
+                    <p>
+                      Your home address falls within an elementary and high school attendance boundary: these are your neighborhood schools. You have the option to send your child to this elementary school and high school.
+                    </p>
+                    <h4>
+                      City-wide schools
+                      <br />
+                      <img src="images/blue_circle.png" width="14"  height="20" alt="City-wide Elementary School" title="City-wide Elementary School" />
+                      <img src="images/orange_circle.png" width="14" height="20" alt="City-wide Middle School" title="City-wide Middle School" />
+                      <img src="images/red_circle.png" width="14" height="20" alt="City-wide High School" title="City-wide High School" />
+                    </h4>
+                    <p>
+                      Some schools - like magnet, selective enrollment, and military schools - have their own processes for enrollment. These schools are marked with a CW inside their map pin. Visit
+                      <a href = "http://cpsoae.org" target="_blank" class="perfpoplink">http://cpsoae.org</a>
+                      to learn how to apply to these kinds of schools.
+                    </p>
+                    <h4>
+                      Charter schools
+                      <br />
+                      <img src="images/blue_c.png" width="14" height="20" alt="Charter Elementary School" title="Charter Elementary School">
+                      <img src="images/orange_c.png"  width="14" height="20" alt="Charter Middle School" title="Charter Middle School">
+                      <img src="images/red_c.png" width="14" height="20" alt="Charter High School" title="Charter High School"></h4>
+                    <p>
+                      Charter schools are public schools that are independently operated. Charter schools are open to all Chicago children but an application and sometimes a lottery is required for enrollment. These schools are marked with a CH inside their map pin.
+                    </p>
+                  </div>
+                </div>
+
+                <div id="collapseOneFiltered" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+
+                    <ul class='options-v clearfix'>
+                      <li>
+                        <input type='checkbox' id='st1' />
+                        <label for='st1' class="label-blue">Elementary School</label>
+                        <div class="pull-right" style="text-indent:0px; width:60px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="Attendance Area Elementary School">
+                            <img src="images/blue_blank.png" width="14" height="20" alt="Attendance Area Elementary School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="City-wide Elementary School">
+                            <img src="images/blue_circle.png" width="14" height="20" alt="City-wide Elementary School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="Charter Elementary School">
+                            <img src="images/blue_c.png" width="14" height="20" alt="Charter Elementary School" title=""></a>
+                        </div>
+
+                      </li>
+                      <li>
+                        <input type='checkbox' id='st2' />
+                        <label for='st2' class="label-orange">Middle School</label>
+                        <div class="pull-right" style="text-indent:0px;  width:60px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="Attendance Area Middle School">
+                            <img src="images/orange_blank.png" width="14" height="20" alt="Attendance Area Middle School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="City-wide Middle School">
+                            <img src="images/orange_circle.png" width="14" height="20" alt="City-wide Middle School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="Charter Middle School">
+                            <img src="images/orange_c.png"  width="14" height="20" alt="Charter Middle School" title=""></a>
+                        </div>
+
+                      </li>
+                      <li>
+                        <input type='checkbox' id='st3' />
+                        <label for='st3' class="label-red">High School</label>
+                        <div class="pull-right" style="text-indent:0px;  width:60px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="Attendance Area High School">
+                            <img src="images/red_blank.png" width="14" height="20" alt="Attendance Area High School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="City-wide High School">
+                            <img src="images/red_circle.png" width="14" height="20" alt="City-wide High School" title=""></a>
+                          <a href="#" class="markerhelp" rel="tooltip" title="Charter High School">
+                            <img src="images/red_c.png" width="14" height="20" alt="Charter High School" title=""></a>
+                        </div>
+
+                      </li>
+
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default panel-filtered">
+                <div class="panel-heading" role="tab" id="headingTwoFiltered">
+                  <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#filteraccordion" href="#collapseTwoFiltered" aria-expanded="false" aria-controls="collapseTwo">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      Performance Rating
+                    </a>
+                    <span class="pull-right">
+                      <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapsePerformanceRatingHelp" aria-expanded="false" aria-controls="collapsePerformanceRatingHelp">?</button>
+                    </span>
+                  </h4>
+                  <div class="collapse" id="collapsePerformanceRatingHelp">
+
+                    <p style="margin-bottom:10px; margin-top:10px;">
+                      A Performance Rating for a school is based on the school&#39;s score on the Performance Policy.  To learn more, visit:
+                      <a href = "http://cps.edu/performance/" target="_blank" class="perfpoplink">http://cps.edu/performance/</a>
+                    </p>
+
+                    <h4>
+                      LEVEL 1+
+                      <img src="images/Level_1a_small.png" width="20" height="20" alt="Level 1+ Rating" title="Level 1+ Rating"></h4>
+                    <p>Schools receiving a Level 1+ rating.</p>
+                    <h4>
+                      LEVEL 1
+                      <img src="images/Level_1_small.png" width="20" height="20" alt="Level 1 Rating" title="Level 1 Rating"></h4>
+                    <p>Schools receiving a Level 1 rating.</p>
+                    <h4>
+                      LEVEL 2+
+                      <img src="images/Level_2a_small.png" width="20"  height="20" alt="Level 2+ Rating" title="Level 2+ Rating"></h4>
+                    <p>Schools receiving a Level 2+ rating.</p>
+                    <h4>
+                      LEVEL 2
+                      <img src="images/Level_2_small.png" width="20"  height="20" alt="Level 2 Rating" title="Level 2 Rating"></h4>
+                    <p>Schools receiving a Level 2 rating.</p>
+                    <h4>
+                      LEVEL 3
+                      <img src="images/Level_3_small.png" width="20" height="20" alt="Level 3 Rating" title="Level 3 Rating"></h4>
+                    <p>Schools receiving a Level 3 rating.</p>
+                    <h4>
+                      INABILITY TO RATE
+                      <img src="images/Level_NA_small.png" width="20"  height="20" alt="INABILITY TO RATE" title="INABILITY TO RATE"></h4>
+                    <p>
+                      Schools not having enough data for a Performance Policy rating.
+                    </p>
+                  </div>
+
+                </div>
+
+                <div id="collapseTwoFiltered" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+
+                    <ul class='options-v'>
+                      <li>
+                        <span class="green-dark">
+                          <label for='st13'>
+                            <input type='checkbox' id='st13' />
+                            Level 1+
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px; width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="LEVEL 1+">
+                            <img src="images/Level_1a_small.png" width="20" height="21" alt="LEVEL 1+" title=""></a>
+                        </div>
+
+                      </li>
+                      <li>
+                        <span class="green-light">
+                          <label for='st14'>
+                            <input type='checkbox' id='st14' />
+                            Level 1
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px; width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="LEVEL 1">
+                            <img src="images/Level_1_small.png" width="20" height="21" alt="LEVEL 1" title=""></a>
+                        </div>
+
+                      </li>
+                      <li>
+                        <span class="yellow-dark">
+                          <label for='st15'>
+                            <input type='checkbox' id='st15' />
+                            Level 2+
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px;  width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="LEVEL 2+">
+                            <img src="images/Level_2a_small.png" width="20" height="21" alt="LEVEL 2+" title=""></a>
+                        </div>
+
+                      </li>
+                      <li>
+                        <span class="red-light">
+                          <label for='st16'>
+                            <input type='checkbox' id='st16' />
+                            Level 2
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px;  width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="LEVEL 2">
+                            <img src="images/Level_2_small.png" width="20" height="21" alt="LEVEL 2" title=""></a>
+
+                        </div>
+
+                      </li>
+                      <li>
+                        <span class="red-dark">
+                          <label for='st17'>
+                            <input type='checkbox' id='st17' />
+                            Level 3
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px;  width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="LEVEL 3">
+                            <img src="images/Level_3_small.png" width="20" height="21" alt="LEVEL 3" title=""></a>
+
+                        </div>
+
+                      </li>
+                      <li>
+                        <span id="perf-label-black">
+                          <label for='st18'>
+                            <input type='checkbox' id='st18' />
+                            Inability to Rate
+                          </label>
+                        </span>
+                        <div class="pull-right" style="text-indent:0px;  width:40px;">
+                          <a href="#" class="markerhelp" rel="tooltip" title="NO DATA">
+                            <img src="images/Level_NA_small.png" width="20" height="21" alt="NO DATA" title=""></a>
+
+                        </div>
+
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default panel-filtered">
+                <div class="panel-heading" role="tab" id="headingThreeFiltered">
+                  <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#filteraccordion" href="#collapseThreeFiltered" aria-expanded="false" aria-controls="collapseThree">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      School Classification
+                    </a>
+                    <span class="pull-right">
+                      <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseSchoolClassificationHelp" aria-expanded="false" aria-controls="collapseSchoolClassificationHelp">?</button>
+                    </span>
+                  </h4>
+
+                  <div class="collapse" id="collapseSchoolClassificationHelp">
+
+                    <h4>How does the School Classification filter work?</h4>
+
+                    <p style="padding:0; margin-bottom:10px;">
+                      The School Classification filter works in conjunction with the Grade Category filter to focus the search results. For example, if  High School and Magnet are checked, the results will show only the Magnet High Schools for that search. You must click Show All Schools or Search by Address to get results.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Neighborhood</h4>
+                    <p class="classiftypepara">
+                      Schools that have an attendance boundary. Generally, all students who live within this area may attend the school. Acceptance based on student living in boundary area or application if out of boundary area.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Charter</h4>
+                    <p class="classiftypepara">
+                      Schools that are open to all Chicago children, but operate independently from the Board and each other. Acceptance based on application and random lottery, if applicable.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Citywide</h4>
+                    <p class="classiftypepara">
+                      Schools - like magnet, selective enrollment, and military schools - that have their own processes for enrollment.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Regional Gifted</h4>
+                    <p class="classiftypepara">
+                      Schools that provide an accelerated instructional program that place an emphasis on thinking, reasoning, problem solving and creativity. Acceptance based on application and entrance exam.
+                    </p>
+                    <h4 class="classiftypesubhead">Magnet</h4>
+                    <p class="classiftypepara">
+                      Schools that specialize in a specific subject area. Acceptance based on application and random lottery.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Selective Enrollment</h4>
+                    <p class="classiftypepara">
+                      Schools that offer a rigorous curriculum with mainly honors and Advanced Placement (AP) courses. Acceptance based on application and entrance exam.
+                    </p>
+                    <h4 class="classiftypesubhead">Contract</h4>
+                    <p class="classiftypepara">
+                      Schools that are operated by private entities under contract with the Chicago Public Schools. Acceptance based on application or random lottery if applicable.
+                    </p>
+
+                    <h4 class="classiftypesubhead">Special Education</h4>
+                    <p class="classiftypepara">
+                      Schools for students with disabilities who reside in specified geographic locations. Acceptance based on students&rsquo; Individualized Education Program.
+                    </p>
+                  </div>
+
+                </div>
+
+                <div id="collapseThreeFiltered" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    <ul class='options-v'>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st4'>
+                            <input type='checkbox' id='st4' />
+                            Neighborhood
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st5'>
+                            <input type='checkbox' id='st5' />
+                            Charter
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st6'>
+                            <input type='checkbox' id='st6' />
+                            Citywide
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st7'>
+                            <input type='checkbox' id='st7' />
+                            Magnet
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st8'>
+                            <input type='checkbox' id='st8' />
+                            Regional Gifted
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st9'>
+                            <input type='checkbox' id='st9' />
+                            Selective Enrollment High Schools
+                          </label>
+                        </span>
+                      </li>
+
+                      <li>
+                        <span class="label-grey">
+                          <label for='st11'>
+                            <input type='checkbox' id='st11' />
+                            Contract
+                          </label>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='st12'>
+                            <input type='checkbox' id='st12' />
+                            Special Education
+                          </label>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default panel-filtered">
+                <div class="panel-heading" role="tab" id="headingFourFiltered">
+                  <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#filteraccordion" href="#collapseFourFiltered" aria-expanded="false" aria-controls="collapseFour">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      Programs Offered
+                    </a>
+                    <span class="pull-right">
+                      <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseProgramsOfferedHelp" aria-expanded="false" aria-controls="collapseSchoolClassificationHelp">?</button>
+                    </span>
+                  </h4>
+
+                  <div class="collapse" id="collapseProgramsOfferedHelp">
+                    <h4>How does the Programs Offered filter work?</h4>
+                    <p>
+                      The Programs Offered filter will display the schools who have the selected program type. You must click Show All Schools or Search by Address to get results.
+                    </p>
+                  </div>
+
+                </div>
+
+                <div id="collapseFourFiltered" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+
+                    <ul class='options-v'>
+                      <li>
+                        <span class="label-grey">
+                          <span style='position: absolute; right:25px;' class="label-grey">
+                            <label for='pt00'>
+                              <input name='pt' type='radio' id='pt00' onclick='togglePT("All Off");' />
+                              All Off
+                            </label>
+                          </span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label-grey">
+                          <label for='pt10'>
+                            <input name='pt' type='radio' id='pt10' onclick='togglePT("Early_Childhood_Program");' />
+                            Early Childhood Program
+                          </label>
+                          <br />
+                        </span>
+                        <div style='margin-left:20px;'>
+                          <a href="http://www.cps.edu/schools/earlychildhood/Pages/EarlyChildhood.aspx" target="_blank">Apply and enroll</a>
+                          <br />
+                          <a href="http://chicagoearlylearning.org/" target="_blank">More pre-K options</a>
+                        </div>
+                      </li>
+
+                      <!--
+                           <li>
+                              <span class="label-grey">
+                                <label for='pt31'>
+                                  <input name='pt' type='radio' id='pt31' onclick='togglePT("Academic_Center");' />
+                                  Academic Center
+                                </label>
+                              </span>
+                            </li>
+
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt01'>
+                                  <input name='pt' type='radio' id='pt01' onclick='togglePT("Agricultural_Sciences");' />
+                                  Agricultural Sciences
+                                </label>
+                              </span>
+                            </li>
+
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt02'>
+                                  <input name='pt' type='radio' id='pt02' onclick='togglePT("Agriculture_and_Horticulture");' />
+                                  Agriculture and Horticulture
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt03'>
+                                  <input name='pt' type='radio' id='pt03' onclick='togglePT("Business_and_Finance");' />
+                                  Business and Finance
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt04'>
+                                  <input name='pt' type='radio' id='pt04' onclick='togglePT("Career_and_Technical_Education_College_and_Career_Academy");' />
+                                  CTE - College and Career Academies
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt05'>
+                                  <input name='pt' type='radio' id='pt05' onclick='togglePT("Childrens_Engineering");' />
+                                  Children's Engineering
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt32'>
+                                  <input name='pt' type='radio' id='pt32' onclick='togglePT("Classical");' />
+                                  Classical
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt06'>
+                                  <input name='pt' type='radio' id='pt06' onclick='togglePT("Comprehensive_Gifted");' />
+                                  Comprehensive Gifted
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt07'>
+                                  <input name='pt' type='radio' id='pt07' onclick='togglePT("Construction_and_Architecture");' />
+                                  Construction and Architecture
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt08'>
+                                  <input name='pt' type='radio' id='pt08' onclick='togglePT("Culinary_and_Hospitality");' />
+                                  Culinary and Hospitality
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt09'>
+                                  <input name='pt' type='radio' id='pt09' onclick='togglePT("Dual_Immersion");' />
+                                  Dual Immersion
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt11'>
+                                  <input name='pt' type='radio' id='pt11' onclick='togglePT("Education_and_Training");' />
+                                  Education and Training
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt33'>
+                                  <input name='pt' type='radio' id='pt33' onclick='togglePT("English_Language_Learners");' />
+                                  English Language Learners
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt12'>
+                                  <input name='pt' type='radio' id='pt12' onclick='togglePT("Engineering");' />
+                                  Engineering
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt13'>
+                                  <input name='pt' type='radio' id='pt13' onclick='togglePT("Fine_Performing_Arts");' />
+                                  Fine Performing Arts
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt14'>
+                                  <input name='pt' type='radio' id='pt14' onclick='togglePT("Health_Science");' />
+                                  Health Science
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt15'>
+                                  <input name='pt' type='radio' id='pt15' onclick='togglePT("Humanities");' />
+                                  Humanities
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt16'>
+                                  <input name='pt' type='radio' id='pt16' onclick='togglePT("Information_Technology");' />
+                                  Information Technology
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt17'>
+                                  <input name='pt' type='radio' id='pt17' onclick='togglePT("International_Baccalaureate");' />
+                                  International Baccalaureate
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt35'>
+                                  <input name='pt' type='radio' id='pt35' onclick='togglePT("International_Gifted");' />
+                                  International Gifted
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt18'>
+                                  <input name='pt' type='radio' id='pt18' onclick='togglePT("JROTC");' />
+                                  JROTC
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt19'>
+                                  <input name='pt' type='radio' id='pt19' onclick='togglePT("Law_Public_Safety_and_Security");' />
+                                  Law Public Safety and Security
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt20'>
+                                  <input name='pt' type='radio' id='pt20' onclick='togglePT("Literature_Writing");' />
+                                  Literature Writing
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt24'>
+                                  <input name='pt' type='radio' id='pt24' onclick='togglePT("Manufacturing");' />
+                                  Manufacturing
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt25'>
+                                  <input name='pt' type='radio' id='pt25' onclick='togglePT("Math_Science");' />
+                                  Math Science
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt26'>
+                                  <input name='pt' type='radio' id='pt26' onclick='togglePT("Media_and_Communication_Arts");' />
+                                  Media and Communication Arts
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt27'>
+                                  <input name='pt' type='radio' id='pt27' onclick='togglePT("Military_Academy");' />
+                                  Military Academy
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt28'>
+                                  <input name='pt' type='radio' id='pt28' onclick='togglePT("Montessori");' />
+                                  Montessori
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt29'>
+                                  <input name='pt' type='radio' id='pt29' onclick='togglePT("Personal_Care_Services");' />
+                                  Personal Care Services
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt30'>
+                                  <input name='pt' type='radio' id='pt30' onclick='togglePT("Scholastic_Academy");' />
+                                  Scholastic Academy
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt38'>
+                                  <input name='pt' type='radio' id='pt38' onclick='togglePT("Specific_Aptitude");' />
+                                  Specific Aptitude
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt39'>
+                                  <input name='pt' type='radio' id='pt39' onclick='togglePT("STEM");' />
+                                  STEM
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt40'>
+                                  <input name='pt' type='radio' id='pt40' onclick='togglePT("Technology");' />
+                                  Technology
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt41'>
+                                  <input name='pt' type='radio' id='pt41' onclick='togglePT("Transportation");' />
+                                  Transportation
+                                </label>
+                              </span>
+                            </li>
+                            <li>
+                              <span class="label-grey">
+                                <label for='pt42'>
+                                  <input name='pt' type='radio' id='pt42' onclick='togglePT("World_Language");' />
+                                  World Language
+                                </label>
+                              </span>
+                            </li>
+                        -->
+
+                    </ul>
+
+                  </div>
+                </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Update and Reset buttons - Advanced (Filtered) Search -->
+            <div class="col-xs-12" style="margin-top:10px; margin-bottom:20px;">
+              <button id="btnAdvancedSearchGo2" type="button" onClick="filteredSearch();" class="btn btn-primary btn-md btnAdvancedSearchGo2">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                Update
+              </button>
+              <button id="resetMap3" onClick="resetFilters();" type="button" style="margin-left:20px;" class="btn btn-danger btn-md">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                Reset
+              </button>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Detail Container displays school specific data. Toggles with ResultList displays-->
+    <div id="divDetailContainer" class="container-fluid collapse" ></div>
+
+    <!-- Buttons located on the right side of the screen, displayed on Mobile only -->
+    <div id="divButtonContainer2" >
+
+      <button type="button" id="btnShowButtons" class="btnShowButtons visible-xs-block btnXS"
+              data-toggle="collapse" data-target="#collapseButtons" aria-expanded="false" aria-controls="collapseButtons" >
+        <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-bars fa-stack-1x fa-inverse"></i>
+            </span>
+      </button>
+
+
+      <div id="collapseButtons" class="collapse clearfix"  >
+
+
+        <button id="btnHelp" type="button"
+                class="btnHelp pull-right btnXS markerhelp2"
+                data-toggle="tooltip" title="Info">
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+          </span>
+        </button>
+
+        <button id="btnAdvancedSearch" type="button"
+                class="btnAdvancedSearch pull-right btnXS markerhelp2"
+                data-toggle="tooltip" title="Overlays">
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-align-justify fa-stack-1x fa-inverse"></i>
+            <!-- <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i> -->
+            <!-- <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i> -->
+          </span>
+        </button>
+
+		    <button id="btnFindMe" type="button" onClick="findMe(); return false;"
+                class="btnFindMe pull-right  btnXS markerhelp2"
+                data-toggle="tooltip" title="Find Schools Around Me" >
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-location-arrow fa-stack-1x fa-inverse"></i>
+          </span>
+        </button>
+
+        <button id="btnResetMap" type="button" onClick="resetmap();"
+                class="btnResetMap pull-right btnXS markerhelp2"
+                data-toggle="tooltip" title="Reset Map" data-placement="left" >
+          <span class="fa-stack fa-2x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-refresh fa-stack-1x fa-inverse"></i>
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Buttons located on the bottom left side of the screen -->
+    <div id="divButtonContainer3" >
+      <button id="btnCompareBig2" type="button" class="btnCompare markerhelp3 hidden"
+        data-toggle="tooltip" title="Compare Schools">
+        <span class="fa-stack fa-2x">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
+          <!-- <i class="fa fa-heart fa-stack-1x fa-inverse"></i> -->
+        </span>
+      </button>
+      <br />
+      <button id="btnZoomIn" type="button" class="btnZoomIn markerhelp3"
+              data-toggle="tooltip" data-placement="right" title="Zoom In" >
+        <span class="fa-stack fa-2x">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+        </span>
+      </button><br />
+      <button id="btnZoomOut" type="button" class="btnZoomOut markerhelp3"
+              data-toggle="tooltip" data-placement="right" title="Zoom Out" >
+        <span class="fa-stack fa-2x">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-minus fa-stack-1x fa-inverse"></i>
+        </span>
+      </button>
+    </div>
+
+    <!-- Table that displays comparison data at the bottom of the screen -->
+    <div id="divCompareContainer" class="collapse">
+      <div class="table-responsive" style="border:0; height: 100%;">
+        <table id="tblCompare" class="table table-condensed" style="white-space: nowrap;">
+          <thead>
+            <tr style="color:#FFF; background-color:#36C;">
+              <td style="text-align:center; vertical-align: middle;">
+                <button id="btnCompare" type="button" class="btnCompare" style="color:#FFF;">
+                  <i class="fa fa-chevron-circle-down fa-2x"></i>
+                </button>
+              </td>
+              <td colspan="17">
+                <h4>Compare Schools <i class="fa fa-check-square-o fa-lg"></i></h4>
+              </td>
+            </tr>
+            <tr style="color:#36c; background-color:#C8DAFF;">
+              <th>
+                <!-- <button id="btnCompare" type="button" class="btnCompare markerhelp3"  -->
+                  <!-- data-toggle="tooltip" title="Compare Schools">  -->
+                  <!-- <i class="fa fa-chevron-circle-down fa-2x"></i> -->
+                  <!-- <span class="fa-stack fa-2x"> -->
+                    <!-- <i class="fa fa-circle fa-stack-2x"></i> -->
+                    <!-- <i class="fa fa-chevron-down fa-stack-1x fa-inverse"></i> -->
+                    <!-- <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i> -->
+                    <!-- <i class="fa fa-heart fa-stack-1x fa-inverse"></i> -->
+                  <!-- </span> -->
+                <!-- </button> -->
+              </th>
+
+            	<th>Name</th>
+              <th># of Students</th>
+              <th>Rating
+                <button id="btnInfoRating" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="School Rating <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="The school rating is based on the CPS School Quality Rating Policy (SQRP). To learn more, visit: <a href='http://cps.edu/sqrp' target='_blank'>http://cps.edu/sqrp</a>.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+              <th>Reading
+                <button id="btnInfoReading" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Reading Attainment<i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Reading Attainment measures how well the school performed on the <strong>reading</strong> section of the <a href='http://nwea.org' target='_blank'>NWEA MAP®</a> standardized test in the Spring of 2015. This school’s scores are compared to national average scores. A 50th percentile score means the school scored the same as the national average.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+              <th>Math
+                <button id="btnInfoMath" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Math Attainment<i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Math Attainment measures how well the school performed on the <strong>math</strong> section of the <a href='http://nwea.org' target='_blank'>NWEA MAP®</a> standardized test in the Spring of 2015. This school’s scores are compared to national average scores. A 50th percentile score means the school scored the same as the national average.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+
+              <th>ACT
+                <button id="btnInfoACT" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="ACT Average <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="The ACT is a standardized test for high school achievement and college admissions in the United States produced by ACT, Inc. (originally American College Testing). Each row lists the average score received by students in 11th grade at the school in spring 2015.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+              <th>Graduation
+                <button id="btnInfoGraduation" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Graduation Rate <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Graduation rate is based on the performance of a group of students observed over 5 years.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+              <th>College
+                <button id="btnInfoCollege" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="College Enrollment <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Percentage of graduates enrolled in college in 2015.">
+                <i class="fa fa-info-circle"></i>
+                </button>
+              </th>
+              <th>Growth
+              <button id="btnInfoGrowth" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Student Growth <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Student Growth measures the change in <a href='http://nwea.org' target='_blank'>NWEA MAP®</a> standardized test scores between two points in time, in this case between Spring 2014 and Spring 2015. This growth is compared to the average national growth for schools that had similar scores in 2014. An AVERAGE score means the school grew at the same rate as the national average.">
+                <i class="fa fa-info-circle"></i>
+                </button></th>
+              <th>Attainment
+              <button id="btnInfoAttainment" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Student Attainment <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Student Attainment measures how well the school performed on the <a href='http://nwea.org' target='_blank'>NWEA MAP®</a> standardized test at a single point in time, in this case Spring 2015. This school’s scores are compared to national average scores. An AVERAGE score means the school is performing at the same level as the national average.">
+                <i class="fa fa-info-circle"></i>
+                </button></th>
+              <th>Culture
+              <button id="btnInfoCulture" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="School Culture and Climate <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Results are based on student and teacher responses to the My Voice, My School 5Essentials survey. For more information on this survey and other measures of school culture and climate visit: <a href='https://cps.5-essentials.org/2015' target='_blank'>https://cps.5-essentials.org/2015</a>.">
+                <i class="fa fa-info-circle"></i>
+                </button></th>
+              <th>Mobility
+              <button id="btnInfoMobility" type="button" class="btnHelp compareInfo" data-container="body" data-toggle="popover" data-placement="auto top" title="Mobility Rate <i class='fa fa-times-circle pull-right' onclick='hideAllPopovers();'></i>" data-content="Student mobility (turnover) reflects any enrollment change between the first school day in October and the last day of the school year. It is the sum of the students who transferred out and the students who transferred in, divided by the average daily enrollment, multiplied by 100. Students are counted each time they transfer out or in during the reporting year. Thus, individual students may be counted more than once.">
+                <i class="fa fa-info-circle"></i>
+                </button></th>
+              <th>Dress Code</th>
+              <th>ADA</th>
+              <!-- <th>Type</th> -->
+              <th>Classification</th>
+             <!--  <th>Programs</th> -->
+              <th>Phone</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+         </table>
+      </div>
+    </div>
+
+    <!-- Slideout contains the info panel  -->
+    <div id="divHelpContainer" >
+
+      <div id="divHelp" >
+
+        <div class="container-fluid height100 backgroundfillwhite">
+
+          <button id="btnHelp2" type="button"
+                  class="btnHelp2 btnHelp">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-close fa-stack-1x fa-inverse"></i>
+            </span>
+          </button>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12">
+               <h2 style="color:#36C; padding-bottom:20px">Information</h2>
+                  <p><strong>Boundary Questions?</strong>
+                    School boundary confirmation can only be officially confirmed through the Office of Strategy Management at 773.553.3270.
+                    <br />
+                    <br />
+                    <strong>Enrollment Questions?</strong>
+                    Questions regarding specific enrollment procedures should be directed to the Office of Access and Enrollment at 773.553.2060.
+                    <br />
+                    <br />
+                  </p>
+            </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12" style="padding-bottom:10px;">
+                <button id="btnStartTour" type="button" class="btn btn-default col-xs-12 btnHelp2" onClick="trackTour(); startTour();">Take the Tour</button>
+            </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12" style="padding-bottom:10px;">
+                <button type="button" class="btn btn-default col-xs-12 btnMapLegend" data-toggle="collapse" data-target="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend">Map Legend</button>
+                <!-- Legend -->
+                <div id="collapseLegend" class="collapse backgroundfillwhite">
+
+                  <div class="height100 backgroundfillwhite">
+
+                      <ul class="list-group" style="margin-top: 34px;">
+                        <li class="list-group-item">
+                          <div class="label-blue"><img src="images/blue_blank.png" width="14" height="20" alt="Attendance Area Elementary School" title="" /> Attendance Area Elementary School</div>
+                          <div class="label-blue"> <img src="images/blue_circle.png" width="14" height="20" alt="City-wide Elementary School" title="" /> City-wide Elementary School</div>
+                          <div class="label-blue"><img src="images/blue_c.png" width="14" height="20" alt="Charter Elementary School" title="" /> Charter Elementary School</div>
+                        </li>
+
+
+
+                        <li class="list-group-item">
+                          <div class="label-orange"><img src="images/orange_blank.png" width="14" height="20" alt="Attendance Area Middle School" title=""> Attendance Area Middle School</div>
+                          <div class="label-orange"><img src="images/orange_circle.png" width="14" height="20" alt="City-wide Middle School" title=""> City-wide Middle School</div>
+                          <div class="label-orange"><img src="images/orange_c.png"  width="14" height="20" alt="Charter Middle School" title=""> Charter Middle School</div></li>
+
+                        <li class="list-group-item">
+                          <div class="label-red"><img src="images/red_blank.png"  width="14" height="20" alt="Attendance Area High School" title=""> Attendance Area High School</div>
+                          <div class="label-red"><img src="images/red_circle.png" width="14" height="20" alt="City-wide High School" title=""> City-wide High School</div>
+                        <div class="label-red"><img src="images/red_c.png"      width="14" height="20" alt="Charter High School" title=""> Charter High School</div></li>
+
+                        <li class="list-group-item">
+                        <span style="width:15px; height:5px; background-color:#ff00ff; margin:8px 5px 0 0; display:block; float:left;">&nbsp;</span>Safe Passage Route
+                        </li>
+                        <li class="list-group-item">
+                        <div><img src="images/yellow-pin-lg.png" width="14" height="20" alt="Pin Drop Location" title=""> Pin Drop Location</div>
+                        </li>
+                      </ul>
+
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12" style="padding-bottom:10px;">
+                <button type="button" class="btn btn-default col-xs-12 btnFAQ" data-toggle="collapse" data-target="#collapseFAQGuide" aria-expanded="false" aria-controls="collapseFAQGuide">FAQ</button>
+                <!-- FAQ -->
+                <div id="collapseFAQGuide" class="collapse backgroundfillwhite">
+
+                  <div class="height100 backgroundfillwhite">
+                    <div class="well">
+                      <h1>School Locator - Frequently Asked Questions</h1>
+
+                      <h3>What is the school locator tool?</h3>
+                      <p>
+                        The school locator allows you to search for CPS schools by name, address and zip code. Results can be viewed in a variety of ways including by attendance boundary, ward, neighborhood or zip code.
+                      </p>
+                      <h3>What information is available on the map?</h3>
+                      <p>
+                        The map features color-coded pins for each school that you can click to access general information about schools such as contact information, grade category, grades and performance rating. The school detail box also provides a link to the school's profile that has more extensive information including enrollment, academic performance and demographics.
+                      </p>
+                      <h3>How do I find my neighborhood school?</h3>
+                      <p>
+                        Type your street address into the text box and click the search button. Schools near your location will appear in a list on the left side of the screen. Click a school name to see its location on the map.
+                      </p>
+                      <h3>
+                        How can I see the attendance boundary for a neighborhood school?
+                      </h3>
+                      <p>
+                        Click on a colored school pin on the map to see the attendance boundary for that school. The attendance boundary will appear as a shaded area on the map. This will help you identify the attendance area down to the street level. It can sometimes be helpful to zoom in on the map to see specific street names.
+                      </p>
+
+                      <h3>How do I search for a school near me?</h3>
+                      <p>
+                        Click the "Find Schools Around Me" button to find schools near your current location. Some devices and/or browsers may ask you for permission before sending your current location. You must allow your current location to be sent in order for this feature to work.
+                      </p>
+
+                      <h3>How do I find a school by name?</h3>
+                      <p>
+                        Start typing the name of the school in the search box and click the drop down list of schools to find a school by name. When a school is selected, the school location will be marked with a colored pin on the map and a detail panel will appear with additional information.
+                      </p>
+                      <h3>What is an overlay?</h3>
+                      <p>
+                        An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions. For example, a zip code overlay will show boundaries for all the zip codes in Chicago. Click on a specific boundary area on the map to see more details about that area.
+                      </p>
+                      <h3>
+                        What if I only want to see high schools or elementary schools?
+                      </h3>
+                      <p>
+                        The Advanced Search button allows you to filter your search. Click on Grade Category and check any grades categories you want to appear. For example, to view high schools only, check High School. By default all grade categories (elementary, middle and high school) are displayed.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12" style="padding-bottom:10px;">
+                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.7</button>
+                  <!-- VERSION MODAL -->
+                  <div id="collapseVersionModal" class="collapse backgroundfillwhite">
+
+                    <div class="height100 backgroundfillwhite">
+
+                      <div class="well">
+                        <h2 id="myModalLabel">School Locator - What's New</h2>
+                        <h4>v2.7</h4>
+                        <p>
+                          <strong>10/26/2015</strong>
+                          - Student Count and School Ratings updated for 2015-16.
+                        </p>
+                        <h4>v2.6</h4>
+                        <p>
+                          <strong>10/19/2015</strong>
+                          - Added 1/4 mile radius search. Fixed results when 0 schools are found.
+                        </p>
+                        <h4>v2.5</h4>
+                        <p>
+                          <strong>10/15/2015</strong>
+                          - Added a "More Schools" button to the school detail view. This button triggers a radius search around the school address. Added a "Show All Schools" function to the search button. If nothing is entered into the input field, clicking the magnifying glass will show all schools. Fixed result list display bugs.
+                        </p>
+                        <h4>v2.4</h4>
+                        <p>
+                          <strong>10/01/2015</strong>
+                          - Updated Tiers Overlay for 2015-16.
+                        </p>
+                        <h4>v2.3</h4>
+                        <p>
+                          <strong>08/28/2015</strong>
+                          - Updated Safe Passage Overlay for 2015-16.
+                        </p>
+                        <h4>v2.2</h4>
+                        <p>
+                          <strong>07/29/2015</strong>
+                          - Updated School Locations for 2015-16 pdf. Added noscript tag for browsers that don't have Javascript enabled. Updated Elementary overlay.
+                        </p>
+                        <h4>v2.1</h4>
+                        <p>
+                          <strong>07/27/2015</strong>
+                          - Updated Find Me and long press to display address search. Advanced search shows filters in the school count display and Grade Category and Performance Rating check boxes are off by default. Schools with multiple boundaries display individual boundaries.
+                        </p>
+                        <h4>v2.0</h4>
+                        <p>
+                          <strong>07/17/2015</strong>
+                          - Redesigned layout to function better on mobile devices. Added ability to compare schools, Google street view, enroll button, tour, Find Me and long press to drop pin. Removed all programs except for Early Childhood Programs until the new programs list is ready.
+                        </p>
+                        <h4>v1.5</h4>
+                        <p>
+                          <strong>01/14/2015</strong>
+                          - Updated Programs Offered.
+                        </p>
+                        <h4>v1.4</h4>
+                        <p>
+                          <strong>12/03/2014</strong>
+                          - Updated Programs and School Ratings information for 2014.
+                        </p>
+                        <h4>v1.3</h4>
+                        <p>
+                          <strong>10/9/2014</strong>
+                          - Updated Tiers and Classification information for 2014. Programs and School Ratings are not updated for 2014 in this version.
+                        </p>
+                        <h4>v1.2</h4>
+                        <p>
+                          <strong>8/8/2014</strong>
+                          - Updated school location, boundary data, and political overlays for 2014. Classifications, Programs and School Ratings are not updated in this version.
+                        </p>
+                        <h4>v1.11</h4>
+                        <p>
+                          <strong>11/20/2013</strong>
+                          - Updated to 2013 Network Overlay.
+                        </p>
+                        <h4>v1.10</h4>
+                        <p>
+                          <strong>10/03/2013</strong>
+                          - Updated to 2012-2013 Performance Ratings.
+                        </p>
+                        <h4>v1.09</h4>
+                        <p>
+                          <strong>09/20/2013</strong>
+                          - Updated program types and CPS Tiers for 2013.
+                        </p>
+                        <h4>v1.08</h4>
+                        <p>
+                          <strong>09/09/2013</strong>
+                          - Added Performance Rating filter and icons.
+                        </p>
+                        <h4>v1.07</h4>
+                        <p>
+                          <strong>09/04/2013</strong>
+                          - Changed default search to Search by School Name.
+                        </p>
+                        <h4>v1.06</h4>
+                        <p>
+                          <strong>08/22/2013</strong>
+                          - Updated school list and school attendance boundaries for 2013-14 school year. Added Safe Passage route information.
+                        </p>
+                        <h4>v1.05</h4>
+                        <p>
+                          <strong>04/02/2013</strong>
+                          - Added Programs Offered: Early Childhood, Fine and Performing Arts, International Baccalaureate, JROTC, Military Academy, Montessori, Early College STEM School.
+                        </p>
+                        <h4>v1.04</h4>
+                        <p>
+                          <strong>02/11/2013</strong>
+                          - Added Political Overlays: IL House, IL Senate, and US Congressional.
+                        </p>
+                        <h4>v1.03</h4>
+                        <p>
+                          <strong>01/02/2013</strong>
+                          - Updated API.
+                        </p>
+                        <h4>v1.02</h4>
+                        <p>
+                          <strong>11/16/2012</strong>
+                          - Added Tiers Overlay.
+                        </p>
+                        <h4>v1.01</h4>
+                        <p>
+                          <strong>11/1/2012</strong>
+                          - Added Pin Location verification display.
+                        </p>
+                        <h4>v1.0</h4>
+                        <p>
+                          <strong>10/17/2012</strong>
+                          - The school locator launches with search by address, school name, zip code, show all schools, Program Type filter, School Classification filter, url search, .25 - 2.5 mile radius, three grade categories (elementary, middle, high), eight overlays (elementary boundary, middle school boundary, high school boundary, community area, ward, zip code, elementary network, and high school network), help guide, video tutorial, faq and feedback form.
+                        </p>
+
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12"  href="https://docs.google.com/a/cps.edu/spreadsheet/viewform?fromEmail=true&formkey=dFpRZDdPb3E2UW5jekNRZTBUWGNVNEE6MQ" target="_new">Send Feedback</a>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12 btnPDF" href="docs/CPS_School_Locations_SY15-16.pdf" download="CPS_School_Locations_SY15-16" target="_new">Download Map PDF</a>
+              </div>
+          </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12">
+              <p> <strong>Disclaimer:</strong>
+                    The home school address search is provided to allow easy access and visual display of school boundary and school location information. Every reasonable effort has been made to assure the accuracy of the maps and data provided; nevertheless, some information may not be accurate. All data visualizations on maps should be considered approximate.</p>
+
+             </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Overlay Container  -->
+    <div id="divAdvancedContainer">
+
+      <div id="divAdvanced" >
+
+        <div class="container-fluid height100 backgroundfillwhite" >
+          <button id="btnAdvancedSearch2" type="button"
+                    class="btnAdvancedSearch2 btnAdvancedSearch">
+              <span class="fa-stack fa-2x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-close fa-stack-1x fa-inverse"></i>
+              </span>
+          </button>
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12">
+              <h2 style="color:#36C; padding-bottom:20px;padding-right:40px;">Overlays</h2>
+
+              <div id="accordion" class="panel-group refineDropdown" style="margin-bottom:0;" role="tablist"
+                   aria-multiselectable="true" >
+
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        Overlays
+                      </a>
+                      <span class="pull-right">
+                        <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseOverlaysHelp" aria-expanded="false" aria-controls="collapseOverlaysHelp">?</button>
+                      </span>
+                    </h4>
+
+                    <div class="collapse" id="collapseOverlaysHelp">
+                      <h4>What is an overlay?</h4>
+                      <p>
+                        An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions.
+                        <br />
+                        <br />
+                        For example, a zip code overlay will show boundaries for all the zip codes in Chicago. Click on a specific boundary area on the map to see more details about that area.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body">
+
+                      <h4>
+                        Attendance Boundaries
+                        <span style='float: right; padding: 0px 10px 0px 0px;'>
+                          <label for='abType4'>
+                            <input name='abType' type='radio' id='abType4' onclick='toggleBoundary();'/>
+                            All Off
+                          </label>
+                        </span>
+                      </h4>
+                      <ul class='options-v'>
+                        <li>
+                          <span class="label-blue">
+                            <label for='abType1'>
+                              <input name='abType' type='radio' id='abType1' onclick='toggleBoundary("close");' />
+                              Elementary School
+                            </label>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="label-orange">
+                            <label for='abType2'>
+                              <input name='abType' type='radio' id='abType2' onclick='toggleBoundary("close");' />
+                              Middle School
+                            </label>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="label-red">
+                            <label for='abType3'>
+                              <input name='abType' type='radio' id='abType3' onclick='toggleBoundary("close");' />
+                              High School
+                            </label>
+                          </span>
+                        </li>
+
+                        <li>
+                          <span class="label-purple">
+                            <label for='abType15'>
+                              <input name='abType' type='radio' id='abType15' onclick='toggleBoundary("close");' />
+                              Charter School Preference Boundary
+                            </label>
+                          </span>
+
+                          <span class="pull-right">
+                            <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseCharterHelp" aria-expanded="false" aria-controls="collapseCharterHelp">?</button>
+                          </span>
+
+                          <div class="collapse well well-sm" id="collapseCharterHelp">
+                            <h4>Charter School Preference Boundary</h4>
+                            <p>
+                              Students residing within the overlay preference boundary of the school will be given priority for enrollment over those students who reside outside of the overlay preference boundary.
+                            </p>
+                          </div>
+
+                      </ul>
+
+                      <h4>Geographic Overlays</h4>
+                      <ul class='options-v'>
+                        <li>
+                          <span class="label-blue">
+                            <label for='abType5'>
+                              <input name='abType' type='radio' id='abType5' onclick='toggleBoundary("close");' />
+                              CPS Networks
+                            </label>
+                          </span>
+                        </li>
+
+                        <li>
+                          <span class="label-pink">
+                            <label for='abType16'>
+                              <input name='abType' type='radio' id='abType16' onclick='toggleBoundary("close");' />
+                              Safe Passage Routes
+                            </label>
+                          </span>
+
+                          <span class="pull-right">
+                            <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseSafePassageHelp" aria-expanded="false" aria-controls="collapseSafePassageHelp">?</button>
+                          </span>
+
+                          <div class="collapse well well-sm" id="collapseSafePassageHelp">
+                            <h4>Safe Passage Routes</h4>
+                            <p>
+                              Your child's safety is among our top priorities. Chicago Public Schools, in partnership with parents, the Chicago Police Department (CPD) and City of Chicago, has expanded the District's successful Safe Passage Program to provide safe routes to and from school every day for your child.
+                              <br /><br />
+                              This map presents the Safe Passage Route specially designed for your school, which was created with direct input from CPD and parents within your community.
+                              <br /><br />
+                              Routes that are shared by more than one school overlap each other on the map. To view the route for a particular school, search for the school and the route will display on the map.
+                            </p>
+                          </div>
+                        </li>
+                        <li>
+                          <span class="label-tiers">
+                            <label for='abType10'>
+                              <input name='abType' type='radio' id='abType10' onclick='toggleBoundary("close");' />
+                              CPS Tiers
+                            </label>
+                          </span>
+
+                          <span class="pull-right">
+                            <button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseCPSTiersHelp" aria-expanded="false" aria-controls="collapseCPSTiersHelp">?</button>
+                          </span>
+
+                          <div class="collapse well well-sm" id="collapseCPSTiersHelp">
+                            <h4>CPS Tiers</h4>
+                            <div class=" clearfix" >
+                              <div style='width:24%; line-height:2em; background-color:#BAC8D6; color:#fff; float:left; text-align:center; '>Tier 1</div>
+                              <div style='width:24%; line-height:2em; background-color:#8CA3BA; color:#fff; float:left; text-align:center; '>Tier 2</div>
+                              <div style='width:24%; line-height:2em; background-color:#476C91; color:#fff; float:left; text-align:center; '>Tier 3</div>
+                              <div style='width:24%; line-height:2em; background-color:#194775; color:#fff; float:left; text-align:center; '>Tier 4</div>
+                            </div>
+
+                            <p style="padding-top:10px;">
+                              Chicago Public Schools divides areas of the city into one of four socio-economic tiers by looking at each area's median income, education level, home-ownership rates, single-parent family rates, rates of English-speaking, and neighborhood school performance.
+                            </p>
+
+                          </div>
+                        </li>
+                        <li>
+                          <span class="label-community">
+                            <label for='abType7'>
+                              <input name='abType' type='radio' id='abType7' onclick='toggleBoundary("close");' />
+                              Community Areas
+                            </label>
+                          </span>
+                        </li>
+
+                        <li>
+                          <span class="label-zipcode">
+                            <label for='abType9'>
+                              <input name='abType' type='radio' id='abType9' onclick='toggleBoundary("close");' />
+                              Zip Codes
+                            </label>
+                          </span>
+                        </li>
+
+                      </ul>
+
+                      <h4>Political Overlays</h4>
+                      <ul class='options-v'>
+                        <li>
+                          <span class="label-wards">
+                            <label for='abType8'>
+                              <input name='abType' type='radio' id='abType8' onclick='toggleBoundary("close");' />
+                              Wards
+                            </label>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="label-house">
+                            <label for='abType11'>
+                              <input name='abType' type='radio' id='abType11' onclick='toggleBoundary("close");' />
+                              Illinois House District
+                            </label>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="label-senate">
+                            <label for='abType12'>
+                              <input name='abType' type='radio' id='abType12' onclick='toggleBoundary("close");' />
+                              Illinois Senate District
+                            </label>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="label-congressional">
+                            <label for='abType13'>
+                              <input name='abType' type='radio' id='abType13' onclick='toggleBoundary("close");' />
+                              US Congressional District
+                            </label>
+                          </span>
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--COVER map during menu items slide in-->
+    <div id="cover"></div>
+
+    <!-- Map Container -->
+    <div id="map_canvas"></div>
+
+    <!-- Streetview Container  -->
+    <div id="streetview">
+      <button id="btnCloseStreetview" type="button"
+                  class="btnCloseStreetview" onclick="toggleStreetView();">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-close fa-stack-1x fa-inverse"></i>
+            </span>
+          </button>
+    </div>
+
+
+    <script>
+
+      $("#autocomplete").keydown(function(e) {
+
+        if(e.keyCode == 13) {
+          e.preventDefault();
+          searchInputField(this.value);
+          //$(this).autocomplete('close');
+          $(this).blur();
+          }
+      });
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&callback=initializeMap"
+        async defer></script>
+  </body>
+</html>
