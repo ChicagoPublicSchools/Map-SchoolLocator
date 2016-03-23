@@ -96,6 +96,7 @@ If you have questions regarding the locator, please remember that we have limite
  * Hopscotch.js
  * FontAwesome
  * Bootstrap
+ * FusionTips.js
 
 
 
