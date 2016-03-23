@@ -36,12 +36,12 @@
   var HSattendance ;
   var Networks ;
   var Community ;
-  var Wards;
-  var Zipcode;
-  var Tiers;
-  var ILhouse;
-  var ILsenate;
-  var UScong;
+  var Wards ;
+  var Zipcode ;
+  var Tiers ;
+  var ILhouse ;
+  var ILsenate ;
+  var UScong ;
 
   var map;
   var geocoder;
@@ -91,7 +91,17 @@ function initializeMap() {
    ILhouse               = new google.maps.FusionTablesLayer(ILhouseTableId);
    ILsenate              = new google.maps.FusionTablesLayer(ILsenateTableId);
    UScong                = new google.maps.FusionTablesLayer(UScongTableId);
+   
   //$.getJSON('http://jsonip.com/?callback=?', function(r){ console.log(r.ip); });
+  
+  // has to happen after google maps api
+  $.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
+        initTiers();
+      })
+      .fail(function( jqxhr, settings, exception ) {
+        console.log("Tier Overlay hover disabled");
+    });
+  
   clearMapElements(); // clears all the elements on the map
   clearMapFilters();  // set up the filters - radio buttons and checkboxes
   icontype = "gradecategory"; // resets the icons
@@ -170,7 +180,7 @@ function initializeMap() {
       { "saturation": -70 }
       ]
     }
-    ]
+    ];
 
     geocoder                      = new google.maps.Geocoder();
     chicago                       = new google.maps.LatLng(41.88, -87.68);
@@ -238,7 +248,7 @@ function LongPress(map, length) {
   google.maps.event.addListener(map, 'drag', function(e) {
     me.onMapDrag_(e);
   });
-};
+}
 
 LongPress.prototype.onMouseUp_ = function(e) {
   clearTimeout(this.timeoutId_);
@@ -1846,7 +1856,7 @@ function adjustResultsHeight() {
 
 
 
-//not used
+//not used?
 function adjustMapCanvas() {
   var bottom = $('#collapseResults').position().top+$('#collapseResults').outerHeight(true);
   //if( bottom == 0 ) {bottom=60}
@@ -2352,14 +2362,14 @@ function toggleBoundary(closeslideout) {
   }
   if ($("#abType10").is(':checked')) {
     //$.getScript("scripts/fusiontips.js");
-    $.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
-        initTiers();
-      })
-      .fail(function( jqxhr, settings, exception ) {
-        console.log("Tier Overlay hover disabled");
-    });
+    //$.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
+//        initTiers();
+//      })
+//      .fail(function( jqxhr, settings, exception ) {
+//        console.log("Tier Overlay hover disabled");
+//    });
 
-    // initTiers();
+    initTiers();
     tclick = "Tiers";
   }
   if ($("#abType11").is(':checked')) {
