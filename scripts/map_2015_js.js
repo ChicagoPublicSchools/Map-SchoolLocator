@@ -91,17 +91,17 @@ function initializeMap() {
    ILhouse               = new google.maps.FusionTablesLayer(ILhouseTableId);
    ILsenate              = new google.maps.FusionTablesLayer(ILsenateTableId);
    UScong                = new google.maps.FusionTablesLayer(UScongTableId);
-   
+
   //$.getJSON('http://jsonip.com/?callback=?', function(r){ console.log(r.ip); });
-  
+
   // has to happen after google maps api
-  $.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
-        initTiers();
-      })
-      .fail(function( jqxhr, settings, exception ) {
-        console.log("Tier Overlay hover disabled");
-    });
-  
+  // $.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
+  //       initTiers();
+  //     })
+  //     .fail(function( jqxhr, settings, exception ) {
+  //       console.log("Tier Overlay hover disabled");
+  //   });
+
   clearMapElements(); // clears all the elements on the map
   clearMapFilters();  // set up the filters - radio buttons and checkboxes
   icontype = "gradecategory"; // resets the icons
