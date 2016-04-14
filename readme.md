@@ -90,13 +90,13 @@ If you have questions regarding the locator, please remember that we have limite
 
 
 ##Dependencies
- * Google Fusion Tables
- * Google Maps
- * jQuery
- * Hopscotch.js
- * FontAwesome
- * Bootstrap
- * FusionTips.js
+ * [Google Fusion Tables] (https://support.google.com/fusiontables/answer/184641)
+ * [Google Maps] (https://developers.google.com/maps/documentation/javascript/)
+ * [jQuery] (http://jquery.com/)
+ * [Hopscotch] (https://github.com/linkedin/hopscotch)
+ * [Bootstrap] (http://getbootstrap.com/)
+ * [FontAwesome] (http://fortawesome.github.io/Font-Awesome/)
+ * [FusionTips] (https://github.com/derekeder/fusiontips)
 
 
 
