@@ -32,12 +32,12 @@
     <script src="http://www.google.com/jsapi"></script>
 
     <script src="scripts/jquery-1.11.1.min.js"></script>
-    <script src="scripts/map_2015_js.js?v=2.7" ></script>
+    <script src="scripts/map_2015_js.js?v=2.8" ></script>
 	  <script src="scripts/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
     <!-- hopscotch feature tour -->
     <script src="scripts/hopscotch-dist/js/hopscotch.min.js"></script>
-    <script src="scripts/maptour1.js?v=1"></script>
+    <script src="scripts/maptour1.js?v=2.8"></script>
     <link rel="stylesheet" href="scripts/hopscotch-dist/css/hopscotch.min.css" />
 
 
@@ -54,7 +54,7 @@
 
     <link href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css" media="all" rel="stylesheet"  />
     <link href="scripts/font-awesome-4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" >
-    <link href="styles/map.css?v=2.5" media="all" rel="stylesheet"  />
+    <link href="styles/map.css?v=2.8" media="all" rel="stylesheet"  />
 
     <script>
       $(document).ready(function () {
@@ -351,7 +351,7 @@
         <!-- moreSchoolsRow contains buttons and filters -->
         <div id="moreSchoolsRow" class="container-fluid" >
 
-          <!-- row contains the More Schools, School Ratings, and  Filter Results buttons-->
+          <!-- row contains the More Schools, School Ratings, and Filter Results buttons-->
           <div class="row" style="background-color:#fff; padding:5px 0px;">
             <div class="col-xs-12">
               <div class="clearfix" >
@@ -1126,7 +1126,8 @@
 
     </div>
 
-    <!-- Detail Container displays school specific data. Toggles with ResultList displays-->
+    <!-- Detail Container displays school specific data.
+         Toggles with ResultList displays -->
     <div id="divDetailContainer" class="container-fluid collapse" ></div>
 
     <!-- Buttons located on the right side of the screen, displayed on Mobile only -->
@@ -1427,7 +1428,19 @@
                         What if I only want to see high schools or elementary schools?
                       </h3>
                       <p>
-                        The Advanced Search button allows you to filter your search. Click on Grade Category and check any grades categories you want to appear. For example, to view high schools only, check High School. By default all grade categories (elementary, middle and high school) are displayed.
+                        The Filter Results button allows you to filter your search. Click on Grade Category and check any grades categories you want to appear. For example, to view high schools only, check High School. By default all grade categories (elementary, middle and high school) are displayed.
+                      </p>
+                      <h3>
+                        How do I see all the schools?
+                      </h3>
+                      <p>
+                        To view all the schools, click the Reset Map button then click the search icon (magnifying glass).
+                      </p>
+                      <h3>
+                        How do I see the Local School Council boundaries?
+                      </h3>
+                      <p>
+                        To view the LSC boundary, click the on the school to bring up the detail view then click the LSC button.
                       </p>
                     </div>
                   </div>
@@ -1437,14 +1450,19 @@
 
           <div class="row backgroundfillwhite">
             <div class="col-xs-12" style="padding-bottom:10px;">
-                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.7</button>
-                  <!-- VERSION MODAL -->
+                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.8</button>
+                  <!-- VERSION -->
                   <div id="collapseVersionModal" class="collapse backgroundfillwhite">
 
                     <div class="height100 backgroundfillwhite">
 
                       <div class="well">
                         <h2 id="myModalLabel">School Locator - What's New</h2>
+                        <h4>v2.8</h4>
+                        <p>
+                          <strong>5/1/2016</strong>
+                          - Changed Advanced Search to display only Overlays and added the Advanced Search filtering feature to search results.
+                        </p>
                         <h4>v2.7</h4>
                         <p>
                           <strong>10/26/2015</strong>

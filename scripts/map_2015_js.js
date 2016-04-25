@@ -14,6 +14,7 @@
   //var fusionTableId       = "1e9MWuck8HGufS9HkJG8g4AVoDX3BHn44O-adVCiS" ;  //SchoolData2015-oct
   var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
 
+  var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
   var SafePassageTableID    = "19IrE1B6ibYVtK9zA94ooofShtyMO09RWZkwQy6bL" ;  //  2015
   var CHattendanceTableId   = "1UONnmNejdWRD7Rsx3gXsVqaNRlDlbyeHt_qfcd29" ;  //  2015
   var ESattendanceTableId   = "1Ps63lWfnUUqe35gWUKBz06_hTsUidyakdzw-9-Yw" ;  //  2015
@@ -28,7 +29,7 @@
   var ILsenateTableId       = "1-zs6vZFYizO9UE8J6BiyiTL0UqczNnoKYdX95HZR" ;
   var UScongTableId         = "1IH9gZVtOhcI8DR6wJZbXlMN5wbzucr9SU38fkVjU" ;
   var WardsTableId          = "1EHL3IkwTglYo9VwDowSmAT7bH-Ulv1bgpEXa_n1P" ;
-  //var New3High2015TableID   = "16YE6b75vMjFg7QAjyDgBKeXkBLwyTPyfUorinY1i" ;  // not used boundary overlay for curie, hubbard, solorio
+
   var SafePassage ;
   var CHattendance ;
   var ESattendance ;
@@ -340,7 +341,7 @@ function clearMapFilters() {
   $("#abType1").prop("checked", false);     //elem
   $("#abType2").prop("checked", false);     //mid
   $("#abType3").prop("checked", false);     //high
-  $('#abType4').prop('checked', true);    //off
+  $('#abType4').prop('checked', true);      //off
   $("#abType5").prop("checked", false);     //elem network
   $("#abType6").prop("checked", false);     //high network
   $("#abType7").prop("checked", false);     //community
@@ -665,6 +666,8 @@ function filteredSearch() {
     advancedsearch();
   }
 }
+
+
 
 function schoolSearch(theInput) {
   searchtype = "school";
@@ -1512,6 +1515,10 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   contents +="<a class='btnCompareSchool btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='buildCompareRow(" +row+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;Compare-Detail&quot; ,&quot;"+ name+"&quot;);'>Compare</a>";
 
+  contents +="<a class='btnCompareSchool btn btn-xs'  style='background-color:" + headcolor +
+  "' onclick='displayLSCBoundary(" +id+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;LSCBoundary-Detail&quot; ,&quot;"+ name+"&quot;);'>LSC</a>";
+
+
   contents +="<a class='btnMoreSchools btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='addrFromInputField(&quot;" +address+ "&quot;); _trackClickEventWithGA(&quot;Click&quot;,&quot;MoreSchools-Detail&quot; ,&quot;"+ name+"&quot;);'>More Schools</a>";
 
@@ -2013,6 +2020,32 @@ function displayZipcodeBoundary() {
 }
 
 
+// show the LSC boundaries of the school
+function displayLSCBoundary(id) {
+	if (searchPolyAttendance != null) {
+		searchPolyAttendance.setMap(null);
+	}
+	searchPolyAttendance = null;
+  // var query = "SELECT geometry FROM " + LSCdistrictsTableId + " WHERE ID = '" + id + "'";
+  // encodeQuery(query, displaySafePassageRoute);
+
+	var wh="'ID' = '" + id + "'" ;
+	searchPolyAttendance = new google.maps.FusionTablesLayer({
+		query: {
+			from:   LSCdistrictsTableId,
+			select: "geometry",
+			where:  wh
+		},
+		styles: [
+			{ polygonOptions: { fillColor: "#00DDFF", fillOpacity: .10, strokeColor: "#00DDFF", strokeWeight: 3 } },
+		],
+		suppressInfoWindows: true
+	});
+	   searchPolyAttendance.setMap(map);
+
+}
+
+
 // thanks to http://www.dreamdealer.nl/tutorials/point_the_streetview_camera_to_a_marker.html
 // and https://developers.google.com/maps/documentation/javascript/examples/streetview-controls
 function startStreetView() {
@@ -2302,7 +2335,6 @@ function toggleBoundary(closeslideout) {
   ESattendance.setMap(null);
   MSattendance.setMap(null);
   HSattendance.setMap(null);
-  //New3High2015.setMap(null);
   Networks.setMap(null);
   Community.setMap(null);
   Wards.setMap(null);
@@ -2363,11 +2395,11 @@ function toggleBoundary(closeslideout) {
   if ($("#abType10").is(':checked')) {
     //$.getScript("scripts/fusiontips.js");
     //$.getScript( "scripts/fusiontips.js" ).done(function( script, textStatus ) {
-//        initTiers();
-//      })
-//      .fail(function( jqxhr, settings, exception ) {
-//        console.log("Tier Overlay hover disabled");
-//    });
+    //        initTiers();
+    //      })
+    //      .fail(function( jqxhr, settings, exception ) {
+    //        console.log("Tier Overlay hover disabled");
+    //    });
 
     initTiers();
     tclick = "Tiers";
@@ -2397,6 +2429,8 @@ function toggleBoundary(closeslideout) {
   refreshBuildings();
 }
 
+
+
 function initTiers() {
 
   Tiers.setMap(map);
@@ -2410,6 +2444,7 @@ function initTiers() {
     });
 
 }
+
 
 
 function drawSearchRadiusCircle(point) {
@@ -2674,7 +2709,6 @@ function filterSchools() {
 
 
 
-
 // encodes the query, returns json, and calls sf if success
 function encodeQuery(q,sf) {
   var encodedQuery = encodeURIComponent(q);
@@ -2693,7 +2727,7 @@ function encodeQuery(q,sf) {
 
 
 
-// function encodeQueryPhil(q,sf) {
+ // function encodeQueryPhil(q,sf) {
 
 
   // var encodedQuery = encodeURIComponent(q);
@@ -3187,4 +3221,16 @@ function trackTour() {
   }else{
     _trackClickEventWithGA("Click", "Info", "Start Tour Button - Desktop");
   }
+}
+
+
+
+function displayTransit() {
+  var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+}
+
+function dispalyBike() {
+  var bikeLayer = new google.maps.BicyclingLayer();
+  bikeLayer.setMap(map);
 }
