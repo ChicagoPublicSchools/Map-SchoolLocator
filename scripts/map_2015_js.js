@@ -4,14 +4,11 @@
 //  Thanks to Derek Eder (derekeder.com) for his fusion table template and coding examples.
 
 //FT searches
-  var searchSchools         = null;
-  var searchHomeSchools     = null;
   var searchPolyAttendance  = null;
   var searchSafePassage     = null;
+  var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  //var fusionTableId       = "1OVa8Z4Dt0I6yNdU91doiMNorydsjlxdo8y90ufKP" ;  //SchoolData2015
-  //var fusionTableId       = "1e9MWuck8HGufS9HkJG8g4AVoDX3BHn44O-adVCiS" ;  //SchoolData2015-oct
   var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
@@ -20,7 +17,6 @@
   var ESattendanceTableId   = "1Ps63lWfnUUqe35gWUKBz06_hTsUidyakdzw-9-Yw" ;  //  2015
   var MSattendanceTableId   = "1oB0SNqTijvZKcgpM9kkvnvmOvx_0UQwtEiE9cByh" ;  //  2015
   var HSattendanceTableId   = "13Xmr3Th6C7J-YTquYDfUKIpOsPrcYIsPjbCcT_1C" ;  //  2015
-
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
@@ -43,6 +39,8 @@
   var ILhouse ;
   var ILsenate ;
   var UScong ;
+  var transitLayer ;
+  var bikeLayer ;
 
   var map;
   var geocoder;
@@ -92,7 +90,8 @@ function initializeMap() {
    ILhouse               = new google.maps.FusionTablesLayer(ILhouseTableId);
    ILsenate              = new google.maps.FusionTablesLayer(ILsenateTableId);
    UScong                = new google.maps.FusionTablesLayer(UScongTableId);
-
+   transitLayer          = new google.maps.TransitLayer();
+   bikeLayer             = new google.maps.BicyclingLayer();
   //$.getJSON('http://jsonip.com/?callback=?', function(r){ console.log(r.ip); });
 
   // has to happen after google maps api
@@ -109,7 +108,7 @@ function initializeMap() {
 
 
   $("#autocomplete").val("");
-  if ($(window).width() > 767) {$('#collapseButtons').collapse('show');}
+  if(!isMobile()) {$('#collapseButtons').collapse('show');}
   $("#divDetailContainer").collapse('hide');
   $('#tblCompare tbody tr').remove();
   $("#divCompareContainer").collapse('hide');
@@ -270,10 +269,10 @@ LongPress.prototype.onMapDrag_ = function(e) {
 
 
 
-// set up the boxes and radio buttons
+// set up the boxes and radio buttons for filtering
 function clearMapFilters() {
   // close the open accordians
-  $('.panel-collapse.in').collapse('hide');
+  $('#filteraccordion .panel-collapse.in').collapse('hide');
 
   $("#st1").prop("checked", false);   //elem
   $("#st2").prop("checked", false);   //middle
@@ -353,7 +352,8 @@ function clearMapFilters() {
   $("#abType13").prop("checked", false);    //us cong
   $("#abType15").prop("checked", false);    //charters
   $("#abType16").prop("checked", false);    //safe passage
-  $("#abType17").prop("checked", false);    //NewH3ighschools2015
+  $("#abType17").prop("checked", false);    //transit
+  $("#abType18").prop("checked", false);    //bike
 
 }
 
@@ -545,7 +545,7 @@ function searchfromurl() {
 }
 
 
-
+// determines what type of search based on input
 function searchInputField() {
 
   clearMapElements();
@@ -620,35 +620,6 @@ function searchInputField() {
 }
 
 
-// reset the URL
-function resetmap() {
-  var pageurl = top.location.href;
-  if(pageurl.indexOf("?") >=0) {
-    var x = pageurl.split('?')[0];
-    top.location.href = x;
-
-  }else{
-
-   //initialize();
-   location.reload(true);
-
-  }
-}
-
-
-// called when user clicks the Reset filter button
-function resetFilters() {
-  if (searchtype == "url" || searchtype == "ecp" ) {
-    // reset the search so filtering doesn't take place on URL or ECP results
-    searchInputField();
-  } else {
-    clearMapFilters();
-    filteredSearch();
-  }
-
-}
-
-
 
 // called when user selects a filter and clicks the Update button
 // called from the ?ECP url search
@@ -668,7 +639,7 @@ function filteredSearch() {
 }
 
 
-
+// single school search
 function schoolSearch(theInput) {
   searchtype = "school";
   var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
@@ -679,7 +650,7 @@ function schoolSearch(theInput) {
 }
 
 
-
+// zip code search
 function zipcodeSearch(theInput) {
   deleteOverlays();
   if (searchZip != null){
@@ -1496,30 +1467,30 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   }
   contents += "</div><div style='padding-bottom: 5px;'>"
 
-  contents += "<a class='moresi btn btn-xs'  style='background-color:" + headcolor +
+  contents += "<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
     "' href='/Schools/Pages/school.aspx?SchoolID=" + id +
     "' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;School Profile&quot; ,&quot;"+ name +"&quot;);' >More Info</a>"
 
-  contents +="<a class='enroll btn btn-xs'  style='background-color:" + headcolor +
+  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' href='/Schools/Pages/school.aspx?SchoolID=" + id +
   "#admissions' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;Enroll&quot; ,&quot;"+ name+"&quot;);' >Enroll</a>";
 
-  contents +="<a class='streetview btn btn-xs'  style='background-color:" + headcolor +
+  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='startStreetView(); _trackClickEventWithGA(&quot;Click&quot;,&quot;Steet View&quot; ,&quot;"+ name+"&quot;);'>Street View</a>";
 
   var dirAddress = address.replace(" ", "+");
-  contents += "<a class='link-get-directions btn btn-xs' style='background-color:" + headcolor +
+  contents += "<a class='btnDetailPanel btn btn-xs' style='background-color:" + headcolor +
     "' href='http://maps.google.com/maps?daddr=" + dirAddress +
     "' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;Directions&quot; ,&quot;"+ name +"&quot;);'>Directions</a>";
 
-  contents +="<a class='btnCompareSchool btn btn-xs'  style='background-color:" + headcolor +
+  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='buildCompareRow(" +row+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;Compare-Detail&quot; ,&quot;"+ name+"&quot;);'>Compare</a>";
 
-  contents +="<a class='btnCompareSchool btn btn-xs'  style='background-color:" + headcolor +
+  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='displayLSCBoundary(" +id+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;LSCBoundary-Detail&quot; ,&quot;"+ name+"&quot;);'>LSC</a>";
 
 
-  contents +="<a class='btnMoreSchools btn btn-xs'  style='background-color:" + headcolor +
+  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='addrFromInputField(&quot;" +address+ "&quot;); _trackClickEventWithGA(&quot;Click&quot;,&quot;MoreSchools-Detail&quot; ,&quot;"+ name+"&quot;);'>More Schools</a>";
 
 
@@ -1736,33 +1707,20 @@ function chevronClick(btn) {
   //$('#btnResultsHomeCheveron').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
 }
 
-// FIX UNDEFINED ERROR
+
 // casuses the marker to switch to the larger image and
 // bounce for one animation cycle
 function animatemarker(markernum){
+  if( markersArray.length === 0 ){return;}
+  if(icontype === "gradecategory") {
+    var newimage = markersArray[markernum].imagelg;
+  }else{
+    var newimage = markersArray[markernum].perfimagelg;
+  }
+  markersArray[markernum].setIcon(newimage);
+  markersArray[markernum].setAnimation(google.maps.Animation.BOUNCE);
+  setTimeout(function(){ markersArray[markernum].setAnimation(null); }, 750);
 
-  //if( searchtype != "radius" ){//home //school //zip //url //advancedsearch
-
-      if(icontype === "gradecategory") {
-        var newimage = markersArray[markernum].imagelg;// fix error when changing radius
-      }else{
-        var newimage = markersArray[markernum].perfimagelg;
-      }
-      markersArray[markernum].setIcon(newimage);
-      markersArray[markernum].setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ markersArray[markernum].setAnimation(null); }, 750);
-
-
-  // } else {
-  //   if(icontype == "gradecategory") {
-  //     var newimage = markersArrayRadius[markernum].imagelg;
-  //   }else{
-  //     var newimage = markersArrayRadius[markernum].perfimagelg;
-  //   }
-  //   markersArrayRadius[markernum].setIcon(newimage);
-  //   markersArrayRadius[markernum].setAnimation(google.maps.Animation.BOUNCE);
-  //   setTimeout(function(){ markersArrayRadius[markernum].setAnimation(null); }, 750);
-  // }
 }
 
 
@@ -1800,6 +1758,10 @@ function closeinfowindow() {
   if (searchSafePassage != null) {
     searchSafePassage.setMap(null);
   }
+  if (searchLSCBoundary != null) {
+    searchLSCBoundary.setMap(null);
+  }
+
 }
 
 
@@ -2022,15 +1984,22 @@ function displayZipcodeBoundary() {
 
 // show the LSC boundaries of the school
 function displayLSCBoundary(id) {
-	if (searchPolyAttendance != null) {
-		searchPolyAttendance.setMap(null);
+  if (searchLSCBoundary != null) {
+		searchLSCBoundary.setMap(null);
+    searchLSCBoundary = null;
+    if (searchPolyAttendance != null) {
+      searchPolyAttendance.setMap(map);
+    }
 	}
-	searchPolyAttendance = null;
-  // var query = "SELECT geometry FROM " + LSCdistrictsTableId + " WHERE ID = '" + id + "'";
-  // encodeQuery(query, displaySafePassageRoute);
+  if (searchPolyAttendance != null) {
+    searchPolyAttendance.setMap(null);
+  }
+
+
+
 
 	var wh="'ID' = '" + id + "'" ;
-	searchPolyAttendance = new google.maps.FusionTablesLayer({
+	searchLSCBoundary = new google.maps.FusionTablesLayer({
 		query: {
 			from:   LSCdistrictsTableId,
 			select: "geometry",
@@ -2041,8 +2010,7 @@ function displayLSCBoundary(id) {
 		],
 		suppressInfoWindows: true
 	});
-	   searchPolyAttendance.setMap(map);
-
+  searchLSCBoundary.setMap(map);
 }
 
 
@@ -2249,6 +2217,8 @@ function clearMapElements() {
     searchPolyAttendance.setMap(null);}
   if (searchSafePassage != null){
     searchSafePassage.setMap(null);}
+  if (searchLSCBoundary != null){
+      searchLSCBoundary.setMap(null);}
   if (searchZip != null){
     searchZip.setMap(null);}
 
@@ -2262,7 +2232,6 @@ function clearMapElements() {
   ESattendance.setMap(null);
   MSattendance.setMap(null);
   HSattendance.setMap(null);
-  //New3High2015.setMap(null);
   Networks.setMap(null);
   Community.setMap(null);
   Wards.setMap(null);
@@ -2271,11 +2240,14 @@ function clearMapElements() {
   ILhouse.setMap(null);
   ILsenate.setMap(null);
   UScong.setMap(null);
+  transitLayer.setMap(null);
+  bikeLayer.setMap(null);
  // $('#abType4').attr('checked', 'checked'); //off
 
 
   searchPolyAttendance = null;
   searchSafePassage = null;
+  searchLSCBoundary = null;
   searchZip = null;
   allschoolsdataHome = null;
   allschoolsdata  = null;
@@ -2310,7 +2282,9 @@ function refreshBuildings() {
   if (searchZip != null) {
     searchZip.setMap(map);}
   if (searchPolyAttendance != null) {
-    searchPolyAttendance.setMap(map);}
+      searchPolyAttendance.setMap(map);}
+  if (searchLSCBoundary != null){
+      searchLSCBoundary.setMap(null);}
   if (searchSafePassage != null) {
     searchSafePassage.setMap(map);}
   // if (searchSchools != null) {
@@ -2343,6 +2317,8 @@ function toggleBoundary(closeslideout) {
   ILhouse.setMap(null);
   ILsenate.setMap(null);
   UScong.setMap(null);
+  transitLayer.setMap(null);
+  bikeLayer.setMap(null);
   deleteNetworkOverlays(); //remove numbered network markers
 
   // close any open infowindows
@@ -2416,10 +2392,17 @@ function toggleBoundary(closeslideout) {
     UScong.setMap(map);
     tclick = "US Congressional";
   }
-  // if ($("#abType17").is(':checked')) {
-  //   New3High2015.setMap(map);
-  //   tclick = "NewH3ighschools2015";
-  // }
+  if ($("#abType17").is(':checked')) {
+    transitLayer.setMap(map);
+    tclick = "Transit";
+  }
+  if ($("#abType18").is(':checked')) {
+    bikeLayer.setMap(map);
+    tclick = "Bike";
+  }
+
+
+
   _trackClickEventWithGA("Click", "Overlays", tclick);
 
   if(closeslideout=="close"){
@@ -3034,20 +3017,6 @@ function sort_and_unique( my_array ) {
 }
 
 
-
-// check if this is used
-function collapseOther(otherbtn) {
-  var otherDropdownID  = "#" + otherbtn ;
-  if ( $(otherDropdownID).hasClass("in") ) {
-      $(otherDropdownID).collapse('hide');
-    }else{
-    //console.log(otherbtn+" not in")
-  }
-}
-
-
-
-
 function addCommas(nStr) {
   nStr += '';
   x = nStr.split('.');
@@ -3061,7 +3030,6 @@ function addCommas(nStr) {
 }
 
 
-
 //replaces pipes and underscores from ProgramType column
 function replacePipes(ptval) {
   var npt = ptval.replace(/\|\|/g, ", ");
@@ -3070,12 +3038,10 @@ function replacePipes(ptval) {
 }
 
 
-
 function ajaxerror() {
   alert("Your school(s) cannot be found. Please click Reset Map and try again.");
   //$('#waiting').hide();
 }
-
 
 
 // returns true if school id is in the array of schools with multiple boundaries
@@ -3098,6 +3064,37 @@ function cleanURL() {
     history.pushState(stateObject,title,newUrl);
   }
 }
+
+
+
+// reset the URL
+function resetmap() {
+  var pageurl = top.location.href;
+  if(pageurl.indexOf("?") >=0) {
+    var x = pageurl.split('?')[0];
+    top.location.href = x;
+
+  }else{
+
+   //initialize();
+   location.reload(true);
+
+  }
+}
+
+
+// called when user clicks the Reset filter button
+function resetFilters() {
+  if (searchtype == "url" || searchtype == "ecp" ) {
+    // reset the search so filtering doesn't take place on URL or ECP results
+    searchInputField();
+  } else {
+    clearMapFilters();
+    filteredSearch();
+  }
+
+}
+
 
 
 // blocks the background from clicks
@@ -3136,9 +3133,6 @@ function buildRadiusDropDown() {
       "</div>";
       return(binputrad);
     }
-
-
-
 
 
 // closes popovers on x click
@@ -3224,13 +3218,21 @@ function trackTour() {
 }
 
 
+function isMobile() {
+	if( $( window ).width() > 767 ) {
+		return false;
+	}else{
+		return true;
+	}
+}
+
 
 function displayTransit() {
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
 }
 
-function dispalyBike() {
-  var bikeLayer = new google.maps.BicyclingLayer();
-  bikeLayer.setMap(map);
+
+function displayBike() {
+
 }

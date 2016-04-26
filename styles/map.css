@@ -471,14 +471,13 @@ button.closepinloc:hover {opacity: .7; color:#fff;}
     text-align: right;
 }
 
-a.moresi, a.link-get-directions, a.streetview, a.enroll, a.btnCompareSchool, a.btnMoreSchools,
-a.moresi:focus, a.link-get-directions:focus, a.streetview:focus, a.enroll:focus, a.btnCompareSchool:focus, a.btnMoreSchools:focus,
-a.moresi:visited, a.link-get-directions:visited, a.streetview:visited, a.enroll:visited, a.btnCompareSchool:visited, a.btnMoreSchools:visited
+
+a.btnDetailPanel, a.btnDetailPanel:focus, a.btnDetailPanel:visited
 {
     color:#fff; margin-top: 4px; margin-right:5px;
 }
-a.moresi:hover, a.link-get-directions:hover, a.streetview:hover, a.enroll:hover, a.btnCompareSchool:hover, a.btnMoreSchools:hover
- {
+a.btnDetailPanel:hover
+{
     color:#e6e6e6;
 }
 
