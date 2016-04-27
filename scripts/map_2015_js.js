@@ -1376,26 +1376,12 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   }
 
   // set up variables for future coloring of text and backgrounds
-  var headcolor = "#333";
-  var bkgcolor = "#eee";
-
-  if (type == "Elementary School" || type == "Elementary Charter") {
-    var headcolor = "#36C";
-    var bkgcolor = "#EAF2FD";
-  }
-  if (type == "High School" || type == "High School Charter") {
-    var headcolor = "#d73e3e";
-    var bkgcolor = "#FCECEC";
-  }
-  if (type == "Middle School" || type == "Middle School Charter") {
-    var headcolor = "#F90";
-    var bkgcolor = "#FFF6E8";
-  }
-
+  var c = getColors(type);
+  var headcolor = c[0];
+  var bkgcolor = c[1];
 
   // start building the detail div
   var contents = "<div style='background-color:" + bkgcolor + "; padding:10px 15px 5px 15px;'>" ;
-
 
   // if this is a school search with one boundary display the ^ chevron to
   // roll up the detail div to display only the name, address, and phone of the school
@@ -1486,8 +1472,8 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='buildCompareRow(" +row+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;Compare-Detail&quot; ,&quot;"+ name+"&quot;);'>Compare</a>";
 
-  contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
-  "' onclick='displayLSCBoundary(" +id+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;LSCBoundary-Detail&quot; ,&quot;"+ name+"&quot;);'>LSC</a>";
+  contents +="<a class='btnDetailPanel btnLSCboundary btn btn-xs'  style='background-color:" + headcolor +
+  "' onclick='queryLSCBoundary(" +id+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;LSCBoundary-Detail&quot; ,&quot;"+ name+"&quot;);'>LSC</a>";
 
 
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
@@ -1982,35 +1968,74 @@ function displayZipcodeBoundary() {
 }
 
 
+
+function queryLSCBoundary(id) {
+  var query = "SELECT ID, geometry FROM " + LSCdistrictsTableId + " WHERE ID = '" + id + "'";
+  encodeQuery(query, displayLSCBoundary);
+}
+
+//not happening
+function xqueryLSCBoundary(id) {
+  var query = "SELECT ID, geometry FROM " + LSCdistrictsTableId + " WHERE ID = '" + id + "'";
+  var queryText = encodeURIComponent(query);
+  var gvizQuery = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
+
+  gvizQuery.send(function(response) {
+      var numRows = response.getDataTable().getNumberOfRows();
+      var numCols = response.getDataTable().getNumberOfColumns();
+      if( numRows > 0 ) {
+        var wh="'ID' = '" + id + "'" ;
+        searchLSCBoundary = new google.maps.FusionTablesLayer({
+          query: {
+            from:   LSCdistrictsTableId,
+            select: "geometry",
+            where:  wh
+          },
+          styles: [
+            { polygonOptions: { fillColor: "#00DDFF", fillOpacity: .10, strokeColor: "#00DDFF", strokeWeight: 3 } },
+          ],
+          suppressInfoWindows: true
+        });
+        searchLSCBoundary.setMap(map);
+      } else {
+        alert ("This school does not have a Local School Council.")
+      }
+    });
+
+}
+
+
+
 // show the LSC boundaries of the school
-function displayLSCBoundary(id) {
-  if (searchLSCBoundary != null) {
-		searchLSCBoundary.setMap(null);
-    searchLSCBoundary = null;
+function displayLSCBoundary(d) {
+  //if (searchLSCBoundary != null) {
+    //searchLSCBoundary.setMap(null);}
+  //var x = (searchLSCBoundary) ? console.log("true") : console.log("false") ;
+  if( d.rows != null ) {
+    var id = d.rows[0][0];
+  	var wh="'ID' = '" + id + "'" ;
+  	 searchLSCBoundary = new google.maps.FusionTablesLayer({
+  		query: {
+  			from:   LSCdistrictsTableId,
+  			select: "geometry",
+  			where:  wh
+  		},
+  		styles: [
+  			{ polygonOptions: { fillColor: "#00DDFF", fillOpacity: .10, strokeColor: "#00DDFF", strokeWeight: 3 } },
+  		],
+  		suppressInfoWindows: true
+  	});
+    searchLSCBoundary.setMap(map);
+    $(".btnLSCboundary" ).removeClass( "highlight-blue" ).addClass( "highlight-blue" );
+    // $(".btnLSCboundary").css("background-color", "#00DDFF");//rgb(0,221,255)
+    // $(".btnLSCboundary").css("color", "#01596C");//rgb(1,89,108)
+
     if (searchPolyAttendance != null) {
-      searchPolyAttendance.setMap(map);
+      searchPolyAttendance.setMap(null);
     }
-	}
-  if (searchPolyAttendance != null) {
-    searchPolyAttendance.setMap(null);
+  } else {
+    alert ("This school does not have a Local School Council.")
   }
-
-
-
-
-	var wh="'ID' = '" + id + "'" ;
-	searchLSCBoundary = new google.maps.FusionTablesLayer({
-		query: {
-			from:   LSCdistrictsTableId,
-			select: "geometry",
-			where:  wh
-		},
-		styles: [
-			{ polygonOptions: { fillColor: "#00DDFF", fillOpacity: .10, strokeColor: "#00DDFF", strokeWeight: 3 } },
-		],
-		suppressInfoWindows: true
-	});
-  searchLSCBoundary.setMap(map);
 }
 
 
@@ -3227,12 +3252,22 @@ function isMobile() {
 }
 
 
-function displayTransit() {
-  var transitLayer = new google.maps.TransitLayer();
-  transitLayer.setMap(map);
-}
+function getColors(type){
+  // set up variables for future coloring of text and backgrounds
+  var headcolor = "#333";
+  var bkgcolor = "#eee";
 
-
-function displayBike() {
-
+  if (type == "Elementary School" || type == "Elementary Charter") {
+    var headcolor = "#36C";
+    var bkgcolor = "#EAF2FD";
+  }
+  if (type == "High School" || type == "High School Charter") {
+    var headcolor = "#d73e3e";
+    var bkgcolor = "#FCECEC";
+  }
+  if (type == "Middle School" || type == "Middle School Charter") {
+    var headcolor = "#F90";
+    var bkgcolor = "#FFF6E8";
+  }
+  return [headcolor, bkgcolor]
 }

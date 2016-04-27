@@ -486,6 +486,12 @@ a.btnDetailPanel:hover
 .panel-filtered {margin-top:0px !important;}
 .panel-heading .btn-xs {line-height:1.2em;}
 
+
+
+.highlight-blue {
+  background-color:#00DDFF;
+  color: #01596C;}
+
 /*body, input, select, textarea
 {
     font-family: Calibri, Arial, sans-serif;
