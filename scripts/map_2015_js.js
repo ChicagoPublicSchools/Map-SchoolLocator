@@ -849,6 +849,9 @@ function resultListBuilder(d) {
     if (searchPolyAttendance != null) {  // clear for display of home polygons
       searchPolyAttendance.setMap(null);
       }
+      if (searchLSCBoundary != null) {
+        searchLSCBoundary.setMap(null);
+      }
     var results = "";
 
     for (var i = 0; i < numRows; i++) { //start loop to build marker
@@ -1351,12 +1354,15 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   if (infowindow != null) {
     if (infowindow.iname == uid) {
       // clicked on the same marker
-      // toggle infowindow, polygon, safepassage and detaildiv off
+      // toggle infowindow, polygon, safepassage, lscboundary, and detaildiv off
       if (searchPolyAttendance != null) {
         searchPolyAttendance.setMap(null);
       }
       if (searchSafePassage != null) {
         searchSafePassage.setMap(null);
+      }
+      if (searchLSCBoundary != null) {
+        searchLSCBoundary.setMap(null);
       }
       infowindow.close();
       infowindow = null;
@@ -1464,10 +1470,22 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='startStreetView(); _trackClickEventWithGA(&quot;Click&quot;,&quot;Steet View&quot; ,&quot;"+ name+"&quot;);'>Street View</a>";
 
-  var dirAddress = address.replace(" ", "+");
-  contents += "<a class='btnDetailPanel btn btn-xs' style='background-color:" + headcolor +
-    "' href='http://maps.google.com/maps?daddr=" + dirAddress +
+  // var dirAddress = address.replace(" ", "+");
+  //
+  // contents += "<a class='btnDetailPanel btn btn-xs' style='background-color:" + headcolor +
+  //   "' href='http://maps.google.com/maps?daddr=" + dirAddress +
+  //   "' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;Directions&quot; ,&quot;"+ name +"&quot;);'>Directions</a>";
+
+    var startaddr = "";
+    if (addrMarker !== null) {
+      startaddr = "saddr="+ geoaddress + "&";
+    }
+    var destaddr = "daddr="+address;
+    contents +=	"<a class='btnDetailPanel btn btn-xs' style='background-color:" + headcolor +
+    "' href='http://maps.google.com/maps?" + startaddr + destaddr +
     "' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;Directions&quot; ,&quot;"+ name +"&quot;);'>Directions</a>";
+
+
 
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
   "' onclick='buildCompareRow(" +row+ "); _trackClickEventWithGA(&quot;Click&quot;,&quot;Compare-Detail&quot; ,&quot;"+ name+"&quot;);'>Compare</a>";
@@ -1491,6 +1509,10 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   //show the attendance boundaries of the schools
   if (searchPolyAttendance != null) {
     searchPolyAttendance.setMap(null);
+  }
+
+  if (searchLSCBoundary != null) {
+    searchLSCBoundary.setMap(null);
   }
   // school search marker click will show all the boundaries
   // address search marker click will show only the top markers boundary
@@ -2008,10 +2030,17 @@ function xqueryLSCBoundary(id) {
 
 // show the LSC boundaries of the school
 function displayLSCBoundary(d) {
-  //if (searchLSCBoundary != null) {
-    //searchLSCBoundary.setMap(null);}
-  //var x = (searchLSCBoundary) ? console.log("true") : console.log("false") ;
-  if( d.rows != null ) {
+  // toggle LSC boundary display off
+  // turn on school attendance boundary
+    if($(".btnLSCboundary" ).hasClass( "highlight-blue" ) && searchLSCBoundary != null ) {
+      $(".btnLSCboundary" ).removeClass( "highlight-blue" );
+      searchLSCBoundary.setMap(null);
+      if (searchPolyAttendance != null) {
+        searchPolyAttendance.setMap(map);
+      }
+      return;
+    }
+    if( d.rows != null ) {
     var id = d.rows[0][0];
   	var wh="'ID' = '" + id + "'" ;
   	 searchLSCBoundary = new google.maps.FusionTablesLayer({
@@ -2025,7 +2054,7 @@ function displayLSCBoundary(d) {
   		],
   		suppressInfoWindows: true
   	});
-    searchLSCBoundary.setMap(map);
+
     $(".btnLSCboundary" ).removeClass( "highlight-blue" ).addClass( "highlight-blue" );
     // $(".btnLSCboundary").css("background-color", "#00DDFF");//rgb(0,221,255)
     // $(".btnLSCboundary").css("color", "#01596C");//rgb(1,89,108)
@@ -2033,6 +2062,7 @@ function displayLSCBoundary(d) {
     if (searchPolyAttendance != null) {
       searchPolyAttendance.setMap(null);
     }
+    searchLSCBoundary.setMap(map);
   } else {
     alert ("This school does not have a Local School Council.")
   }
@@ -2279,6 +2309,7 @@ function clearMapElements() {
   homeD = null;
   allD = null;
   searchtype = null;
+  addrMarker = null;
 
   $("#pinLocAlert").hide();
 
@@ -2298,7 +2329,7 @@ function clearMapElements() {
   $("#collapseHelp").collapse('hide');
 
   $('#streetview').hide();
-
+  $(".btnLSCboundary" ).removeClass( "highlight-blue" );
 }
 
 
@@ -2854,7 +2885,10 @@ function addrFromLatLng(latLngPoint, longpress) {
 
 
 // search for zip not in the autocomplete
+// also called from More Schools btn on the detail panel of a school
 function addrFromInputField(theInput) {
+  clearMapElements();
+  //clearMapFilters();
  var address = theInput;
   if (address != "") {
     if (address.toLowerCase().indexOf("chicago") == -1) {

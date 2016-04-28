@@ -489,8 +489,8 @@ a.btnDetailPanel:hover
 
 
 .highlight-blue {
-  background-color:#00DDFF;
-  color: #01596C;}
+  background-color:#00DDFF !important;
+  color: #01596C !important;}
 
 /*body, input, select, textarea
 {

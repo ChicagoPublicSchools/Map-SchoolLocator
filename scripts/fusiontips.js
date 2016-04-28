@@ -53,7 +53,7 @@
       div.style.top = (sw.y - 20) + 'px';
       div.innerHTML = this.text_;
     }
-    
+
   };
   FusionTipOverlay.prototype.onRemove = function() {
     this.div_.parentNode.removeChild(this.div_);
@@ -74,7 +74,7 @@
       this.draw();
     }
   };
-  
+
   //http://www.quirksmode.org/js/findpos.html
   function findElPos(obj) {
     var curleft = 0;
@@ -94,7 +94,7 @@
   function findMousePos(e) {
     var posx = 0;
     var posy = 0;
-    if (!e) 
+    if (!e)
       var e = window.event;
     if (e.pageX || e.pageY) {
       posx = e.pageX;
@@ -125,13 +125,13 @@
     }
     return null;
   }
-  
+
   function isSameRow(row1, row2) {
-    if (row2 == null) 
+    if (row2 == null)
       return false;
     for (var x in row1) {
       if (row1.hasOwnProperty(x)) {
-        if (!row2[x] || row2[x].value != row1[x].value) 
+        if (!row2[x] || row2[x].value != row1[x].value)
           return false;
       }
     }
@@ -161,7 +161,7 @@
    */
   google.maps.FusionTablesLayer.prototype.enableMapTips = function(opts) {
     opts = opts || {};
-    
+
     var maptip = new FusionTipOverlay(null, null);
     var me = this;
     var currentLatLng = null;
@@ -198,11 +198,11 @@
     });
     maptip.setMap(this.getMap());
     this.maptipOverlay_ = maptip;
-    
-    
-    
+
+
+
     function queryFusion() {
-      if (queryPending) 
+      if (queryPending)
         return;
       var latlng = currentLatLng;
       var prj = maptip.getProjection();
@@ -219,10 +219,10 @@
       queryPending = true;
       queryFusionJson(latlng, queryText);
     }
-    
+
     // IE does not like delete window[sid], so create a name space here.
     window.fusiontips = window.fusiontips||{};
-    
+
     //copied from http://gmaps-samples.googlecode.com/svn/trunk/fusiontables/mouseover.html
     // undocumented unsupported method;
     function queryFusionJson(latlng, queryText) {
@@ -230,7 +230,7 @@
       // Note that a simplified geometry and the NAME column are being requested
       var sid = 'query_' + scriptid++;
       script.setAttribute('src', 'https://www.googleapis.com/fusiontables/v1/query?sql=' + queryText + '&callback=fusiontips.' + sid + '&key=' + googleAPIkey + "&typed=false");
-	  	  
+
       //script.setAttribute('src', 'http://fusiontables.googleusercontent.com/fusiontables/api/query?sql=' + queryText + '&jsonCallback=fusiontips.' + sid);
       window.fusiontips[sid] = function(json) {
         delete window.fusiontips[sid];
@@ -239,7 +239,7 @@
       };
       document.getElementsByTagName('head')[0].appendChild(script);
     }
-    
+
     function processFusionJson(json, latlng) {
       //console.log(json);
       //{table:{cols:[col1,col2], rows:[[val11,val12],[val21,val22]]}};
@@ -262,13 +262,13 @@
             row[data.columns[i]] = cell;
           }
         }
-        
+
       } else {
-        if (console) 
+        if (console)
           console.log('no data');
       }
       fireEvents(html, latlng, row);
-      
+
     }
     function fireEvents(html, latlng, row) {
       if (!opts.suppressMapTips && maptip && latlng && html) {
@@ -296,11 +296,11 @@
           infoWindowHtml: html,
           latLng: latlng,
           row: row
-        }); 
+        });
       }
       currentRow = row;
     }
-    
+
   };
   /**
    * Disable map tips for the fusion layer.
@@ -327,8 +327,5 @@
     }
     _setMap_.call(this,map);
   };
-  
+
 })();
-
-
-
