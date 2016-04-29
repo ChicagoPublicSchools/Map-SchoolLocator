@@ -660,8 +660,10 @@ function filteredSearch() {
     var theInput = $.trim( $("#autocomplete").val().toUpperCase() );
     zipcodeSearch(theInput);
   } else if (searchtype == "radius") {
+      $("#filterresults").collapse("hide");
     radiusSearch();
   } else if (searchtype == "advancedsearch") {
+      $("#filterresults").collapse("hide");
     advancedsearch();
   } else if (searchtype == "url") {
     advancedsearch();
@@ -791,7 +793,6 @@ function radiusSearch() {
 
   } else {//fail
     alert("Search failed. Please reset the map and try again.");
-
   }
 }
 
