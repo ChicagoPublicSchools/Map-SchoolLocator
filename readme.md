@@ -55,36 +55,39 @@ Filters can be applied to the results in order to narrow your search. You may ha
 An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions. For example, a zip code overlay will show boundaries for all the zip codes in Chicago. The CPS School Locator includes the following overlays:
 
 **Attendance Boundaries**
-1. Elementary School Attendance
-2. Middle School Attendance
-3. High School Attendance
+ 1. Elementary School Attendance
+ 2. Middle School Attendance
+ 3. High School Attendance
+ 4. Charter School Preference Boundary
 
 **Geographic Overlays**
-1. CPS Networks
-2. Safe Passage Routes
-3. CPS Tiers
-4. Community Areas
-5. Zip Codes
-6. LSC Boundaries
+ 1. CPS Networks
+ 2. Safe Passage Routes
+ 3. CPS Tiers
+ 4. Community Areas
+ 5. Zip Codes
+ 6. Transit
+ 7. Bike Paths
 
 **Political Overlays**
-1. Wards
-2. Illinois House District
-3. Illinois Senate District
-4. US Congressional District
+ 1. Wards
+ 2. Illinois House District
+ 3. Illinois Senate District
+ 4. US Congressional District
 
 ##Features
- * Toggle between School Category and School Rating
+ * Toggle between School Category and School Rating icons
  * Google Street View
- * Direct link to CPS School Profile
+ * Link to CPS School Profile
  * Directions by Google
  * Introductory tour
+ * LSC Boundaries button
 
 
 
 #**How to make a School Locator for your district**
 
-The code posted here is the actual code used in the CPS School Locator and consequently, is particular to the data that is used in CPS. It is not templetized, it is not clean, it is a work in progress. It is posted here to show you how we did it and hopefully, help get you started in developing your own locator.
+The code posted here is the actual code used in the CPS School Locator so it is particular to the data that is used in CPS. It is not "templetized" - it is a work in progress. It is posted here to show you how we did it and hopefully, help get you started in developing your own locator.
 
 If you have questions regarding the locator, please remember that we have limited resources and time, and it may take us a while to respond.
 
