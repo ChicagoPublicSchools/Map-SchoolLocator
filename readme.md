@@ -55,25 +55,28 @@ Filters can be applied to the results in order to narrow your search. You may ha
 An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions. For example, a zip code overlay will show boundaries for all the zip codes in Chicago. The CPS School Locator includes the following overlays:
 
 **Attendance Boundaries**
- 1. Elementary School Attendance
- 2. Middle School Attendance
- 3. High School Attendance
- 4. Charter School Preference Boundary
+
+1. Elementary School Attendance
+2. Middle School Attendance
+3. High School Attendance
+4. Charter School Preference Boundary
 
 **Geographic Overlays**
- 1. CPS Networks
- 2. Safe Passage Routes
- 3. CPS Tiers
- 4. Community Areas
- 5. Zip Codes
- 6. Transit
- 7. Bike Paths
+
+1. CPS Networks
+2. Safe Passage Routes
+3. CPS Tiers
+4. Community Areas
+5. Zip Codes
+6. Transit
+7. Bike Paths
 
 **Political Overlays**
- 1. Wards
- 2. Illinois House District
- 3. Illinois Senate District
- 4. US Congressional District
+
+1. Wards
+2. Illinois House District
+3. Illinois Senate District
+4. US Congressional District
 
 ##Features
  * Toggle between School Category and School Rating icons
