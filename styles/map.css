@@ -39,6 +39,10 @@ body, html { height: 100%; overflow-x:hidden; /*background-color: #FFF;*/ }
                     { position:relative; top:16px; left:0px; z-index:2;
                       width: 40%; margin-left: 55px; margin-top:0; height:auto; }
 
+#divResultsContainer {   position: absolute;
+                      z-index: 3;
+                      width: 100%;}
+
 #resultListContainer { max-height:250px; height:auto; overflow-y:auto ; overflow-x:hidden; -webkit-overflow-scrolling: touch;}
 
 
