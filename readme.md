@@ -92,7 +92,7 @@ An overlay is a transparent layer of additional information that appears on top 
 
 The code posted here is the actual code used in the CPS School Locator so it is particular to the data that is used in CPS. It is not "templetized" - it is a work in progress. It is posted here to show you how we did it and hopefully, help get you started in developing your own locator.
 
-If you have questions regarding the locator, please remember that we have limited resources and time, and it may take us a while to respond.
+If you have questions regarding the locator, please remember that we have limited resources - it may take us a while to respond.
 
 
 ##Dependencies
