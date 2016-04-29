@@ -17,7 +17,7 @@ body, html { height: 100%; overflow-x:hidden; /*background-color: #FFF;*/ }
 
 #divSearchContainer { position:relative; top:16px; left:0px; z-index:2;
                       margin-left:10px; margin-top:0; width:49%; height:auto; }
-#divButtonContainer2{ position:absolute; top:12px; right:5px; z-index:2;
+#divButtonContainer2{ position:absolute; top:12px; right:5px; z-index:4;
                       width:auto; height:auto; }
 #divButtonContainer3{ position:absolute; bottom:20px; left:5px; z-index:2;
                       width:auto; height:auto; }
@@ -39,7 +39,7 @@ body, html { height: 100%; overflow-x:hidden; /*background-color: #FFF;*/ }
                     { position:relative; top:16px; left:0px; z-index:2;
                       width: 40%; margin-left: 55px; margin-top:0; height:auto; }
 
-#divResultsContainer {   position: absolute;
+#divResultsContainer {position: absolute;
                       z-index: 3;
                       width: 100%;}
 
@@ -268,7 +268,7 @@ button.compareHeart:active {background-color: transparent;
 #resultListContainer,
 #extraswrapper              { width:auto; margin-left:13px; left:0; margin-right:13px; }
 
-#divButtonContainer3 button { opacity:.8;}
+/*#divButtonContainer3 button { opacity:.8;}*/
 
 #collapseResults            { width:auto; right:65px; }
 
