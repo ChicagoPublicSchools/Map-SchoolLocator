@@ -118,74 +118,106 @@ function initializeMap() {
   //$("#lnkRating").html('<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> School Ratings');
 
   // style the map
-  var grayStyles = [
+  var mapStyle = [
     {
-      "featureType": "road",
-      "elementType": "geometry.fill",
-      "stylers": [
-      { "lightness": 1 },
-      { "saturation": -100 }
+    "stylers": [
+      //{ "visibility": "simplified" }
       ]
     },{
-      "featureType": "road.highway.controlled_access",
-      "elementType": "geometry.stroke",
+      "featureType": "road",
       "stylers": [
       { "saturation": -100 },
-      { "visibility": "off" }
+      { "visibility": "simplified" }
       ]
     },{
-      "featureType": "road",
-      "elementType": "geometry.stroke",
-      "stylers": [
-      { "visibility": "off" }
-      ]
+    "featureType": "road.highway",
+    "stylers": [
+      { "lightness": 10 }
+    ]
     },{
-      "featureType": "road.local",
-      "elementType": "geometry.fill",
-      "stylers": [
-      { "color": "#808080" },
-      { "lightness": 50 }
-      ]
-    },{
-      "featureType": "road",
-      "elementType": "labels.text.stroke",
-      "stylers": [
-      { "saturation": -100 },
-      { "gamma": 9.91 }
-      ]
-    },{
-      "featureType": "landscape",
-      "stylers": [
-      { "saturation": -70 }
-      ]
-    },{
-      "featureType": "administrative",
-      "stylers": [
-      { "visibility": "on" }
-      ]
-    },{
-      "featureType": "poi",
-      "stylers": [
+    "featureType": "poi",
+    "stylers": [
       { "saturation": -50 }
       ]
     },{
-      "featureType": "road",
-      "elementType": "labels",
+      "featureType": "water",
       "stylers": [
-      { "saturation": -70 }
+      //{ "saturation": -10 }
       ]
-    },{
-      "featureType": "transit",
+    },{ "featureType": "landscape",
       "stylers": [
-      { "saturation": -70 }
+      { "saturation": -100 }
       ]
     }
-    ];
+  ]
+  //var grayStyles = [
+    // {
+    //   "featureType": "road",
+    //   "elementType": "geometry.fill",
+    //   "stylers": [
+    //   { "lightness": 1 },
+    //   { "saturation": -100 }
+    //   ]
+    // },{
+    //   "featureType": "road.highway.controlled_access",
+    //   "elementType": "geometry.stroke",
+    //   "stylers": [
+    //   { "saturation": -100 },
+    //   { "visibility": "off" }
+    //   ]
+    // },{
+    //   "featureType": "road",
+    //   "elementType": "geometry.stroke",
+    //   "stylers": [
+    //   { "visibility": "off" }
+    //   ]
+    // },{
+    //   "featureType": "road.local",
+    //   "elementType": "geometry.fill",
+    //   "stylers": [
+    //   { "color": "#808080" },
+    //   { "lightness": 50 }
+    //   ]
+    // },{
+    //   "featureType": "road",
+    //   "elementType": "labels.text.stroke",
+    //   "stylers": [
+    //   { "saturation": -100 },
+    //   { "gamma": 9.91 }
+    //   ]
+    // },{
+    //   "featureType": "landscape",
+    //   "stylers": [
+    //   { "saturation": -70 }
+    //   ]
+    // },{
+    //   "featureType": "administrative",
+    //   "stylers": [
+    //   { "visibility": "on" }
+    //   ]
+    // },{
+    //   "featureType": "poi",
+    //   "stylers": [
+    //   { "saturation": -50 }
+    //   ]
+    // },{
+    //   "featureType": "road",
+    //   "elementType": "labels",
+    //   "stylers": [
+    //   { "saturation": -70 }
+    //   ]
+    // },{
+    //   "featureType": "transit",
+    //   "stylers": [
+    //   { "saturation": -70 }
+    //   ]
+    // }
+    //];
 
     geocoder                      = new google.maps.Geocoder();
     chicago                       = new google.maps.LatLng(41.88, -87.68);
       var myOptions = {
-        styles:                   grayStyles,
+        styles:                   mapStyle,
         zoom:                     11,
         center:                   chicago,
         disableDefaultUI:         true,
