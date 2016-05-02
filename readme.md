@@ -96,7 +96,7 @@ If you have questions regarding the locator, please remember that we have limite
 
 
 ##Dependencies
- * [Google Fusion Tables] (https://support.google.com/fusiontables/answer/184641)
+ *[Google Fusion Tables] (https://support.google.com/fusiontables/answer/184641)
  * [Google Maps] (https://developers.google.com/maps/documentation/javascript/)
  * [jQuery] (http://jquery.com/)
  * [Hopscotch] (https://github.com/linkedin/hopscotch)
