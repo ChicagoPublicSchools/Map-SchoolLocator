@@ -39,9 +39,7 @@ body, html { height: 100%; overflow-x:hidden; /*background-color: #FFF;*/ }
                     { position:relative; top:16px; left:0px; z-index:2;
                       width: 40%; margin-left: 55px; margin-top:0; height:auto; }
 
-#divResultsContainer {position: absolute;
-                      z-index: 3;
-                      width: 100%;}
+
 
 #resultListContainer { max-height:250px; height:auto; overflow-y:auto ; overflow-x:hidden; -webkit-overflow-scrolling: touch;}
 
@@ -276,6 +274,9 @@ button.compareHeart:active {background-color: transparent;
                               border-bottom-right-radius: 6px;
                               padding-right:85px;padding-left:55px;
                             }
+#divResultsContainer {position: absolute;
+                      z-index: 3;
+                      width: 100%;}
 
 #resultListContainer        { /*max-height:125px;*/}
 #divButtonContainer2        { right:0px; width:48px; }
