@@ -45,9 +45,12 @@
     <!--only for autocomplete and slide -->
     <script src="scripts/jqueryui/jquery-ui.js"></script>
 
-    <!-- analytics and overlay hover -->
+    <!-- analytics and fusiontips overlay hover -->
     <script src="scripts/analytics_lib.js" ></script>
     <script src="scripts/fusiontips.js?v=2.8" ></script>
+
+    <!-- excel export -->
+    <script src="scripts/jquery.table2excel.js"></script>
 
     <!--only for autocomplete and slide-->
     <link href="scripts/jqueryui/jquery-ui.css" rel="stylesheet">
@@ -55,7 +58,7 @@
 
     <link href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css" media="all" rel="stylesheet"  />
     <link href="scripts/font-awesome-4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" >
-    <link href="styles/map.css?v=2.8" media="all" rel="stylesheet"  />
+    <link href="styles/map.css?v=2.9" media="all" rel="stylesheet"  />
 
     <script>
       $(document).ready(function () {
@@ -1220,14 +1223,19 @@
       <div class="table-responsive" style="border:0; height: 100%;">
         <table id="tblCompare" class="table table-condensed" style="white-space: nowrap;">
           <thead>
-            <tr style="color:#FFF; background-color:#36C;">
+            <tr class="noExl" style="color:#FFF; background-color:#36C;">
               <td style="text-align:center; vertical-align: middle;">
                 <button id="btnCompare" type="button" class="btnCompare" style="color:#FFF;">
                   <i class="fa fa-chevron-circle-down fa-2x"></i>
                 </button>
               </td>
               <td colspan="17">
-                <h4>Compare Schools <i class="fa fa-check-square-o fa-lg"></i></h4>
+                <h4>Compare Schools <i class="fa fa-check-square-o fa-lg"></i>
+                <a id="btnExportCompare" onclick="exportCompareTable();"  class="btn btn-default btn-xs">
+                EXPORT (beta) <i class="fa fa-share-square" aria-hidden="true"></i></a>
+                <a id="btnEmailCompare" onclick="emailCompareTable();"  class="btn btn-default btn-xs">
+                Email (beta) <i class="fa fa-share-square" aria-hidden="true"></i></a>
+              </h4>
               </td>
             </tr>
             <tr style="color:#36c; background-color:#C8DAFF;">
@@ -1593,13 +1601,17 @@
           </div>
 
           <div class="row backgroundfillwhite">
-              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
                 <a class="btn btn-default col-xs-12"  href="https://docs.google.com/a/cps.edu/spreadsheet/viewform?fromEmail=true&formkey=dFpRZDdPb3E2UW5jekNRZTBUWGNVNEE6MQ" target="_new">Send Feedback</a>
               </div>
-              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
                 <a class="btn btn-default col-xs-12 btnPDF" href="docs/CPS_School_Locations_SY15-16.pdf" download="CPS_School_Locations_SY15-16" target="_new">Download Map PDF</a>
               </div>
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12" href="https://www.google.com/fusiontables/DataSource?docid=1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" target="_blank">View Underlying Data</a>
+              </div>
           </div>
+
 
           <div class="row backgroundfillwhite">
             <div class="col-xs-12">

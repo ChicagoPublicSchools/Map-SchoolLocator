@@ -3338,3 +3338,28 @@ function getColors(type){
   }
   return [headcolor, bkgcolor]
 }
+
+
+
+function exportCompareTable(){
+  alert("Export using Chrome or Firefox broswers.")
+	  $("#tblCompare").table2excel({
+	    // exclude CSS class
+	    exclude: ".noExl",
+	    name: "CompareSchools",
+	    filename: "CPS-CompareSchools" //do not include extension
+	  });
+	}
+
+
+//
+function emailCompareTable(){
+  //alert("Email using Chrome or Firefox broswers.")
+  var email = '';
+  var subject = 'CPS-CompareSchools';
+  var emailBody = $("#tblCompare").text();
+  //var attach = 'path';
+  window.location.href = "mailto:"+email+"?subject="+subject+"&body="+emailBody ;
+  //+"?attach="+attach;
+
+	}
