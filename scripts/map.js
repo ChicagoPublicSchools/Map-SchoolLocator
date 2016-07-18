@@ -13,18 +13,21 @@
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
   var SafePassageTableID    = "19IrE1B6ibYVtK9zA94ooofShtyMO09RWZkwQy6bL" ;  //  2015
-  var CHattendanceTableId   = "1UONnmNejdWRD7Rsx3gXsVqaNRlDlbyeHt_qfcd29" ;  //  2015
-  var ESattendanceTableId   = "1Ps63lWfnUUqe35gWUKBz06_hTsUidyakdzw-9-Yw" ;  //  2015
-  var MSattendanceTableId   = "1oB0SNqTijvZKcgpM9kkvnvmOvx_0UQwtEiE9cByh" ;  //  2015
-  var HSattendanceTableId   = "13Xmr3Th6C7J-YTquYDfUKIpOsPrcYIsPjbCcT_1C" ;  //  2015
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
   var TiersTableId          = "1etFYRR2R06EizafwMo-zDsNb-xEkSsDV_sLIZxfB" ;  //2015
-  var ILhouseTableId        = "1uGeAQe0OcryHJz-g-ftIgYe26XB4pAUBm8i4V51W" ;
-  var ILsenateTableId       = "1-zs6vZFYizO9UE8J6BiyiTL0UqczNnoKYdX95HZR" ;
-  var UScongTableId         = "1IH9gZVtOhcI8DR6wJZbXlMN5wbzucr9SU38fkVjU" ;
-  var WardsTableId          = "1EHL3IkwTglYo9VwDowSmAT7bH-Ulv1bgpEXa_n1P" ;
+
+
+  var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
+  var ESattendanceTableId   = "1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-" ;  //  2016
+  var MSattendanceTableId   = "1zv2fI3v0CxkRIrn-AYujwXq1ljcq6uGOtyGYlN8F" ;  //  2016
+  var HSattendanceTableId   = "1NXIcj0Eo65MNv-wczBoEMcovlsIJ1p66CfeP8JFV" ;  //  2016
+  var ILhouseTableId        = "1lvfheusomCd7Sh72GvFn23JVDQFhoNYQuUGI_JOQ" ;  //  2016
+  var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
+  var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
+  var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
+
 
   var SafePassage ;
   var CHattendance ;
