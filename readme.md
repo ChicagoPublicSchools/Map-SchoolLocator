@@ -3,8 +3,7 @@ CPS School Locator
 
 Valid for School Year: 2016-17
 
-
-
+---
 
 
 The CPS School Locator is a tool used to search for and compare schools in the Chicago Public School system.[View the live map](http://cps.edu/map)
