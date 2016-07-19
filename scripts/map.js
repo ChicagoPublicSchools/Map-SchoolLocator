@@ -9,7 +9,10 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
+  //var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
+  var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
+
+
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
   var SafePassageTableID    = "19IrE1B6ibYVtK9zA94ooofShtyMO09RWZkwQy6bL" ;  //  2015
