@@ -10,9 +10,9 @@
   var searchZip             = null;
 
   //var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
+
+  // new School Data merged with 2015 comparison data.
   var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
-
-
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
   var SafePassageTableID    = "19IrE1B6ibYVtK9zA94ooofShtyMO09RWZkwQy6bL" ;  //  2015
@@ -77,9 +77,13 @@
   var StreetViewLoc = null;
   var panorama = null;
   var chicago;
+  var multiBoundaryArray = [];
+
   //schools with mulitple boundaries
-  var multiBoundaryArray = ["609694","609716","609741","609756","609779","609812","609833","609883",
-                            "609887","609928","610002","610142","610218","610345","610543"];
+  //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
+  //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
+
+
   var filtersForDisplay  = [];
 
 function initializeMap() {
@@ -156,69 +160,7 @@ function initializeMap() {
       ]
     }
   ]
-  //var grayStyles = [
-    // {
-    //   "featureType": "road",
-    //   "elementType": "geometry.fill",
-    //   "stylers": [
-    //   { "lightness": 1 },
-    //   { "saturation": -100 }
-    //   ]
-    // },{
-    //   "featureType": "road.highway.controlled_access",
-    //   "elementType": "geometry.stroke",
-    //   "stylers": [
-    //   { "saturation": -100 },
-    //   { "visibility": "off" }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "geometry.stroke",
-    //   "stylers": [
-    //   { "visibility": "off" }
-    //   ]
-    // },{
-    //   "featureType": "road.local",
-    //   "elementType": "geometry.fill",
-    //   "stylers": [
-    //   { "color": "#808080" },
-    //   { "lightness": 50 }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "labels.text.stroke",
-    //   "stylers": [
-    //   { "saturation": -100 },
-    //   { "gamma": 9.91 }
-    //   ]
-    // },{
-    //   "featureType": "landscape",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // },{
-    //   "featureType": "administrative",
-    //   "stylers": [
-    //   { "visibility": "on" }
-    //   ]
-    // },{
-    //   "featureType": "poi",
-    //   "stylers": [
-    //   { "saturation": -50 }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "labels",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // },{
-    //   "featureType": "transit",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // }
-    //];
+
 
     geocoder                      = new google.maps.Geocoder();
     chicago                       = new google.maps.LatLng(41.88, -87.68);
@@ -401,9 +343,9 @@ function clearMapFilters() {
 // Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT ACT ADA College
 
 // Runs after the map is initialized
-// Populate the autocomplete array
+// Populate the autocomplete array and the multiBoundaryArray
 function queryForAutocomplete(){
- var query = "SELECT School, Zip, Classification, ProgramType FROM " + fusionTableId ;
+ var query = "SELECT School, Zip, Classification, ProgramType, ID FROM " + fusionTableId ;
  encodeQuery(query, createAutocompleteArray);
 }
 
@@ -473,6 +415,7 @@ function createAutocompleteArray(d) {
 
       var sname   = (ulist[i][0]);
       var szipp   = (ulist[i][1]);
+      var ssid    = (ulist[i][4]);
       //var sclas   = (ulist[i][2]);
       //var sprog   = replacePipes(ulist[i][3]);
 
@@ -480,14 +423,16 @@ function createAutocompleteArray(d) {
       arrayforautocomplete.push(szipp);
       //arrayforautocomplete.push(sclas);
       //arrayforautocomplete.push(sprog);
+      multiBoundaryArray.push(ssid);
     }
 
 
   }else{//nothing returned
     alert("The list of schools for autocomplete could not be loaded.");
   }
-
+  sort_and_duplicates(multiBoundaryArray);
   sort_and_unique(arrayforautocomplete);
+
   initAutocomplete();
   searchfromurl();
 }
@@ -1492,10 +1437,6 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
     contents += " <b>Grades Served: </b>" + grades.substring(1) + "<br>"
   }
 
-  if(name === "DYETT ARTS HS") {
-    contents += " <b>Note:</b> " +
-    " On July 1, 2016, Dyett High School for the Arts will open at 555 East 51st Street as an open enrollment neighborhood high school with an arts program and a technology lab and training enter. Beginning in the fall of 2016, Dyett will welcome an incoming 9th grade class, and will eventually serve grades 9-12 by the fall of 2019. Students residing within the school attendance boundary are entitled to enrollment at Dyett. Students residing outside the attendance boundary may apply for any available seats through the guidelines set forth in the Office of Access and Enrollment's High School Guide. For more information, call (773) 535-8080 or search <a href='www.newdyett.org' target='_blank'>www.newdyett.org</a>."
-  }
   contents += "</div><div style='padding-bottom: 5px;'>"
 
   contents += "<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
@@ -1678,18 +1619,33 @@ function buildCompareRow(row) {
   var attainment= allschoolsdata[row][20];
   var culture= allschoolsdata[row][21];
   var graduation= allschoolsdata[row][22];
-      if(graduation) {graduation+="%";}
+    if(typeof graduation !== "number") {
+      graduation="";
+    }else{
+      graduation+="%";
+    }
   var mobility= allschoolsdata[row][23];
-      if(mobility) {mobility+="%";}
+    if(typeof mobility !== "number") {
+      mobility="";
+    }else{
+      mobility+="%";
+    }
+    //if(mobility) {mobility+="%";}
   var dress= allschoolsdata[row][24];
   var reading= allschoolsdata[row][25];
   //if(reading) {reading+="th";}
   var math= allschoolsdata[row][26];
   //if(math) {math+="th";}
   var ACT= allschoolsdata[row][27];
+    if(typeof ACT !== "number") {ACT="";}
   var ADA= allschoolsdata[row][28];
   var college= allschoolsdata[row][29];
-      if(college) {college+="%";}
+  if(typeof college !== "number") {
+    college="";
+  }else{
+    college+="%";
+  }
+  //if(college) {college+="%";}
 
 	$( "#btnCompareIcon"+uid ).toggleClass( "fa-square-o fa-check-square-o" );
 
@@ -3113,6 +3069,27 @@ function sort_and_unique( my_array ) {
   //console.log("Length= "+my_array.length);
   return my_array;
 }
+
+
+// returns duplicates
+// thanks to: http://stackoverflow.com/questions/840781/easiest-way-to-find-duplicate-values-in-a-javascript-array
+function sort_and_duplicates( name ) {
+  var uniq = name
+  .map((name) => {
+    return {count: 1, name: name}
+  })
+  .reduce((a, b) => {
+    a[b.name] = (a[b.name] || 0) + b.count
+    return a
+  }, {})
+
+  var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+
+  //console.log(duplicates);
+  return duplicates;
+}
+
+
 
 
 function addCommas(nStr) {
