@@ -1,0 +1,697 @@
+ID,School,Count,Growth,Attainment,Culture,Mobility,Dress,ADA,Reading,Math,ACT,Graduation,College
+400009,GLOBAL CITIZENSHIP,450,Above Average,Average,Not Enough Data,4.3,Yes,Fully Accessible,57th,44th,,,
+400010,ACE TECH HS,435,Below Average,Far Below Average,Partially Organized,27.3,Yes,Generally Accessible,,,15.2,69.6,49.4
+400011,LOCKE A,567,Average,Above Average,Not Enough Data,4.7,Yes,Generally Accessible,80th,84th,,,
+400012,AMANDLA HS,327,Below Average,Below Average,Not Yet Organized,24.3,Yes,Generally Accessible,14th,6th,,,
+400013,ASPIRA - EARLY COLLEGE HS,443,Average,Below Average,Not Yet Organized,,Yes,Fully Accessible,,,15.3,67.1,40.2
+400017,ASPIRA - HAUGAN,529,Average,Average,Organized,,Yes,Fully Accessible,44th,45th,,,
+400018,AUSTIN BUS & ENTRP HS,100,Below Average,Far Below Average,Partially Organized,37.1,Yes,Generally Accessible,,,14.5,63.5,40.4
+400019,BRONZEVILLE LIGHTHOUSE,478,Below Average,Below Average,Not Yet Organized,5.2,Yes,Generally Accessible,20th,31st,,,
+400021,CATALYST - CIRCLE ROCK,516,Below Average,Below Average,Partially Organized,5.1,Yes,No/Unknown Accessibility,30th,27th,,,
+400022,CHICAGO ARTS HS,592,Above Average,Average,Organized,4.2,No,Generally Accessible,,,20,80.4,83.1
+400023,CICS - AVALON/SOUTH SHORE,422,Above Average,Far Above Average,Organized,,Yes,Generally Accessible,89th,94th,,,
+400024,CICS - BASIL,720,Average,Above Average,Partially Organized,,Yes,Fully Accessible,65th,82nd,,,
+400025,CICS - BUCKTOWN,675,Below Average,Average,Organized,,Yes,No/Unknown Accessibility,61st,60th,,,
+400026,CICS - LOOMIS,568,No Data Available,No Data Available,Moderately Organized,,Yes,Generally Accessible,,,,,
+400027,CICS - IRVING PARK,536,Average,Far Above Average,Well Organized,,Yes,Fully Accessible,89th,92nd,,,
+400028,CICS - PRAIRIE,408,Below Average,Below Average,Moderately Organized,,Yes,No/Unknown Accessibility,34th,33rd,,,
+400029,CICS - WASHINGTON PARK,453,Average,Average,Organized,,Yes,No/Unknown Accessibility,52nd,46th,,,
+400030,CICS - WEST BELDEN,498,Average,Above Average,Well Organized,,Yes,No/Unknown Accessibility,86th,85th,,,
+400031,CICS - WRIGHTWOOD,725,Average,Above Average,Well Organized,,Yes,Generally Accessible,69th,81st,,,
+400032,CICS - ELLISON HS,453,Below Average,Below Average,Well Organized,,Yes,Generally Accessible,,,16.6,77,68.6
+400033,CICS - LONGWOOD,1323,Below Average,Below Average,Partially Organized,,Yes,No/Unknown Accessibility,42nd,27th,16.1,74.6,71.9
+400034,CICS - NORTHTOWN HS,874,Average,Average,Well Organized,,Yes,Generally Accessible,,,19.8,84.4,79.7
+400035,CHICAGO MATH & SCIENCE HS,606,Far Above Average,Average,Well Organized,9.5,Yes,Fully Accessible,55th,80th,19.6,86.4,78.2
+400036,CHICAGO VIRTUAL,670,Above Average,Average,Organized,24.3,No,Fully Accessible,76th,51st,18.6,38.7,59.1
+400038,COMMUNITY SERVICES WEST HS,94,No Data Available,No Data Available,Organized,29.8,Yes,Generally Accessible,,,13.7,,17.1
+400039,ERIE,424,Average,Below Average,Moderately Organized,2.4,Yes,Generally Accessible,36th,28th,,,
+400040,FRAZIER CHARTER,423,Below Average,Below Average,Partially Organized,2.4,Yes,Fully Accessible,24th,20th,,,
+400041,GALAPAGOS,318,Below Average,Below Average,Not Yet Organized,13.2,Yes,No/Unknown Accessibility,15th,38th,,,
+400043,HOPE INSTITUTE,374,Average,Below Average,Well Organized,10.6,Yes,Generally Accessible,29th,26th,,,
+400044,KIPP - ASCEND,616,Below Average,Average,Well Organized,6.4,Yes,Generally Accessible,33rd,43rd,,,
+400045,NKRUMAH,317,Far Below Average,Below Average,Not Yet Organized,16.2,Yes,Generally Accessible,23rd,11th,,,
+400046,LEARN - BUTLER,626,Above Average,Above Average,Not Yet Organized,,Yes,Generally Accessible,81st,75th,,,
+400047,LEARN - CAMPBELL,451,Average,Average,Not Yet Organized,,Yes,Fully Accessible,45th,56th,,,
+400048,LEARN - EXCEL,432,Far Below Average,Below Average,Partially Organized,,Yes,No/Unknown Accessibility,25th,38th,,,
+400049,LEGACY,498,Above Average,Average,Well Organized,7.3,Yes,Generally Accessible,42nd,49th,,,
+400050,NAMASTE,488,Below Average,Average,Moderately Organized,4.6,Yes,Generally Accessible,46th,43rd,,,
+400051,NOBLE - NOBLE HS,623,Below Average,Average,Well Organized,,Yes,No/Unknown Accessibility,,,19.8,86.5,88.1
+400052,NOBLE - COMER HS,1059,Average,Below Average,Well Organized,,Yes,No/Unknown Accessibility,75th,82nd,19.5,79.3,87.4
+400053,NOBLE - GOLDER HS,661,Below Average,Average,Well Organized,,Yes,Generally Accessible,,,20.4,81.5,75.8
+400054,NOBLE - PRITZKER HS,932,Below Average,Average,Well Organized,,Yes,Generally Accessible,,,21.5,88.1,81.8
+400055,NOBLE - RAUNER HS,609,Below Average,Average,Well Organized,,Yes,Generally Accessible,,,20.1,86.6,85.6
+400056,NOBLE - ROWE CLARK HS,542,Average,Average,Moderately Organized,,Yes,Fully Accessible,,,19.1,76.7,78.2
+400057,NOBLE - UIC HS,897,Above Average,Above Average,Well Organized,,Yes,Generally Accessible,,,22.8,86.8,92.2
+400058,NORTH LAWNDALE - CHRISTIANA HS,397,Below Average,Below Average,Organized,9.1,Yes,Generally Accessible,,,15.9,79.7,80.2
+400059,NORTH LAWNDALE - COLLINS HS,405,Below Average,Below Average,Moderately Organized,,Yes,Generally Accessible,,,16.1,73.7,69.8
+400060,AHS - PASSAGES,462,Above Average,Above Average,Partially Organized,5.4,Yes,No/Unknown Accessibility,79th,87th,,,
+400061,PERSPECTIVES - LEADERSHIP HS,548,Below Average,Below Average,Well Organized,,Yes,Generally Accessible,42nd,22nd,16.6,66.2,59.3
+400062,PERSPECTIVES - TECH HS,423,Below Average,Below Average,Well Organized,,Yes,Generally Accessible,,,16.6,69.1,57.7
+400064,PERSPECTIVES - JOSLIN HS,392,Average,Average,Partially Organized,,Yes,Fully Accessible,8th,10th,19.6,78.6,70.5
+400066,PERSPECTIVES - MATH & SCI HS,535,Below Average,Below Average,Organized,,Yes,Generally Accessible,15th,15th,17.6,68.2,76.9
+400068,PLATO,487,Below Average,Below Average,Partially Organized,9.1,Yes,No/Unknown Accessibility,18th,12th,,,
+400069,POLARIS,433,Above Average,Below Average,Well Organized,16.5,Yes,Generally Accessible,28th,22nd,,,
+400070,PROLOGUE - EARLY COLLEGE HS,177,No Data Available,Far Below Average,Not Enough Data,,Yes,No/Unknown Accessibility,,,14.6,6.4,12.5
+400071,PROVIDENCE ENGLEWOOD,490,Average,Average,Partially Organized,5.4,Yes,Generally Accessible,65th,39th,,,
+400072,SHABAZZ - SHABAZZ,314,Above Average,Below Average,Well Organized,,Yes,No/Unknown Accessibility,37th,28th,,,
+400073,SHABAZZ - DUSABLE HS,51,Far Below Average,Far Below Average,Partially Organized,17.2,Yes,Generally Accessible,,,14.6,65.5,45.3
+400074,SHABAZZ - SIZEMORE,271,Average,Below Average,Organized,,Yes,Generally Accessible,13th,9th,,,
+400075,U OF C - DONOGHUE,565,Below Average,Above Average,Partially Organized,4.9,Yes,Generally Accessible,70th,54th,,,
+400076,U OF C - NKO,356,Below Average,Above Average,Organized,,Yes,Generally Accessible,81st,65th,,,
+400077,U OF C - WOODLAWN HS,642,Average,Below Average,Well Organized,,Yes,Generally Accessible,31st,12th,17.8,69.2,70.9
+400078,U OF C - WOODSON,321,Below Average,Average,Organized,,Yes,Generally Accessible,45th,24th,,,
+400079,UNO - ZIZUMBO,638,Above Average,Above Average,Partially Organized,,Yes,Fully Accessible,87th,89th,,,
+400080,UNO - TORRES,640,Above Average,Above Average,Not Yet Organized,,Yes,Fully Accessible,79th,84th,,,
+400081,UNO - DE LAS CASAS,287,Above Average,Above Average,Well Organized,,Yes,Fully Accessible,64th,96th,,,
+400082,UNO - FUENTES,567,Above Average,Above Average,Not Yet Organized,,Yes,No/Unknown Accessibility,84th,84th,,,
+400083,UNO - PAZ,410,Far Above Average,Average,Partially Organized,5,Yes,No/Unknown Accessibility,66th,62nd,,,
+400084,UNO - TAMAYO,288,Above Average,Average,Organized,,Yes,No/Unknown Accessibility,50th,69th,,,
+400085,UNO - GARCIA HS,651,Average,Below Average,Partially Organized,,Yes,No/Unknown Accessibility,,,17.5,89.5,66.4
+400086,URBAN PREP - ENGLEWOOD HS,445,Average,Below Average,Not Yet Organized,7.7,Yes,Generally Accessible,,,16.9,57.7,82.5
+400087,YOUNG WOMENS HS,339,Below Average,Below Average,Organized,17.5,Yes,Generally Accessible,49th,20th,16.4,86.6,75
+400089,UNO - MARQUEZ,574,Above Average,Above Average,Not Yet Organized,,Yes,Generally Accessible,63rd,72nd,,,
+400091,CHICAGO TECH HS,324,Below Average,Below Average,Organized,9.2,Yes,Generally Accessible,,,16.1,55.1,48.1
+400092,CICS - BOND,347,Far Above Average,Average,Well Organized,,Yes,Generally Accessible,30th,42nd,,,
+400094,EPIC HS,439,Below Average,Below Average,Well Organized,17.4,Yes,Generally Accessible,,,16.3,67.6,52.2
+400096,ROWE,832,Above Average,Above Average,Moderately Organized,2.9,Yes,Generally Accessible,76th,87th,,,
+400097,NOBLE - BULLS HS,1119,Average,Above Average,Well Organized,7.3,Yes,Generally Accessible,,,20.9,77,83.2
+400098,NOBLE - MUCHIN HS,883,Average,Above Average,Well Organized,,Yes,Generally Accessible,,,21.3,88,88.6
+400101,UNO - CISNEROS,562,Far Above Average,Above Average,Moderately Organized,,No,No/Unknown Accessibility,63rd,74th,,,
+400102,URBAN PREP - WEST HS,331,Below Average,Below Average,Partially Organized,13.7,Yes,Generally Accessible,,,16.8,66.1,77.1
+400104,INSTITUTO - HEALTH,764,Average,Below Average,Partially Organized,4.3,Yes,No/Unknown Accessibility,,,17.5,85.9,58.3
+400105,URBAN PREP - BRONZEVILLE HS,417,Below Average,Below Average,Moderately Organized,12.4,Yes,No/Unknown Accessibility,,,17.4,76.1,82.7
+400106,NOBLE - JOHNSON HS,848,Average,Average,Well Organized,,Yes,No/Unknown Accessibility,,,19.8,75.1,88
+400107,LEARN - SOUTH CHICAGO,504,Above Average,Above Average,Moderately Organized,9.6,Yes,No/Unknown Accessibility,67th,89th,,,
+400108,CICS - HAWKINS HS,175,Average,Below Average,Not Yet Organized,,Yes,No/Unknown Accessibility,28th,20th,14.5,54.2,50
+400109,PROLOGUE - JOHNSTON HS,190,No Data Available,Far Below Average,Well Organized,141.7,Yes,Fully Accessible,,,13.6,10,27
+400111,LEARN - PERKINS,494,Average,Above Average,Not Yet Organized,,No,No/Unknown Accessibility,62nd,70th,,,
+400112,UNO - SOCCER ELEM,575,Above Average,Above Average,Partially Organized,,No,No/Unknown Accessibility,56th,95th,,,
+400113,CICS - CHICAGOQUEST HS,227,No Data Available,No Data Available,Organized,8.4,No,No/Unknown Accessibility,11th,2nd,,,
+400114,UNO - SANTIAGO,282,Far Above Average,Above Average,Well Organized,,No,No/Unknown Accessibility,67th,70th,,,
+400115,CATALYST - MARIA,1088,Average,Below Average,Partially Organized,8,Yes,No/Unknown Accessibility,35th,39th,18.1,,44
+400116,MONTESSORI ENGLEWOOD,279,Above Average,Far Below Average,Not Enough Data,33.8,No,No/Unknown Accessibility,5th,3rd,,,
+400117,NOBLE - HANSBERRY HS,756,Average,Average,Well Organized,,Yes,No/Unknown Accessibility,,,,,
+400118,NOBLE - DRW HS,613,Average,Average,Organized,,Yes,No/Unknown Accessibility,,,,,
+400119,LEGAL PREP HS,293,Below Average,Below Average,Well Organized,30.2,Yes,Fully Accessible,,,,,
+400120,UNO - CLEMENTE,573,Average,Average,Not Yet Organized,,No,No/Unknown Accessibility,38th,51st,,,
+400121,UNO - ROGERS PARK,765,Average,Average,Not Yet Organized,,Yes,No/Unknown Accessibility,48th,69th,,,
+400123,YCCS - SCHOLASTIC ACHIEVEMENT,217,No Data Available,Far Below Average,Moderately Organized,,No,No/Unknown Accessibility,,,13.8,,13.9
+400124,YCCS - MCKINLEY,174,No Data Available,Far Below Average,Not Yet Organized,,No,No/Unknown Accessibility,,,13.7,,16.7
+400125,YCCS - ASPIRA PANTOJA,187,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,14.7,,13.6
+400126,YCCS - ASSOCIATION HOUSE,120,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,14.9,,21.7
+400127,YCCS - AUSTIN CAREER,131,No Data Available,Far Below Average,Organized,,No,No/Unknown Accessibility,,,13.5,,15.2
+400128,YCCS - CCA ACADEMY,199,No Data Available,No Data Available,Moderately Organized,,No,No/Unknown Accessibility,,,13.5,,7.3
+400129,YCCS - HOUSTON,144,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,14.4,,13
+400130,YCCS - YOUTH DEVELOPMENT,162,No Data Available,No Data Available,Well Organized,,No,No/Unknown Accessibility,,,13.4,,10.5
+400131,YCCS - CAMPOS,182,No Data Available,No Data Available,Well Organized,,No,No/Unknown Accessibility,,,14.4,,23.3
+400133,YCCS - INNOVATIONS,392,No Data Available,No Data Available,Moderately Organized,,No,No/Unknown Accessibility,,,14.7,,29.9
+400134,YCCS - ADDAMS,193,No Data Available,No Data Available,Well Organized,,No,No/Unknown Accessibility,,,15.4,,26.3
+400135,YCCS - LATINO YOUTH,211,No Data Available,Far Below Average,Partially Organized,,No,No/Unknown Accessibility,,,14.8,,9.8
+400136,YCCS - OLIVE HARVEY,157,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,14.3,,53.1
+400137,LITTLE BLACK PEARL HS,159,No Data Available,Below Average,Organized,,No,No/Unknown Accessibility,,,14.9,,28.6
+400139,YCCS - SULLIVAN,331,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,13.3,,15.5
+400141,YCCS - TRUMAN,195,No Data Available,No Data Available,Partially Organized,,No,No/Unknown Accessibility,,,15.9,,36.9
+400142,YCCS - VIRTUAL,0,No Data Available,No Data Available,Moderately Organized,,No,No/Unknown Accessibility,,,14.3,,26.8
+400143,YCCS - WEST TOWN,142,No Data Available,No Data Available,Moderately Organized,,No,No/Unknown Accessibility,,,14.2,,20
+400144,YCCS - WESTSIDE HOLISTIC,120,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,14.4,,14.6
+400145,YCCS - YOUTH CONNECTION,258,No Data Available,No Data Available,Partially Organized,,No,No/Unknown Accessibility,,,14.6,,27.4
+400146,KIPP CHICAGO - CREATE,314,Average,Average,Organized,10.9,Yes,Fully Accessible,31st,49th,,,
+400147,CAMELOT - CHICAGO EXCEL HS,208,No Data Available,Far Below Average,Organized,69.5,No,No/Unknown Accessibility,,,13.8,,16.7
+400148,INSTITUTO - LOZANO HS,140,No Data Available,Far Below Average,Partially Organized,65.4,No,No/Unknown Accessibility,,,14.3,,
+400149,UNO - SOCCER HS,678,No Data Available,No Data Available,Partially Organized,,No,No/Unknown Accessibility,19th,8th,,,
+400150,YCCS - CHATHAM,191,No Data Available,No Data Available,Well Organized,,No,No/Unknown Accessibility,,,14.1,,17.4
+400151,LEARN - 7,348,Average,Average,Not Yet Organized,,No,No/Unknown Accessibility,30th,53rd,,,
+400153,UNO - BRIGHTON PARK,566,Average,Average,Organized,,No,No/Unknown Accessibility,55th,46th,,,
+400156,NOBLE - BUTLER HS,441,No Data Available,No Data Available,Well Organized,,Yes,No/Unknown Accessibility,,,,,
+400157,NOBLE - BAKER HS,411,No Data Available,No Data Available,Well Organized,,Yes,No/Unknown Accessibility,,,,,
+400159,CHRISTOPHER HOUSE,222,No Data Available,Average,Partially Organized,4.1,No,No/Unknown Accessibility,50th,57th,,,
+400161,CHICAGO COLLEGIATE,237,No Data Available,No Data Available,Partially Organized,15.2,No,No/Unknown Accessibility,68th,65th,,,
+400162,INTRINSIC HS,825,No Data Available,No Data Available,Well Organized,10,Yes,Fully Accessible,72nd,77th,,,
+400163,KIPP CHICAGO - BLOOM,256,Above Average,Average,Well Organized,15.1,Yes,Fully Accessible,36th,62nd,,,
+400164,INSTITUTO - LOZANO MASTERY HS,49,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,15.1,,23.5
+400165,LEARN - MIDDLE,241,Average,Below Average,Moderately Organized,,No,No/Unknown Accessibility,32nd,20th,,,
+400167,HORIZON - SOUTHWEST,559,Below Average,Below Average,Organized,,No,No/Unknown Accessibility,21st,22nd,,,
+400168,GREAT LAKES,199,No Data Available,No Data Available,Well Organized,,Yes,Fully Accessible,,,,,
+400169,NOBLE - ITW SPEER HS,678,No Data Available,No Data Available,Well Organized,,Yes,No/Unknown Accessibility,,,,,
+400170,NOBLE - ACADEMY HS,244,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,,,
+400171,FOUNDATIONS,157,No Data Available,No Data Available,Well Organized,,No,No/Unknown Accessibility,13th,12th,,,
+400172,ASPIRA - BUSINESS & FINANCE HS,160,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+400173,PATHWAYS - BRIGHTON PARK HS,265,Below Average,Below Average,Organized,,No,No/Unknown Accessibility,,,,,
+400175,CAMELOT - EXCEL WOODLAWN HS,225,No Data Available,Far Below Average,Moderately Organized,,No,No/Unknown Accessibility,,,,,
+400176,CAMELOT - EXCEL SOUTHWEST HS,206,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,,,
+400177,KIPP CHICAGO - ASCEND PRIMARY,210,No Data Available,No Data Available,Well Organized,,Yes,Fully Accessible,,,,,
+400178,MOVING EVEREST,175,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+609674,CHICAGO VOCATIONAL HS,973,Below Average,Far Below Average,Organized,25.4,Yes,Generally Accessible,,,14.5,64.2,48.3
+609676,DUNBAR HS,745,Below Average,Far Below Average,Well Organized,22.7,Yes,Generally Accessible,,,14.7,67.7,57.4
+609678,JONES HS,1672,Above Average,Far Above Average,Organized,0.5,No,Generally Accessible,,,26.6,92,87.6
+609679,PROSSER HS,1458,Average,Below Average,Well Organized,4.2,No,Generally Accessible,,,18.6,83.5,61.7
+609680,PAYTON HS,887,Far Above Average,Far Above Average,Well Organized,2.3,No,Fully Accessible,,,29.1,85.1,83.7
+609682,RICHARDS HS,271,Below Average,Far Below Average,Partially Organized,42.2,Yes,Generally Accessible,,,14.7,63.7,42.9
+609691,NORTH-GRAND HS,986,Below Average,Below Average,Well Organized,15,No,Fully Accessible,,,16.3,76.5,46.4
+609692,SIMEON HS,1367,Below Average,Below Average,Moderately Organized,9,Yes,Generally Accessible,,,16.8,83.2,65.5
+609693,WESTINGHOUSE HS,1175,Below Average,Average,Well Organized,3.6,No,Fully Accessible,,,20.6,90.5,79
+609694,HANCOCK HS,905,Below Average,Below Average,Well Organized,20.5,Yes,Fully Accessible,,,17.2,78.9,49.8
+609694,HANCOCK HS,905,Below Average,Below Average,Well Organized,20.5,Yes,Fully Accessible,,,17.2,78.9,49.8
+609695,AMUNDSEN HS,1128,Average,Below Average,Organized,18.9,Yes,Fully Accessible,,,17,75.8,57.3
+609698,BOGAN HS,843,Below Average,Below Average,Organized,18.6,No,Generally Accessible,,,15.6,74.3,40.9
+609704,FARRAGUT HS,916,Below Average,Below Average,Organized,19.2,Yes,No/Unknown Accessibility,,,15.8,58.9,28.4
+609705,FENGER HS,268,Below Average,Far Below Average,Moderately Organized,57.2,Yes,Generally Accessible,,,14.4,48.6,45.1
+609707,ROBESON HS,211,Far Below Average,Far Below Average,Not Yet Organized,72.4,Yes,Generally Accessible,,,14.1,47.3,43.6
+609708,FOREMAN HS,1041,Below Average,Below Average,Well Organized,34.1,No,Generally Accessible,,,15.9,59.2,40.2
+609709,GAGE PARK HS,385,Below Average,Below Average,Partially Organized,35,Yes,No/Unknown Accessibility,,,15.5,53.4,29.4
+609710,HARLAN HS,616,Far Below Average,Below Average,Well Organized,28.8,No,Generally Accessible,87th,65th,15.4,61.5,57.8
+609711,HARPER HS,245,Far Below Average,Far Below Average,Moderately Organized,34.5,Yes,Generally Accessible,,,14,56.2,35.9
+609712,HIRSCH HS,158,Far Below Average,Far Below Average,Not Yet Organized,79.4,Yes,No/Unknown Accessibility,,,14.5,49.1,26.9
+609713,HYDE PARK HS,796,Below Average,Below Average,Organized,52.8,Yes,Fully Accessible,,,15.4,55.4,51
+609715,KELLY HS,2237,Below Average,Below Average,Organized,41.7,No,Fully Accessible,,,16.7,72.3,52.2
+609716,KELVYN PARK HS,703,Below Average,Below Average,Organized,30.3,Yes,Fully Accessible,10th,9th,15.8,52.2,34.9
+609716,KELVYN PARK HS,703,Below Average,Below Average,Organized,30.3,Yes,Fully Accessible,10th,9th,15.8,52.2,34.9
+609718,KENNEDY HS,1632,Below Average,Average,Moderately Organized,15.8,No,Fully Accessible,,,18.5,65.8,54.3
+609719,LAKE VIEW HS,1288,Below Average,Below Average,Well Organized,9.4,No,No/Unknown Accessibility,,,18.1,91.4,68.4
+609720,LANE TECH HS,4050,Average,Far Above Average,Well Organized,2.1,Yes,Generally Accessible,99th,99th,24,94.8,86.1
+609722,MANLEY HS,247,Below Average,Below Average,Not Yet Organized,86.7,Yes,Generally Accessible,,,14.5,50.7,34.2
+609723,MARSHALL HS,428,Below Average,Below Average,Organized,57.2,Yes,No/Unknown Accessibility,,,14.6,39.7,45.5
+609724,MATHER HS,1581,Average,Below Average,Well Organized,18.8,No,Fully Accessible,,,16.8,69.1,60.6
+609725,MORGAN PARK HS,1434,Average,Below Average,Partially Organized,13.6,No,Generally Accessible,97th,93rd,17.6,72,73.9
+609726,BROOKS HS,835,Above Average,Above Average,Organized,2.6,No,Fully Accessible,,,23.1,92.2,84.9
+609727,PHILLIPS HS,603,Below Average,Below Average,Organized,87.1,Yes,Generally Accessible,,,14.7,45.9,55.8
+609728,ROOSEVELT HS,1180,Below Average,Below Average,Organized,24.2,Yes,Generally Accessible,,,15.6,62.9,47.9
+609729,SCHURZ HS,1994,Average,Below Average,Partially Organized,20,Yes,Generally Accessible,,,16.2,62.6,42.4
+609730,SENN HS,1360,Above Average,Average,Well Organized,15.7,Yes,Generally Accessible,,,18.4,72.3,52.1
+609732,STEINMETZ HS,1523,Below Average,Below Average,Well Organized,26.9,Yes,No/Unknown Accessibility,,,16.7,67.5,50.1
+609733,SULLIVAN HS,571,Below Average,Below Average,Well Organized,41.1,Yes,No/Unknown Accessibility,,,15.6,58.7,41.9
+609734,TAFT HS,3230,Below Average,Average,Well Organized,9.8,No,Generally Accessible,99th,99th,19,80.9,73.8
+609735,TILDEN HS,310,Below Average,Far Below Average,Partially Organized,36.3,Yes,Generally Accessible,,,14.6,55.3,40
+609737,VON STEUBEN HS,1648,Above Average,Average,Well Organized,4,No,Generally Accessible,,,19.6,86,80.8
+609738,LINCOLN PARK HS,2107,Above Average,Above Average,Organized,7.4,No,Fully Accessible,,,22.1,83.6,78.1
+609739,WASHINGTON HS,1432,Below Average,Below Average,Moderately Organized,7.3,Yes,Generally Accessible,,,16.8,69.8,59.4
+609740,WELLS HS,458,Below Average,Below Average,Well Organized,26,Yes,No/Unknown Accessibility,,,15.5,56,43
+609741,HUBBARD HS,1701,Below Average,Below Average,Well Organized,12.8,Yes,No/Unknown Accessibility,,,17.3,77.6,59.8
+609741,HUBBARD HS,1701,Below Average,Below Average,Well Organized,12.8,Yes,No/Unknown Accessibility,,,17.3,77.6,59.8
+609744,NORTHSIDE LEARNING HS,247,No Data Available,No Data Available,Well Organized,,No,Fully Accessible,,,,4.5,
+609745,SOUTHSIDE HS,219,No Data Available,No Data Available,Well Organized,,Yes,Fully Accessible,,,,45.9,
+609746,KENWOOD HS,1732,Average,Average,Well Organized,11.7,No,Generally Accessible,99th,99th,19.4,79.7,73
+609748,YORK HS,299,No Data Available,No Data Available,Not Yet Organized,,No,No/Unknown Accessibility,,,,0.9,13.6
+609749,NORTHSIDE PREP HS,1055,Average,Far Above Average,Well Organized,1.3,No,Fully Accessible,,,29.1,97,88.7
+609750,SIMPSON HS,74,No Data Available,Far Below Average,Well Organized,,No,No/Unknown Accessibility,,,15.7,21.1,66.7
+609751,KING HS,691,Below Average,Average,Organized,3.8,No,Generally Accessible,,,20.3,88.2,86.2
+609753,CHICAGO AGRICULTURE HS,716,Average,Average,Well Organized,2.4,No,Generally Accessible,,,20.3,74.4,79.1
+609754,CHICAGO MILITARY HS,323,Average,Below Average,Organized,6.4,Yes,Fully Accessible,,,17.6,77.1,65.7
+609755,YOUNG HS,2155,Average,Far Above Average,Well Organized,1.3,No,Generally Accessible,99th,99th,26.9,91.4,86.8
+609756,CURIE HS,3047,Average,Below Average,Well Organized,12.4,No,Generally Accessible,,,17.7,67.8,61
+609756,CURIE HS,3047,Average,Below Average,Well Organized,12.4,No,Generally Accessible,,,17.7,67.8,61
+609759,CLEMENTE HS,756,Below Average,Below Average,Moderately Organized,20.1,Yes,Fully Accessible,,,15,67.3,42
+609760,CARVER MILITARY HS,485,Below Average,Below Average,Well Organized,4,Yes,Generally Accessible,,,17.2,89.3,48.1
+609761,CORLISS HS,425,Far Below Average,Far Below Average,Partially Organized,44.4,Yes,Generally Accessible,,,14.8,59.9,41.3
+609762,JULIAN HS,713,Below Average,Below Average,Well Organized,25.8,Yes,Generally Accessible,,,15,71.3,51.2
+609764,JUAREZ HS,1685,Below Average,Below Average,Partially Organized,7,No,Generally Accessible,,,16.4,80.8,47.7
+609766,VAUGHN HS,195,No Data Available,No Data Available,Organized,,No,Generally Accessible,,,,25.7,9.1
+609768,HOPE HS,194,Below Average,Below Average,Moderately Organized,36.7,Yes,No/Unknown Accessibility,,,14.7,59.3,45.1
+609769,GRAHAM HS,136,No Data Available,No Data Available,Well Organized,,Yes,Fully Accessible,,,,,2.6
+609772,ADDAMS,896,Above Average,Above Average,Organized,13.2,Yes,No/Unknown Accessibility,69th,77th,,,
+609773,AGASSIZ,525,Above Average,Far Above Average,Well Organized,7.3,No,Fully Accessible,90th,86th,,,
+609774,ALCOTT ES,579,Far Above Average,Far Above Average,Organized,7,Yes,No/Unknown Accessibility,99th,99th,,,
+609777,ARMOUR,289,Below Average,Average,Organized,21.5,Yes,Fully Accessible,57th,42nd,,,
+609779,ARMSTRONG G,1453,Above Average,Above Average,Well Organized,17.7,Yes,No/Unknown Accessibility,64th,80th,,,
+609779,ARMSTRONG G,1453,Above Average,Above Average,Well Organized,17.7,Yes,No/Unknown Accessibility,64th,80th,,,
+609780,MARINE LEADERSHIP AT AMES HS,796,Above Average,Average,Well Organized,11,No,Fully Accessible,52nd,56th,,,
+609782,AUDUBON,571,Above Average,Far Above Average,Well Organized,12.2,No,No/Unknown Accessibility,97th,97th,,,
+609783,JEFFERSON HS,295,No Data Available,No Data Available,Not Yet Organized,,No,No/Unknown Accessibility,,,,0.5,
+609786,AVALON PARK,326,Average,Below Average,Organized,53.2,Yes,No/Unknown Accessibility,7th,13th,,,
+609788,BARNARD,303,Above Average,Average,Organized,15.4,Yes,Generally Accessible,64th,36th,,,
+609789,BARRY,767,Above Average,Average,Organized,15.6,Yes,No/Unknown Accessibility,36th,41st,,,
+609790,BARTON,466,Far Below Average,Far Below Average,Organized,30.4,Yes,No/Unknown Accessibility,4th,2nd,,,
+609791,BASS,500,Above Average,Below Average,Organized,36.5,Yes,No/Unknown Accessibility,5th,12th,,,
+609792,BATEMAN,1046,Average,Average,Organized,9.4,Yes,Generally Accessible,48th,51st,,,
+609793,NICHOLSON,571,Average,Below Average,Partially Organized,52.4,Yes,Generally Accessible,6th,17th,,,
+609794,EDISON,278,Far Above Average,Far Above Average,Organized,2.2,No,Fully Accessible,99th,99th,,,
+609795,CLARK ES,277,Above Average,Above Average,Well Organized,17.1,Yes,Generally Accessible,77th,72nd,,,
+609796,BEAUBIEN,1116,Far Above Average,Far Above Average,Well Organized,6.9,No,No/Unknown Accessibility,99th,99th,,,
+609797,BEIDLER,518,Above Average,Above Average,Well Organized,28.4,Yes,Generally Accessible,42nd,79th,,,
+609798,BELDING,606,Average,Above Average,Organized,17.6,Yes,No/Unknown Accessibility,80th,80th,,,
+609799,BELL,1009,Far Above Average,Far Above Average,Moderately Organized,6.6,No,Generally Accessible,99th,99th,,,
+609800,BENNETT,354,Above Average,Below Average,Partially Organized,21.9,Yes,No/Unknown Accessibility,39th,15th,,,
+609803,BLAINE,906,Far Above Average,Far Above Average,Not Enough Data,12.9,Yes,No/Unknown Accessibility,99th,99th,,,
+609804,BOONE,826,Far Above Average,Above Average,Well Organized,16.2,Yes,No/Unknown Accessibility,74th,86th,,,
+609805,JOPLIN,421,Above Average,Below Average,Well Organized,38.1,Yes,No/Unknown Accessibility,21st,29th,,,
+609806,BRADWELL,725,Average,Below Average,Not Yet Organized,53,Yes,Generally Accessible,10th,6th,,,
+609807,HAMPTON,567,Above Average,Average,Partially Organized,18.2,Yes,Fully Accessible,41st,36th,,,
+609808,HALEY,557,Below Average,Below Average,Well Organized,45.5,Yes,No/Unknown Accessibility,7th,10th,,,
+609809,BRENTANO,446,Average,Average,Well Organized,9.8,Yes,No/Unknown Accessibility,67th,63rd,,,
+609810,BRIDGE,1115,Above Average,Above Average,Well Organized,9.9,Yes,No/Unknown Accessibility,83rd,87th,,,
+609811,BRIGHT,304,Average,Below Average,Well Organized,24.2,Yes,Generally Accessible,23rd,13th,,,
+609812,BROWN W,275,Below Average,Below Average,Organized,40.1,Yes,Generally Accessible,19th,13th,,,
+609812,BROWN W,275,Below Average,Below Average,Organized,40.1,Yes,Generally Accessible,19th,13th,,,
+609813,BROWNELL,222,Below Average,Below Average,Partially Organized,29.7,Yes,No/Unknown Accessibility,6th,12th,,,
+609815,BOUCHET,646,Above Average,Average,Well Organized,32.8,Yes,No/Unknown Accessibility,52nd,39th,,,
+609817,BUDLONG,829,Average,Above Average,Organized,11.3,Yes,No/Unknown Accessibility,75th,64th,,,
+609818,BURBANK,960,Above Average,Average,Well Organized,12.7,Yes,No/Unknown Accessibility,52nd,44th,,,
+609819,BURKE,460,Average,Below Average,Not Yet Organized,48.8,Yes,Generally Accessible,11th,12th,,,
+609820,BURLEY,522,Above Average,Far Above Average,Well Organized,4.7,No,No/Unknown Accessibility,99th,98th,,,
+609821,BURNHAM,550,Average,Average,Well Organized,31.8,Yes,Generally Accessible,52nd,30th,,,
+609826,CASTELLANOS,599,Average,Average,Not Yet Organized,17.7,Yes,No/Unknown Accessibility,40th,51st,,,
+609827,BURNSIDE,534,Average,Above Average,Organized,12.6,Yes,No/Unknown Accessibility,72nd,42nd,,,
+609828,BURR,408,Average,Above Average,Well Organized,10,Yes,No/Unknown Accessibility,83rd,70th,,,
+609829,BURROUGHS,492,Above Average,Far Above Average,Well Organized,20.1,Yes,No/Unknown Accessibility,82nd,95th,,,
+609830,BRUNSON,588,Below Average,Far Below Average,Well Organized,24.6,Yes,Fully Accessible,6th,1st,,,
+609832,BYRNE,650,Above Average,Above Average,Well Organized,9.4,Yes,Generally Accessible,76th,75th,,,
+609833,CALDWELL,280,Far Above Average,Far Above Average,Well Organized,36.8,Yes,No/Unknown Accessibility,97th,72nd,,,
+609833,CALDWELL,280,Far Above Average,Far Above Average,Well Organized,36.8,Yes,No/Unknown Accessibility,97th,72nd,,,
+609834,LITTLE VILLAGE,864,Average,Average,Organized,9.4,Yes,No/Unknown Accessibility,41st,30th,,,
+609835,CAMERON,808,Average,Average,Well Organized,27.5,Yes,Generally Accessible,43rd,58th,,,
+609836,CANTY,834,Far Above Average,Far Above Average,Organized,9.1,Yes,No/Unknown Accessibility,95th,98th,,,
+609837,CARNEGIE,615,Above Average,Above Average,Partially Organized,16.8,Yes,No/Unknown Accessibility,84th,67th,,,
+609839,CARROLL,483,Average,Average,Organized,25.5,Yes,Generally Accessible,52nd,54th,,,
+609842,CARSON,1104,Above Average,Above Average,Partially Organized,14,Yes,Fully Accessible,48th,75th,,,
+609844,CARTER,421,Above Average,Below Average,Well Organized,41.5,Yes,No/Unknown Accessibility,19th,24th,,,
+609845,CARVER G,491,Below Average,Far Below Average,Partially Organized,24.6,Yes,No/Unknown Accessibility,5th,5th,,,
+609848,ALDRIDGE,195,Below Average,Far Below Average,Not Yet Organized,43,Yes,Generally Accessible,2nd,1st,,,
+609849,CASSELL,406,Above Average,Far Above Average,Well Organized,8.2,Yes,Fully Accessible,94th,86th,,,
+609850,GREELEY,656,Above Average,Above Average,Organized,8.7,Yes,Generally Accessible,87th,82nd,,,
+609851,CHALMERS,389,Above Average,Below Average,Moderately Organized,57.8,Yes,Generally Accessible,5th,13th,,,
+609852,CHAPPELL,571,Above Average,Above Average,Well Organized,9.8,Yes,No/Unknown Accessibility,81st,85th,,,
+609853,CHASE,476,Average,Average,Well Organized,8,Yes,Generally Accessible,45th,58th,,,
+609854,CHOPIN,513,Above Average,Below Average,Organized,15.6,Yes,No/Unknown Accessibility,28th,39th,,,
+609855,CHRISTOPHER,379,Average,Below Average,Partially Organized,13.9,Yes,Fully Accessible,13th,19th,,,
+609856,CLAY,592,Average,Above Average,Organized,17,Yes,Generally Accessible,55th,74th,,,
+609857,CLEVELAND,669,Above Average,Above Average,Organized,18,Yes,No/Unknown Accessibility,60th,76th,,,
+609859,CLINTON,1142,Far Above Average,Far Above Average,Organized,20.8,Yes,No/Unknown Accessibility,76th,95th,,,
+609861,CLISSOLD,533,Average,Above Average,Organized,11.8,Yes,No/Unknown Accessibility,80th,63rd,,,
+609862,COLES,497,Far Above Average,Above Average,Organized,29.1,Yes,No/Unknown Accessibility,76th,83rd,,,
+609863,COLUMBUS,289,Above Average,Above Average,Well Organized,8.9,Yes,No/Unknown Accessibility,79th,85th,,,
+609864,COOK,413,Average,Below Average,Moderately Organized,42.2,Yes,No/Unknown Accessibility,16th,7th,,,
+609865,JORDAN,579,Below Average,Below Average,Not Yet Organized,22.5,Yes,Generally Accessible,15th,21st,,,
+609866,COONLEY,915,Far Above Average,Far Above Average,Well Organized,8.2,No,Generally Accessible,99th,99th,,,
+609867,COOPER,546,Below Average,Below Average,Moderately Organized,8.2,Yes,No/Unknown Accessibility,18th,20th,,,
+609869,LANGFORD,371,Average,Far Below Average,Organized,26.4,Yes,No/Unknown Accessibility,7th,4th,,,
+609870,CORKERY,541,Above Average,Average,Organized,22.5,Yes,No/Unknown Accessibility,45th,48th,,,
+609871,VICK,361,No Data Available,No Data Available,Well Organized,,No,Generally Accessible,,,,,
+609872,PEREZ,335,Average,Above Average,Well Organized,11.7,Yes,No/Unknown Accessibility,74th,83rd,,,
+609873,CROWN,323,Below Average,Far Below Average,Organized,26.9,Yes,No/Unknown Accessibility,3rd,3rd,,,
+609874,DIRKSEN,860,Far Above Average,Far Above Average,Well Organized,20,Yes,Generally Accessible,82nd,90th,,,
+609875,DARWIN,512,Above Average,Average,Well Organized,18.1,Yes,No/Unknown Accessibility,47th,52nd,,,
+609876,DAVIS N,792,Average,Average,Organized,17.7,Yes,No/Unknown Accessibility,34th,49th,,,
+609879,DAWES,1040,Above Average,Above Average,Well Organized,14.9,Yes,No/Unknown Accessibility,60th,79th,,,
+609880,DECATUR,282,Far Above Average,Far Above Average,Organized,3.5,No,Generally Accessible,99th,99th,,,
+609883,DENEEN,576,Above Average,Average,Well Organized,26.7,Yes,Generally Accessible,24th,50th,,,
+609883,DENEEN,576,Above Average,Average,Well Organized,26.7,Yes,Generally Accessible,24th,50th,,,
+609884,DEVER,826,Above Average,Far Above Average,Well Organized,10.1,Yes,No/Unknown Accessibility,80th,91st,,,
+609885,DEWEY,402,Average,Below Average,Well Organized,42.1,Yes,No/Unknown Accessibility,10th,21st,,,
+609887,DIXON,594,Far Above Average,Above Average,Organized,11.6,No,No/Unknown Accessibility,87th,87th,,,
+609887,DIXON,594,Far Above Average,Above Average,Organized,11.6,No,No/Unknown Accessibility,87th,87th,,,
+609888,DODGE,122,Average,Below Average,Not Yet Organized,13.1,Yes,Generally Accessible,28th,39th,,,
+609891,DOOLITTLE,307,Below Average,Below Average,Organized,28.3,Yes,No/Unknown Accessibility,7th,14th,,,
+609893,DORE,717,Far Above Average,Far Above Average,Organized,11.4,Yes,Fully Accessible,92nd,94th,,,
+609894,DRAKE,429,Below Average,Far Below Average,Moderately Organized,16.7,Yes,Generally Accessible,8th,4th,,,
+609895,TURNER-DREW,275,Above Average,Above Average,Partially Organized,8.4,Yes,Generally Accessible,89th,87th,,,
+609896,DRUMMOND,348,Far Above Average,Far Above Average,Well Organized,0.4,Yes,No/Unknown Accessibility,98th,95th,,,
+609897,EARLE,486,Average,Below Average,Partially Organized,37.5,Yes,No/Unknown Accessibility,6th,11th,,,
+609898,EBERHART,1469,Average,Average,Well Organized,10.4,Yes,No/Unknown Accessibility,50th,48th,,,
+609899,EBINGER,776,Far Above Average,Far Above Average,Well Organized,7.5,No,Fully Accessible,99th,98th,,,
+609900,CURTIS,629,Below Average,Below Average,Well Organized,35.5,Yes,Generally Accessible,8th,17th,,,
+609901,EDGEBROOK,511,Far Above Average,Far Above Average,Organized,3,Yes,No/Unknown Accessibility,99th,99th,,,
+609902,METCALFE,469,Below Average,Below Average,Partially Organized,41.9,Yes,No/Unknown Accessibility,10th,9th,,,
+609903,EDWARDS,1507,Average,Average,Well Organized,18.9,Yes,No/Unknown Accessibility,40th,55th,,,
+609904,ELLINGTON,705,Far Above Average,Average,Well Organized,33.1,Yes,Fully Accessible,52nd,34th,,,
+609907,ERICSON,466,Above Average,Above Average,Organized,11.3,Yes,Generally Accessible,58th,80th,,,
+609908,ESMOND,293,Average,Average,Organized,34.5,Yes,No/Unknown Accessibility,40th,28th,,,
+609909,EVERETT,231,Average,Below Average,Well Organized,40.8,Yes,No/Unknown Accessibility,31st,39th,,,
+609910,FALCONER,1301,Average,Above Average,Well Organized,10.6,Yes,Generally Accessible,48th,73rd,,,
+609912,FARNSWORTH,618,Far Above Average,Far Above Average,Well Organized,12.3,Yes,Generally Accessible,89th,93rd,,,
+609917,FERNWOOD,352,Far Above Average,Far Above Average,Well Organized,27.5,Yes,No/Unknown Accessibility,90th,91st,,,
+609918,FIELD,302,Below Average,Average,Organized,23.2,Yes,Generally Accessible,34th,49th,,,
+609919,FISKE,513,Below Average,Far Below Average,Well Organized,35.5,Yes,Generally Accessible,4th,3rd,,,
+609920,KANOON,713,Below Average,Below Average,Well Organized,11.1,Yes,Generally Accessible,11th,13th,,,
+609921,TELPOCHCALLI,299,Below Average,Below Average,Well Organized,17.7,Yes,Generally Accessible,21st,16th,,,
+609922,BELMONT-CRAGIN,604,Above Average,Average,Well Organized,7,Yes,No/Unknown Accessibility,52nd,31st,,,
+609924,FORT DEARBORN,386,Above Average,Below Average,Organized,27.6,Yes,Generally Accessible,26th,22nd,,,
+609925,KELLMAN,365,Average,Average,Organized,9.9,Yes,No/Unknown Accessibility,40th,31st,,,
+609926,FRANKLIN,358,Far Above Average,Far Above Average,Moderately Organized,1.1,No,Generally Accessible,98th,97th,,,
+609927,FOSTER PARK,392,Average,Above Average,Well Organized,31.9,Yes,No/Unknown Accessibility,77th,63rd,,,
+609928,FULLER,394,Below Average,Far Below Average,Not Yet Organized,43.4,Yes,No/Unknown Accessibility,5th,9th,,,
+609928,FULLER,394,Below Average,Far Below Average,Not Yet Organized,43.4,Yes,No/Unknown Accessibility,5th,9th,,,
+609929,FULTON,418,Below Average,Below Average,Partially Organized,43.9,Yes,No/Unknown Accessibility,6th,18th,,,
+609930,FUNSTON,504,Average,Below Average,Partially Organized,18.1,Yes,No/Unknown Accessibility,28th,28th,,,
+609933,GALE,384,Average,Below Average,Well Organized,42.5,Yes,No/Unknown Accessibility,30th,9th,,,
+609935,GALLISTEL,1207,Average,Average,Moderately Organized,16.2,Yes,No/Unknown Accessibility,33rd,44th,,,
+609937,GARVY,805,Above Average,Far Above Average,Well Organized,10.7,Yes,No/Unknown Accessibility,92nd,93rd,,,
+609938,GARY,1153,Average,Below Average,Organized,8.8,Yes,No/Unknown Accessibility,32nd,37th,,,
+609939,GILLESPIE,545,Far Above Average,Above Average,Moderately Organized,36.3,Yes,No/Unknown Accessibility,85th,77th,,,
+609941,RANDOLPH,522,Below Average,Below Average,Organized,48.9,Yes,Generally Accessible,4th,18th,,,
+609942,GOETHE,773,Above Average,Above Average,Well Organized,8.4,Yes,No/Unknown Accessibility,81st,89th,,,
+609943,OWENS,489,Average,Far Below Average,Moderately Organized,38,Yes,No/Unknown Accessibility,9th,9th,,,
+609944,GRISSOM,349,Above Average,Above Average,Partially Organized,12.4,Yes,Generally Accessible,87th,83rd,,,
+609945,GOUDY,742,Average,Above Average,Organized,13.6,Yes,Generally Accessible,70th,82nd,,,
+609947,GRAHAM ES,476,Below Average,Average,Organized,24,Yes,No/Unknown Accessibility,42nd,47th,,,
+609949,GRAY,1262,Above Average,Above Average,Well Organized,13.2,Yes,No/Unknown Accessibility,67th,84th,,,
+609950,ORTIZ DE DOMINGUEZ,667,No Data Available,Average,Moderately Organized,14.8,Yes,No/Unknown Accessibility,55th,33rd,,,
+609951,ARIEL,543,Average,Above Average,Well Organized,6,Yes,Generally Accessible,76th,80th,,,
+609952,GREENE,603,Average,Average,Well Organized,16.8,Yes,Fully Accessible,48th,56th,,,
+609954,GREGORY,411,Average,Below Average,Moderately Organized,47.8,Yes,No/Unknown Accessibility,24th,33rd,,,
+609955,GRESHAM,338,Average,Far Below Average,Organized,29.4,Yes,Fully Accessible,6th,4th,,,
+609956,GRIMES,467,Above Average,Above Average,Well Organized,17.3,Yes,Generally Accessible,88th,85th,,,
+609958,GUNSAULUS,808,Above Average,Above Average,Well Organized,2.2,Yes,No/Unknown Accessibility,56th,77th,,,
+609959,HAINES,657,Far Above Average,Far Above Average,Not Yet Organized,13.1,No,No/Unknown Accessibility,95th,99th,,,
+609960,HALE,938,Far Above Average,Above Average,Well Organized,14,Yes,Generally Accessible,79th,73rd,,,
+609961,NINOS HEROES,409,Below Average,Below Average,Well Organized,34.7,No,No/Unknown Accessibility,21st,21st,,,
+609963,HAMILTON,451,Above Average,Far Above Average,Well Organized,10.4,No,No/Unknown Accessibility,99th,96th,,,
+609964,HAMLINE,651,Below Average,Below Average,Partially Organized,25.2,Yes,No/Unknown Accessibility,10th,17th,,,
+609966,HAMMOND,481,Average,Below Average,Well Organized,15.2,Yes,No/Unknown Accessibility,14th,3rd,,,
+609967,FINKL,460,Average,Below Average,Partially Organized,19.2,Yes,Generally Accessible,29th,26th,,,
+609968,MCAULIFFE,768,Below Average,Below Average,Organized,17.6,Yes,Generally Accessible,12th,21st,,,
+609969,HARTE,385,Average,Average,Well Organized,10.9,Yes,No/Unknown Accessibility,62nd,58th,,,
+609971,HARVARD,430,Below Average,Below Average,Organized,45,Yes,Generally Accessible,3rd,11th,,,
+609972,HAUGAN,1037,Average,Average,Moderately Organized,16.7,Yes,No/Unknown Accessibility,51st,62nd,,,
+609973,ZAPATA,885,Average,Average,Well Organized,15.4,Yes,Generally Accessible,44th,64th,,,
+609974,HAWTHORNE,570,Far Above Average,Far Above Average,Organized,3,No,No/Unknown Accessibility,99th,99th,,,
+609975,HAY,472,Above Average,Below Average,Organized,18.1,Yes,No/Unknown Accessibility,11th,22nd,,,
+609976,HAYT,1013,Above Average,Above Average,Organized,26.5,Yes,Fully Accessible,77th,85th,,,
+609977,WOODLAWN,206,Below Average,Below Average,Well Organized,13.3,Yes,Fully Accessible,33rd,13th,,,
+609978,SMITH,360,Average,Below Average,Not Yet Organized,34.2,Yes,No/Unknown Accessibility,31st,25th,,,
+609979,HEALY,1461,Far Above Average,Far Above Average,Well Organized,8.5,Yes,Generally Accessible,99th,99th,,,
+609981,HEARST,335,Average,Below Average,Organized,21.9,Yes,Fully Accessible,16th,25th,,,
+609983,HEDGES,727,Average,Below Average,Moderately Organized,16.6,Yes,No/Unknown Accessibility,25th,21st,,,
+609985,HEFFERAN,424,Far Above Average,Far Above Average,Well Organized,35.8,Yes,Generally Accessible,99th,99th,,,
+609986,HENDERSON,337,Average,Far Below Average,Not Yet Organized,49.2,Yes,Fully Accessible,4th,5th,,,
+609987,HENDRICKS,240,Below Average,Below Average,Organized,43.2,Yes,Fully Accessible,8th,15th,,,
+609988,HENRY,639,Below Average,Average,Organized,16.8,Yes,No/Unknown Accessibility,49th,67th,,,
+609990,SOUTH LOOP,861,Far Above Average,Far Above Average,Organized,8.8,Yes,Generally Accessible,99th,98th,,,
+609991,HERZL,619,Below Average,Below Average,Partially Organized,38.3,Yes,Fully Accessible,5th,18th,,,
+609993,LARA,479,Below Average,Below Average,Organized,20.8,Yes,Generally Accessible,28th,29th,,,
+609994,HIBBARD,1107,Average,Average,Partially Organized,11.8,No,Fully Accessible,44th,46th,,,
+609995,HITCH,586,Above Average,Far Above Average,Well Organized,11.6,Yes,Generally Accessible,90th,88th,,,
+609996,HOLDEN,502,Far Above Average,Above Average,Well Organized,14.2,Yes,No/Unknown Accessibility,58th,81st,,,
+609997,HOLMES,243,Below Average,Far Below Average,Moderately Organized,63.4,Yes,Generally Accessible,1st,4th,,,
+610000,HOWE,522,Above Average,Below Average,Not Yet Organized,27.8,Yes,Generally Accessible,16th,36th,,,
+610002,HOYNE,258,Above Average,Average,Organized,12.5,Yes,No/Unknown Accessibility,67th,62nd,,,
+610002,HOYNE,258,Above Average,Average,Organized,12.5,Yes,No/Unknown Accessibility,67th,62nd,,,
+610003,CUFFE,423,Above Average,Average,Well Organized,17.6,Yes,Fully Accessible,47th,34th,,,
+610004,CULLEN,204,Far Above Average,Above Average,Organized,29.5,Yes,No/Unknown Accessibility,84th,87th,,,
+610005,HUGHES C,334,Far Above Average,Below Average,Well Organized,36.2,Yes,No/Unknown Accessibility,38th,39th,,,
+610006,HURLEY,868,Above Average,Above Average,Organized,9.9,Yes,No/Unknown Accessibility,46th,72nd,,,
+610009,GALILEO,556,Above Average,Far Above Average,Moderately Organized,2.5,Yes,Generally Accessible,92nd,99th,,,
+610010,JAHN,325,Above Average,Average,Organized,9.4,Yes,No/Unknown Accessibility,59th,50th,,,
+610011,JAMIESON,892,Above Average,Far Above Average,Well Organized,15,No,Generally Accessible,93rd,94th,,,
+610012,JENNER,248,Below Average,Far Below Average,Partially Organized,24.7,Yes,Fully Accessible,1st,1st,,,
+610013,PILSEN,393,Above Average,Average,Moderately Organized,12.5,Yes,No/Unknown Accessibility,62nd,68th,,,
+610015,JUNGMAN,298,Far Above Average,Average,Well Organized,20.5,Yes,Fully Accessible,53rd,39th,,,
+610016,KELLOGG,251,Average,Above Average,Well Organized,14.7,Yes,No/Unknown Accessibility,84th,72nd,,,
+610017,SAUCEDO,1193,Far Above Average,Above Average,Partially Organized,3.8,Yes,No/Unknown Accessibility,70th,85th,,,
+610019,KERSHAW,292,Far Above Average,Far Above Average,Well Organized,7.5,Yes,Generally Accessible,97th,95th,,,
+610021,CASALS,453,Average,Above Average,Well Organized,17.8,Yes,Generally Accessible,47th,70th,,,
+610022,KILMER,753,Average,Average,Not Yet Organized,18.6,Yes,Generally Accessible,42nd,49th,,,
+610024,CARDENAS,683,Average,Above Average,Well Organized,18.5,Yes,No/Unknown Accessibility,48th,86th,,,
+610026,KINZIE,671,Above Average,Above Average,Well Organized,13.2,Yes,Fully Accessible,76th,85th,,,
+610027,KIPLING,368,Above Average,Average,Partially Organized,20.3,Yes,No/Unknown Accessibility,59th,62nd,,,
+610029,LOZANO,252,Far Above Average,Average,Well Organized,22.5,Yes,Fully Accessible,51st,57th,,,
+610030,KOZMINSKI,342,Below Average,Below Average,Organized,19.8,No,No/Unknown Accessibility,30th,23rd,,,
+610032,GREEN,364,Far Above Average,Above Average,Well Organized,22.7,Yes,No/Unknown Accessibility,75th,67th,,,
+610033,LASALLE,556,Above Average,Far Above Average,Well Organized,4.5,Yes,Fully Accessible,99th,99th,,,
+610034,LAWNDALE,380,Far Below Average,Far Below Average,Not Yet Organized,34.6,Yes,No/Unknown Accessibility,1st,1st,,,
+610036,LEWIS,503,Below Average,Far Below Average,Organized,29.1,Yes,No/Unknown Accessibility,3rd,5th,,,
+610037,LIBBY,350,Average,Below Average,Partially Organized,41,Yes,No/Unknown Accessibility,12th,18th,,,
+610038,LINCOLN,841,Far Above Average,Far Above Average,Moderately Organized,13.5,No,No/Unknown Accessibility,99th,99th,,,
+610039,VON LINNE,645,Far Above Average,Above Average,Well Organized,14.7,Yes,Fully Accessible,88th,77th,,,
+610040,LLOYD,1233,Above Average,Average,Moderately Organized,16.6,Yes,Fully Accessible,34th,69th,,,
+610041,LOCKE J,1347,Average,Average,Well Organized,8.7,Yes,No/Unknown Accessibility,55th,53rd,,,
+610043,LOVETT,429,Average,Below Average,Well Organized,19.6,Yes,No/Unknown Accessibility,18th,9th,,,
+610044,LOWELL,531,Above Average,Below Average,Well Organized,19.3,Yes,No/Unknown Accessibility,31st,35th,,,
+610046,LYON,1489,Far Above Average,Far Above Average,Organized,13.8,Yes,Generally Accessible,89th,92nd,,,
+610047,MADISON,228,Far Below Average,Below Average,Organized,34.5,Yes,No/Unknown Accessibility,12th,13th,,,
+610048,MANIERRE,347,Average,Below Average,Well Organized,30.2,Yes,Generally Accessible,15th,22nd,,,
+610051,NORTHWEST,570,Average,Below Average,Not Yet Organized,13.5,Yes,Generally Accessible,31st,33rd,,,
+610052,MANN,378,Below Average,Below Average,Not Yet Organized,39.3,Yes,No/Unknown Accessibility,10th,4th,,,
+610053,MARQUETTE,1255,Below Average,Below Average,Well Organized,23.8,Yes,Generally Accessible,21st,24th,,,
+610054,MARSH,861,Average,Average,Moderately Organized,14.2,Yes,Generally Accessible,46th,47th,,,
+610055,FARADAY,345,Average,Average,Not Yet Organized,59,Yes,Generally Accessible,41st,27th,,,
+610056,MASON,393,Below Average,Far Below Average,Well Organized,24.4,Yes,Generally Accessible,6th,7th,,,
+610057,FAIRFIELD,595,Average,Below Average,Partially Organized,19.1,Yes,No/Unknown Accessibility,10th,17th,,,
+610059,MAYER,686,Above Average,Far Above Average,Well Organized,6.6,No,Generally Accessible,97th,95th,,,
+610060,JACKSON A,563,Far Above Average,Far Above Average,Moderately Organized,3.5,No,Generally Accessible,99th,99th,,,
+610062,MCCLELLAN,309,Far Above Average,Above Average,Well Organized,19.5,Yes,No/Unknown Accessibility,69th,86th,,,
+610063,MCCORMICK,784,Average,Average,Organized,17.9,Yes,No/Unknown Accessibility,21st,44th,,,
+610065,TILL,370,Above Average,Far Below Average,Partially Organized,38.7,Yes,Generally Accessible,3rd,3rd,,,
+610066,MCDADE,192,Far Above Average,Far Above Average,Well Organized,3.2,No,Generally Accessible,99th,99th,,,
+610067,MCKAY,803,Average,Far Below Average,Well Organized,30.6,Yes,No/Unknown Accessibility,7th,7th,,,
+610068,HANSON PARK,1544,Far Above Average,Above Average,Organized,20.8,Yes,Fully Accessible,44th,70th,,,
+610070,MCPHERSON,803,Average,Average,Organized,12.5,Yes,Generally Accessible,52nd,51st,,,
+610073,MITCHELL,374,Far Above Average,Far Above Average,Well Organized,9,Yes,No/Unknown Accessibility,96th,93rd,,,
+610074,MONROE,972,Average,Average,Moderately Organized,15.2,Yes,Generally Accessible,33rd,53rd,,,
+610075,MONTEFIORE,0,Far Below Average,Far Below Average,Organized,,Yes,Fully Accessible,1st,1st,,,
+610076,MOOS,560,Above Average,Average,Well Organized,24.8,Yes,Fully Accessible,45th,69th,,,
+610077,MORRILL,829,Above Average,Average,Well Organized,27.4,Yes,No/Unknown Accessibility,33rd,50th,,,
+610078,INTER-AMERICAN,649,Above Average,Above Average,Well Organized,3.2,No,Generally Accessible,74th,85th,,,
+610081,SHERIDAN,556,Above Average,Far Above Average,Organized,2.4,No,No/Unknown Accessibility,98th,99th,,,
+610082,MOUNT GREENWOOD,1055,Far Above Average,Far Above Average,Well Organized,3.5,Yes,Generally Accessible,99th,99th,,,
+610083,BEARD,179,No Data Available,No Data Available,Well Organized,,No,Fully Accessible,,,,,
+610084,KELLER,244,Far Above Average,Far Above Average,Organized,3.7,No,Fully Accessible,99th,99th,,,
+610086,MOUNT VERNON,254,Above Average,Average,Moderately Organized,36.7,Yes,No/Unknown Accessibility,43rd,31st,,,
+610087,BLAIR,168,No Data Available,No Data Available,Well Organized,,No,Fully Accessible,,,,,
+610088,MOZART,775,Average,Below Average,Organized,15,Yes,Generally Accessible,36th,39th,,,
+610089,MURPHY,589,Above Average,Above Average,Organized,16.1,Yes,Generally Accessible,70th,76th,,,
+610090,MURRAY,526,Above Average,Above Average,Moderately Organized,2.3,No,Fully Accessible,89th,77th,,,
+610091,BROWN R,323,Below Average,Average,Well Organized,46.6,Yes,Generally Accessible,69th,60th,,,
+610092,NASH,343,Above Average,Average,Well Organized,24.2,Yes,No/Unknown Accessibility,60th,49th,,,
+610093,NEIL,313,Average,Below Average,Not Yet Organized,10.3,Yes,Generally Accessible,24th,9th,,,
+610094,NETTELHORST,832,Above Average,Far Above Average,Organized,9.4,Yes,No/Unknown Accessibility,94th,87th,,,
+610095,NEWBERRY,562,Above Average,Far Above Average,Partially Organized,3.7,No,Generally Accessible,90th,89th,,,
+610096,NIGHTINGALE,1329,Above Average,Average,Well Organized,16.4,Yes,Fully Accessible,48th,65th,,,
+610097,NIXON,963,Average,Below Average,Well Organized,18.6,Yes,No/Unknown Accessibility,20th,21st,,,
+610098,NOBEL,870,Above Average,Average,Well Organized,19,Yes,No/Unknown Accessibility,38th,49th,,,
+610099,NORWOOD PARK,401,Above Average,Far Above Average,Organized,10.2,No,Generally Accessible,98th,99th,,,
+610100,WEST PARK,624,Average,Below Average,Organized,22.9,Yes,Generally Accessible,20th,33rd,,,
+610101,OGDEN ES,868,Far Above Average,Far Above Average,Partially Organized,17.3,No,Generally Accessible,98th,98th,,,
+610102,OGLESBY,499,Below Average,Far Below Average,Not Yet Organized,44.4,Yes,No/Unknown Accessibility,3rd,1st,,,
+610103,OKEEFFE,690,Above Average,Below Average,Organized,35,Yes,Generally Accessible,23rd,19th,,,
+610104,ONAHAN,635,Far Above Average,Far Above Average,Well Organized,11,Yes,Generally Accessible,95th,96th,,,
+610105,ORIOLE PARK,713,Far Above Average,Far Above Average,Organized,8.4,No,Fully Accessible,99th,99th,,,
+610106,PICCOLO,584,Below Average,Below Average,Moderately Organized,22,Yes,Generally Accessible,7th,21st,,,
+610107,OTIS,543,Above Average,Average,Organized,9,Yes,Generally Accessible,50th,43rd,,,
+610108,OTOOLE,412,Average,Below Average,Organized,32,Yes,No/Unknown Accessibility,10th,21st,,,
+610109,OWEN,259,Above Average,Above Average,Well Organized,6.5,Yes,Generally Accessible,84th,65th,,,
+610110,WELLS ES,420,Average,Below Average,Not Yet Organized,18.5,Yes,Generally Accessible,36th,39th,,,
+610111,PALMER,884,Average,Above Average,Organized,14.4,Yes,No/Unknown Accessibility,64th,71st,,,
+610112,PARKER,694,Average,Far Below Average,Organized,23.3,Yes,Generally Accessible,7th,8th,,,
+610115,PARK MANOR,358,Average,Below Average,Well Organized,41.2,Yes,No/Unknown Accessibility,24th,25th,,,
+610116,PARKSIDE,269,Average,Below Average,Organized,35.8,Yes,No/Unknown Accessibility,10th,4th,,,
+610117,PASTEUR,1231,Above Average,Average,Well Organized,12.1,Yes,Generally Accessible,58th,53rd,,,
+610120,PECK,1636,Above Average,Above Average,Organized,6.2,Yes,No/Unknown Accessibility,65th,71st,,,
+610121,IRVING,515,Below Average,Average,Well Organized,15,Yes,Generally Accessible,55th,35th,,,
+610122,PEIRCE,1044,Average,Above Average,Organized,6.6,Yes,No/Unknown Accessibility,81st,71st,,,
+610123,PENN,379,Average,Below Average,Well Organized,33.9,Yes,Generally Accessible,8th,12th,,,
+610124,WASHINGTON H ES,418,Below Average,Average,Organized,35.2,Yes,Generally Accessible,21st,42nd,,,
+610125,RUIZ,784,Above Average,Average,Well Organized,10.7,Yes,Fully Accessible,48th,37th,,,
+610126,PERSHING,549,Average,Average,Moderately Organized,10.8,Yes,Generally Accessible,60th,42nd,,,
+610127,PETERSON,923,Average,Above Average,Organized,13.9,No,No/Unknown Accessibility,78th,84th,,,
+610128,GARVEY,271,Below Average,Average,Well Organized,27.3,Yes,Generally Accessible,58th,30th,,,
+610129,PICKARD,510,Above Average,Above Average,Organized,17.3,Yes,No/Unknown Accessibility,47th,74th,,,
+610130,PIRIE,334,Above Average,Average,Organized,22.5,Yes,No/Unknown Accessibility,48th,30th,,,
+610131,PLAMONDON,158,Far Above Average,Above Average,Organized,26,Yes,No/Unknown Accessibility,83rd,63rd,,,
+610132,POE,206,Far Above Average,Far Above Average,Well Organized,,No,Generally Accessible,99th,99th,,,
+610133,WARD L,580,Far Below Average,Average,Well Organized,27.1,Yes,Generally Accessible,36th,52nd,,,
+610135,PORTAGE PARK,996,Average,Average,Partially Organized,15.7,Yes,No/Unknown Accessibility,69th,51st,,,
+610136,PRESCOTT,367,Far Above Average,Far Above Average,Well Organized,9.5,Yes,No/Unknown Accessibility,93rd,93rd,,,
+610137,PRUSSING,695,Average,Above Average,Partially Organized,17,Yes,No/Unknown Accessibility,86th,88th,,,
+610138,PULASKI,932,Far Above Average,Far Above Average,Organized,5.6,Yes,Generally Accessible,90th,90th,,,
+610139,PULLMAN,324,Average,Average,Organized,35,Yes,No/Unknown Accessibility,50th,35th,,,
+610141,RAVENSWOOD,564,Far Above Average,Far Above Average,Well Organized,10.5,No,No/Unknown Accessibility,88th,92nd,,,
+610142,RAY,740,Average,Average,Organized,18.3,No,Generally Accessible,67th,56th,,,
+610142,RAY,740,Average,Average,Organized,18.3,No,Generally Accessible,67th,56th,,,
+610143,REAVIS,276,Average,Below Average,Well Organized,41.1,Yes,No/Unknown Accessibility,23rd,13th,,,
+610144,REILLY,1030,Average,Average,Well Organized,11.7,Yes,Fully Accessible,33rd,58th,,,
+610145,REINBERG,845,Above Average,Above Average,Organized,16.5,Yes,Generally Accessible,69th,79th,,,
+610146,REVERE,260,Below Average,Far Below Average,Partially Organized,34.7,Yes,No/Unknown Accessibility,3rd,6th,,,
+610147,ROGERS,771,Above Average,Far Above Average,Well Organized,14,No,Generally Accessible,91st,88th,,,
+610148,CHAVEZ,979,Far Above Average,Far Above Average,Well Organized,13.7,Yes,Generally Accessible,75th,97th,,,
+610152,RUGGLES,402,Far Above Average,Average,Organized,23.3,Yes,No/Unknown Accessibility,44th,21st,,,
+610153,RYDER,406,Average,Average,Well Organized,33.1,Yes,No/Unknown Accessibility,33rd,48th,,,
+610155,SAUGANASH,590,Far Above Average,Far Above Average,Well Organized,7.7,Yes,Generally Accessible,99th,99th,,,
+610157,SAWYER,1749,Average,Average,Moderately Organized,9.1,Yes,No/Unknown Accessibility,45th,56th,,,
+610158,SAYRE,479,Average,Above Average,Not Yet Organized,10.8,Yes,Generally Accessible,70th,77th,,,
+610159,SCAMMON,918,Above Average,Above Average,Well Organized,16.3,Yes,No/Unknown Accessibility,56th,75th,,,
+610163,STOCK,233,No Data Available,No Data Available,Well Organized,,No,Generally Accessible,,,,,
+610165,SCHUBERT,936,Far Above Average,Average,Well Organized,14.1,Yes,No/Unknown Accessibility,44th,56th,,,
+610167,SEWARD,798,Average,Average,Organized,10.5,Yes,Generally Accessible,44th,51st,,,
+610170,COLUMBIA EXPLORERS,1183,Above Average,Above Average,Well Organized,18.7,Yes,Fully Accessible,72nd,79th,,,
+610171,MIRELES,664,Below Average,Below Average,Organized,30.5,Yes,Generally Accessible,12th,13th,,,
+610172,SHERMAN,320,Above Average,Below Average,Organized,35.1,Yes,No/Unknown Accessibility,17th,22nd,,,
+610173,SHERWOOD,352,Far Above Average,Far Above Average,Well Organized,32.3,Yes,No/Unknown Accessibility,96th,93rd,,,
+610174,SHIELDS,1007,Far Above Average,Average,Organized,13.3,Yes,No/Unknown Accessibility,40th,50th,,,
+610175,SHOESMITH,349,Above Average,Above Average,Well Organized,17.5,Yes,No/Unknown Accessibility,79th,76th,,,
+610176,SHOOP,490,Above Average,Average,Partially Organized,30.9,Yes,Generally Accessible,27th,61st,,,
+610177,SKINNER,1047,Far Above Average,Far Above Average,Well Organized,5.9,No,Fully Accessible,99th,99th,,,
+610178,SCHMID,224,Far Below Average,Below Average,Partially Organized,16,Yes,Generally Accessible,27th,27th,,,
+610179,SMYSER,1004,Above Average,Far Above Average,Organized,8.5,Yes,No/Unknown Accessibility,93rd,94th,,,
+610180,SMYTH,465,Below Average,Far Below Average,Partially Organized,27.6,Yes,No/Unknown Accessibility,3rd,2nd,,,
+610182,SOLOMON,356,Far Above Average,Far Above Average,Organized,9,Yes,Generally Accessible,98th,99th,,,
+610183,SPENCER,782,Below Average,Far Below Average,Partially Organized,28.7,Yes,Generally Accessible,5th,9th,,,
+610184,SPRY ES,612,Above Average,Average,Moderately Organized,14.2,Yes,No/Unknown Accessibility,15th,51st,,,
+610185,STEVENSON,1309,Average,Above Average,Well Organized,16.8,Yes,Generally Accessible,76th,84th,,,
+610188,DUNNE,264,Below Average,Average,Well Organized,19.2,Yes,Generally Accessible,56th,51st,,,
+610191,STONE,625,Far Above Average,Far Above Average,Organized,4.5,Yes,Generally Accessible,99th,98th,,,
+610192,STOWE,744,Below Average,Below Average,Organized,17.5,Yes,No/Unknown Accessibility,10th,30th,,,
+610193,NEW SULLIVAN,481,Above Average,Below Average,Organized,41,Yes,Fully Accessible,12th,13th,,,
+610194,SUMNER,277,Average,Average,Well Organized,22.2,Yes,No/Unknown Accessibility,44th,60th,,,
+610195,SUTHERLAND,696,Above Average,Far Above Average,Not Yet Organized,6.2,No,Generally Accessible,97th,87th,,,
+610196,SWIFT,726,Average,Above Average,Moderately Organized,18.3,No,Generally Accessible,64th,82nd,,,
+610197,TALCOTT,542,Above Average,Average,Organized,10.8,Yes,Generally Accessible,67th,69th,,,
+610198,TAYLOR,499,Average,Below Average,Partially Organized,22.7,Yes,No/Unknown Accessibility,26th,30th,,,
+610199,COLEMON,265,Above Average,Average,Well Organized,6.3,Yes,No/Unknown Accessibility,54th,53rd,,,
+610200,THORP J,347,Above Average,Below Average,Partially Organized,34.9,Yes,Generally Accessible,14th,8th,,,
+610201,THORP O,843,Above Average,Far Above Average,Organized,5.6,Yes,No/Unknown Accessibility,96th,97th,,,
+610202,TILTON,354,Average,Below Average,Well Organized,38.3,Yes,Generally Accessible,9th,20th,,,
+610203,TONTI,1116,Above Average,Average,Moderately Organized,12.1,Yes,No/Unknown Accessibility,48th,69th,,,
+610206,TWAIN,1185,Far Above Average,Far Above Average,Well Organized,8.4,Yes,Generally Accessible,87th,90th,,,
+610207,VANDERPOEL,293,Average,Above Average,Well Organized,3,Yes,Generally Accessible,76th,49th,,,
+610208,LAVIZZO,408,Above Average,Below Average,Well Organized,42.2,Yes,Fully Accessible,15th,27th,,,
+610209,VOLTA,954,Average,Average,Organized,15.6,Yes,No/Unknown Accessibility,47th,65th,,,
+610212,ALBANY PARK,286,Average,Above Average,Well Organized,9.9,Yes,Fully Accessible,70th,79th,,,
+610213,WADSWORTH,559,Above Average,Below Average,Well Organized,41,Yes,Generally Accessible,24th,22nd,,,
+610215,MADERO,332,Average,Average,Well Organized,6.8,Yes,Fully Accessible,45th,43rd,,,
+610216,WALSH,429,Average,Average,Partially Organized,9.8,Yes,No/Unknown Accessibility,57th,47th,,,
+610217,WARD J,549,Far Above Average,Far Above Average,Organized,12.9,Yes,No/Unknown Accessibility,87th,99th,,,
+610218,WARREN,283,Above Average,Average,Well Organized,18.1,Yes,No/Unknown Accessibility,58th,56th,,,
+610218,WARREN,283,Above Average,Average,Well Organized,18.1,Yes,No/Unknown Accessibility,58th,56th,,,
+610218,WARREN,283,Above Average,Average,Well Organized,18.1,Yes,No/Unknown Accessibility,58th,56th,,,
+610219,WASHINGTON G ES,888,Above Average,Far Above Average,Organized,12.8,Yes,Generally Accessible,87th,93rd,,,
+610220,WATERS,642,Above Average,Far Above Average,Well Organized,7.9,No,No/Unknown Accessibility,98th,87th,,,
+610221,WEBSTER,307,Above Average,Below Average,Well Organized,20.9,Yes,No/Unknown Accessibility,23rd,27th,,,
+610223,WENTWORTH,568,Below Average,Below Average,Well Organized,41.5,Yes,No/Unknown Accessibility,8th,15th,,,
+610225,WHISTLER,269,Far Above Average,Far Above Average,Well Organized,32.2,Yes,Generally Accessible,99th,98th,,,
+610226,SANDOVAL,1069,Average,Average,Moderately Organized,8.5,Yes,Fully Accessible,44th,59th,,,
+610227,WHITNEY,1092,Average,Average,Not Yet Organized,10.9,Yes,No/Unknown Accessibility,33rd,59th,,,
+610228,WHITTIER,289,Average,Below Average,Partially Organized,16.4,Yes,No/Unknown Accessibility,11th,13th,,,
+610229,PRITZKER,740,Above Average,Far Above Average,Moderately Organized,11.9,No,No/Unknown Accessibility,94th,94th,,,
+610230,WILDWOOD,472,Far Above Average,Far Above Average,Well Organized,5.2,Yes,Fully Accessible,99th,99th,,,
+610231,NATIONAL TEACHERS,655,Average,Average,Well Organized,11.6,Yes,Fully Accessible,63rd,51st,,,
+610234,YATES,557,Average,Below Average,Well Organized,22.1,Yes,No/Unknown Accessibility,16th,39th,,,
+610235,YOUNG ES,965,Below Average,Below Average,Organized,21.1,Yes,No/Unknown Accessibility,17th,9th,,,
+610237,BEETHOVEN,461,Below Average,Far Below Average,Moderately Organized,47,Yes,Generally Accessible,7th,8th,,,
+610238,BOND,322,Far Above Average,Below Average,Partially Organized,37.5,Yes,No/Unknown Accessibility,14th,24th,,,
+610239,DALEY,617,Below Average,Below Average,Organized,23.4,Yes,Generally Accessible,19th,35th,,,
+610242,BRENNEMANN,430,Far Above Average,Average,Organized,25.2,Yes,No/Unknown Accessibility,64th,43rd,,,
+610244,CLARK HS,521,Below Average,Below Average,Organized,8.2,Yes,No/Unknown Accessibility,,,16.5,79.5,54.4
+610245,DOUGLASS HS,234,Below Average,Far Below Average,Organized,49.6,Yes,No/Unknown Accessibility,,,15.2,57.7,35.2
+610246,BEASLEY,1435,Average,Above Average,Well Organized,4.9,Yes,Generally Accessible,73rd,54th,,,
+610248,CHICAGO ACADEMY ES,611,Above Average,Above Average,Partially Organized,3.5,Yes,Fully Accessible,68th,79th,,,
+610249,TALMAN,441,Far Above Average,Above Average,Well Organized,8.5,Yes,No/Unknown Accessibility,69th,75th,,,
+610250,SALAZAR,360,Average,Above Average,Well Organized,12.2,Yes,No/Unknown Accessibility,53rd,72nd,,,
+610251,CATHER,367,Above Average,Average,Organized,34.2,Yes,Generally Accessible,40th,39th,,,
+610252,DETT,368,Below Average,Far Below Average,Partially Organized,33.7,Yes,Generally Accessible,3rd,3rd,,,
+610254,DVORAK,459,Average,Far Below Average,Organized,38.5,Yes,Generally Accessible,4th,3rd,,,
+610256,ROBINSON,141,Below Average,Far Below Average,Not Enough Data,29,Yes,No/Unknown Accessibility,9th,6th,,,
+610257,MORTON,341,Below Average,Average,Partially Organized,35.1,Yes,Generally Accessible,20th,70th,,,
+610263,DULLES,737,Average,Far Below Average,Not Yet Organized,38,Yes,Generally Accessible,1st,4th,,,
+610268,ASHE,329,Below Average,Below Average,Moderately Organized,50.7,Yes,No/Unknown Accessibility,9th,11th,,,
+610269,MCCUTCHEON,437,Far Above Average,Above Average,Well Organized,63.9,Yes,No/Unknown Accessibility,69th,75th,,,
+610271,JENSEN,475,Above Average,Below Average,Well Organized,33.9,Yes,Generally Accessible,25th,31st,,,
+610274,JOHNSON,509,Below Average,Below Average,Organized,25.5,Yes,Generally Accessible,21st,28th,,,
+610276,MOLLISON,415,Average,Below Average,Not Yet Organized,27.8,Yes,Generally Accessible,7th,20th,,,
+610279,TANNER,380,Above Average,Below Average,Well Organized,39.8,Yes,Generally Accessible,33rd,25th,,,
+610281,POWELL,558,No Data Available,Average,Well Organized,41.6,Yes,No/Unknown Accessibility,50th,69th,,,
+610282,MCNAIR,421,Below Average,Far Below Average,Well Organized,35.1,Yes,Fully Accessible,9th,5th,,,
+610284,NEW FIELD,590,Far Above Average,Above Average,Not Yet Organized,16.7,Yes,Fully Accessible,56th,76th,,,
+610287,ASHBURN,482,Average,Average,Well Organized,17.1,Yes,No/Unknown Accessibility,52nd,46th,,,
+610290,MAYS,491,Average,Below Average,Organized,45.1,Yes,Generally Accessible,14th,19th,,,
+610291,LEE,875,Above Average,Average,Well Organized,8.1,Yes,No/Unknown Accessibility,52nd,51st,,,
+610293,MELODY,589,Below Average,Far Below Average,Organized,26.9,Yes,No/Unknown Accessibility,9th,5th,,,
+610295,HIGGINS,311,Average,Average,Partially Organized,22,Yes,No/Unknown Accessibility,59th,44th,,,
+610298,LENART,294,Far Above Average,Far Above Average,Partially Organized,2.7,No,Generally Accessible,99th,99th,,,
+610299,KING ES,240,Average,Far Below Average,Organized,43.7,Yes,No/Unknown Accessibility,7th,6th,,,
+610300,WESTCOTT,390,Average,Below Average,Organized,26.9,Yes,No/Unknown Accessibility,10th,12th,,,
+610304,PHOENIX MILITARY HS,517,Average,Average,Well Organized,6.9,Yes,Generally Accessible,,,19.3,84.9,53.4
+610305,LELAND,589,Below Average,Far Below Average,Partially Organized,41.4,Yes,Generally Accessible,7th,6th,,,
+610308,RUDOLPH,103,No Data Available,No Data Available,Well Organized,,No,Generally Accessible,,,,,
+610312,MCDOWELL,182,Above Average,Above Average,Well Organized,21.4,Yes,Generally Accessible,76th,64th,,,
+610313,DE DIEGO,689,Below Average,Below Average,Not Yet Organized,13.7,Yes,No/Unknown Accessibility,26th,16th,,,
+610315,WHITE,194,Average,Below Average,Not Enough Data,44.4,Yes,No/Unknown Accessibility,25th,38th,,,
+610316,EARHART,262,Above Average,Far Above Average,Well Organized,6.6,Yes,Generally Accessible,93rd,89th,,,
+610317,BRIGHTON PARK,518,Below Average,Below Average,Partially Organized,9.8,Yes,Generally Accessible,29th,35th,,,
+610319,EVERGREEN,319,Above Average,Average,Well Organized,15,Yes,Generally Accessible,72nd,37th,,,
+610321,MARSHALL MIDDLE,57,Average,Above Average,Organized,14,Yes,No/Unknown Accessibility,42nd,79th,,,
+610323,BOWEN HS,359,Below Average,Far Below Average,Well Organized,68.1,Yes,Generally Accessible,,,14.8,63.3,37.8
+610325,LOGANDALE,836,Above Average,Average,Moderately Organized,30.8,Yes,No/Unknown Accessibility,31st,58th,,,
+610329,OROZCO,576,Average,Above Average,Not Yet Organized,5.8,Yes,Fully Accessible,80th,75th,,,
+610334,RABY HS,473,Far Below Average,Far Below Average,Partially Organized,12.9,Yes,Generally Accessible,,,14.8,61.9,54.4
+610339,STAGG,503,Below Average,Below Average,Not Yet Organized,25.5,Yes,No/Unknown Accessibility,16th,20th,,,
+610340,CHICAGO ACADEMY HS,542,Average,Average,Partially Organized,4.5,No,Fully Accessible,,,17.8,81.7,73.3
+610342,SABIN,591,Above Average,Above Average,Well Organized,8.6,Yes,No/Unknown Accessibility,49th,75th,,,
+610345,WOODSON,386,Below Average,Far Below Average,Organized,38.5,Yes,Generally Accessible,3rd,7th,,,
+610345,WOODSON,386,Below Average,Far Below Average,Organized,38.5,Yes,Generally Accessible,3rd,7th,,,
+610347,CLAREMONT,484,Below Average,Below Average,Well Organized,43.2,Yes,Fully Accessible,11th,15th,,,
+610350,BLACK,462,Average,Above Average,Moderately Organized,4.2,Yes,No/Unknown Accessibility,82nd,54th,,,
+610352,DURKIN PARK,688,Above Average,Above Average,Well Organized,10.1,Yes,Generally Accessible,77th,69th,,,
+610353,CALMECA,812,Above Average,Average,Well Organized,11.2,Yes,Fully Accessible,41st,46th,,,
+610354,NORTH RIVER,341,Far Above Average,Above Average,Not Yet Organized,10.3,Yes,No/Unknown Accessibility,61st,86th,,,
+610355,COURTENAY,519,Average,Average,Not Yet Organized,29.1,Yes,Generally Accessible,38th,42nd,,,
+610357,SPRY HS,172,Far Below Average,Below Average,Well Organized,11.5,Yes,No/Unknown Accessibility,,,16.7,83.3,46.8
+610362,EVERS,366,Average,Average,Well Organized,16.8,Yes,No/Unknown Accessibility,45th,51st,,,
+610363,DISNEY,1619,Above Average,Far Above Average,Partially Organized,3.6,No,Generally Accessible,95th,96th,,,
+610364,DUBOIS,219,Below Average,Far Below Average,Organized,46.6,Yes,No/Unknown Accessibility,9th,7th,,,
+610366,WACKER,263,Far Above Average,Far Above Average,Well Organized,22.6,Yes,Generally Accessible,76th,92nd,,,
+610367,DEPRIEST,682,Average,Far Below Average,Well Organized,29.5,Yes,Fully Accessible,7th,5th,,,
+610368,HUGHES L,509,Average,Far Below Average,Not Yet Organized,30.1,Yes,Fully Accessible,9th,5th,,,
+610369,JACKSON M,350,Far Below Average,Far Below Average,Not Yet Organized,31.8,Yes,Fully Accessible,3rd,2nd,,,
+610380,WILLIAMS HS,263,Average,Below Average,Organized,5.6,Yes,Generally Accessible,,,17.2,89.7,83.1
+610381,BRONZEVILLE HS,447,Below Average,Below Average,Organized,13.8,Yes,Generally Accessible,,,16.4,85.4,64.4
+610383,SOCIAL JUSTICE HS,307,Below Average,Below Average,Organized,16,Yes,Fully Accessible,,,16.3,77.8,57.7
+610384,INFINITY HS,420,Average,Average,Well Organized,7.1,Yes,Fully Accessible,,,18.1,94.3,53.5
+610385,MULTICULTURAL HS,270,Average,Below Average,Organized,9.8,Yes,Fully Accessible,,,15.2,72.2,46.9
+610386,PEACE AND EDUCATION HS,111,No Data Available,Far Below Average,Well Organized,,Yes,Generally Accessible,,,14.1,,18.3
+610389,ORR HS,415,Below Average,Far Below Average,Moderately Organized,67.2,Yes,Generally Accessible,,,14.8,49.3,44
+610390,RICKOVER MILITARY HS,580,Below Average,Average,Well Organized,3.2,Yes,Generally Accessible,,,19,86.2,67.9
+610391,LINDBLOM HS,1252,Average,Above Average,Well Organized,2.5,No,Generally Accessible,99th,99th,22.6,90.8,88
+610392,WORLD LANGUAGE HS,326,Average,Below Average,Well Organized,13.7,Yes,Fully Accessible,,,16.7,82.3,46.2
+610394,UPLIFT HS,311,Below Average,Below Average,Organized,24.4,No,Generally Accessible,,,16.6,80.6,76.5
+610396,TARKINGTON,1016,Above Average,Above Average,Partially Organized,9.5,Yes,Fully Accessible,49th,76th,,,
+610402,DEVRY HS,197,Average,Average,Well Organized,1.6,No,Fully Accessible,,,21,,90.3
+610405,SUDER,415,Below Average,Average,Partially Organized,2.7,No,Generally Accessible,48th,21st,,,
+610499,COLLINS HS,347,Below Average,Below Average,Not Yet Organized,22.6,Yes,Generally Accessible,,,14.3,72.1,39.1
+610501,AUSTIN POLY HS,120,Far Below Average,Far Below Average,Moderately Organized,20.2,Yes,Generally Accessible,,,14,50.7,55
+610502,MARINE MILITARY HS,0,No Data Available,No Data Available,Not Enough Data,,Yes,Generally Accessible,,,17.4,86.8,43.8
+610503,FRAZIER PROSPECTIVE,273,Above Average,Above Average,Organized,4.3,Yes,Generally Accessible,64th,74th,,,
+610504,THOMAS,186,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,,,
+610506,TEAM HS,259,Below Average,Far Below Average,Not Yet Organized,24.5,Yes,Generally Accessible,,,14.7,71.8,74.7
+610513,AIR FORCE HS,329,Below Average,Average,Well Organized,7.6,Yes,Generally Accessible,,,18.5,84,51.4
+610515,DISNEY II ES,416,Above Average,Far Above Average,Well Organized,3.1,No,Generally Accessible,97th,96th,,,
+610518,VOISE HS,192,Below Average,Far Below Average,Not Yet Organized,21.4,Yes,Generally Accessible,,,15.4,70.9,57.5
+610520,LASALLE II,594,Far Above Average,Far Above Average,Organized,3.1,Yes,Generally Accessible,98th,97th,,,
+610521,DAVIS M,275,Above Average,Above Average,Well Organized,21.8,Yes,Fully Accessible,75th,69th,,,
+610523,EDISON PARK,549,Above Average,Far Above Average,Well Organized,5.9,Yes,Generally Accessible,95th,97th,,,
+610524,ALCOTT HS,308,Below Average,Below Average,Well Organized,8.1,No,Fully Accessible,,,17.7,77.7,61.9
+610529,OGDEN HS,712,Below Average,Average,Organized,9.5,No,Generally Accessible,,,18.4,76.9,64.1
+610530,SOUTH SHORE ES,492,Average,Below Average,Moderately Organized,15.6,Yes,Generally Accessible,21st,21st,,,
+610532,HERNANDEZ,968,Above Average,Average,Well Organized,7.8,Yes,Fully Accessible,57th,62nd,,,
+610533,PRIETO,1050,Average,Average,Organized,10.5,Yes,Fully Accessible,45th,59th,,,
+610534,SKINNER NORTH,478,Far Above Average,Far Above Average,Well Organized,3,No,Generally Accessible,99th,99th,,,
+610539,CAMRAS,1053,Average,Average,Moderately Organized,13.2,Yes,Fully Accessible,44th,37th,,,
+610541,LORCA,890,Average,Average,Organized,11,Yes,Fully Accessible,43rd,61st,,,
+610542,WEST RIDGE,779,Far Above Average,Far Above Average,Well Organized,31.2,No,No/Unknown Accessibility,90th,95th,,,
+610543,SOLORIO HS,1112,Below Average,Below Average,Well Organized,15.1,Yes,Fully Accessible,,,16.8,80.1,52.8
+610543,SOLORIO HS,1112,Below Average,Below Average,Well Organized,15.1,Yes,Fully Accessible,,,16.8,80.1,52.8
+610544,AZUELA,944,Average,Average,Moderately Organized,11.8,No,No/Unknown Accessibility,61st,65th,,,
+610547,SOUTH SHORE INTL HS,580,Below Average,Below Average,Organized,7.7,Yes,No/Unknown Accessibility,,,16.1,,
+610548,STEM,450,Above Average,Far Above Average,Organized,3,Yes,No/Unknown Accessibility,99th,99th,,,
+610555,BANNER WEST HS,303,No Data Available,Far Below Average,Moderately Organized,,No,No/Unknown Accessibility,,,13.5,,12.3
+610557,PATHWAYS - ASHBURN HS,222,Below Average,Far Below Average,Well Organized,,No,No/Unknown Accessibility,,,14.9,,25.3
+610558,GOODE HS,829,Below Average,Below Average,Moderately Organized,3.9,Yes,Fully Accessible,,,,,
+610559,SHIELDS MIDDLE,691,Above Average,Average,Moderately Organized,8.2,Yes,Fully Accessible,43rd,50th,,,
+610561,CRANE MEDICAL HS,481,No Data Available,No Data Available,Well Organized,10.5,Yes,Generally Accessible,,,,,
+610563,BACK OF THE YARDS HS,788,No Data Available,No Data Available,Well Organized,6.1,Yes,Fully Accessible,,,,,
+610564,DISNEY II HS,633,No Data Available,No Data Available,Organized,3.3,No,No/Unknown Accessibility,,,,,
+610565,CAMELOT - EXCEL ENGLEWOOD HS,273,Far Below Average,Far Below Average,Not Enough Data,,No,No/Unknown Accessibility,,,13.5,,10
+610566,MAGIC JOHNSON - N LAWNDALE HS,179,Far Below Average,Far Below Average,Organized,,No,No/Unknown Accessibility,,,15,,
+610567,MAGIC JOHNSON - ROSELAND HS,195,No Data Available,No Data Available,Partially Organized,,No,No/Unknown Accessibility,,,14.1,,
+610568,PATHWAYS - AVONDALE HS,215,No Data Available,Below Average,Partially Organized,,No,No/Unknown Accessibility,,,14.7,,19.6
+610569,OMBUDSMAN - NORTHWEST HS,254,No Data Available,No Data Available,Partially Organized,,No,No/Unknown Accessibility,,,18.7,,
+610570,OMBUDSMAN - SOUTH HS,508,Far Below Average,Far Below Average,Organized,,No,No/Unknown Accessibility,,,,,
+610571,OMBUDSMAN - WEST HS,491,No Data Available,Below Average,Partially Organized,,No,No/Unknown Accessibility,,,13.7,,13.6
+610572,CAMELOT SAFE ES,16,No Data Available,No Data Available,Organized,,No,No/Unknown Accessibility,,,,,
+610573,CAMELOT SAFE HS,18,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+610574,PROLOGUE - WINNIE MANDELA HS,88,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,13.6,,
+610580,MAGIC JOHNSON - HUMBOLDT PK HS,206,No Data Available,Far Below Average,Moderately Organized,,No,No/Unknown Accessibility,,,,,
+610581,MAGIC JOHNSON - BRAINERD HS,133,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+610582,MAGIC JOHNSON - ENGLEWOOD HS,103,No Data Available,Far Below Average,Moderately Organized,,No,No/Unknown Accessibility,,,,,
+610584,CAMELOT SAFE - GARFIELD ES,3,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+610585,CAMELOT SAFE - GARFIELD HS,11,No Data Available,No Data Available,Not Enough Data,,No,No/Unknown Accessibility,,,,,
+610587,DYETT ARTS HS,,,,,,,,,,,,

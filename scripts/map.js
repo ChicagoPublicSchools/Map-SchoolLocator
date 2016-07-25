@@ -1615,6 +1615,9 @@ function buildCompareRow(row) {
   var programs = replacePipes(allschoolsdata[row][14]);
   var typenum = allschoolsdata[row][13];
   var stcount= allschoolsdata[row][18];
+  if(typeof stcount !== "number") {
+    stcount="";
+  }
   var growth= allschoolsdata[row][19];
   var attainment= allschoolsdata[row][20];
   var culture= allschoolsdata[row][21];
