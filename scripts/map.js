@@ -11,7 +11,7 @@
 
   //var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
 
-  // new School Data merged with 2015 comparison data.
+  // new School Data merged with 2015 comparison data and 2015 Classifications.
   var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
