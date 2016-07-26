@@ -32,6 +32,7 @@
   var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
 
 
+
   var SafePassage ;
   var CHattendance ;
   var ESattendance ;
@@ -77,11 +78,10 @@
   var StreetViewLoc = null;
   var panorama = null;
   var chicago;
-  var multiBoundaryArray = [];
+  //var multiBoundaryArray = [];
 
   //schools with mulitple boundaries
-  //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
-  //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
+  var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812","609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
 
 
   var filtersForDisplay  = [];
@@ -159,7 +159,7 @@ function initializeMap() {
       { "saturation": -100 }
       ]
     }
-  ]
+  ];
 
 
     geocoder                      = new google.maps.Geocoder();
@@ -415,7 +415,7 @@ function createAutocompleteArray(d) {
 
       var sname   = (ulist[i][0]);
       var szipp   = (ulist[i][1]);
-      var ssid    = (ulist[i][4]);
+      //var ssid    = (ulist[i][4]);
       //var sclas   = (ulist[i][2]);
       //var sprog   = replacePipes(ulist[i][3]);
 
@@ -423,16 +423,15 @@ function createAutocompleteArray(d) {
       arrayforautocomplete.push(szipp);
       //arrayforautocomplete.push(sclas);
       //arrayforautocomplete.push(sprog);
-      multiBoundaryArray.push(ssid);
+      //multiBoundaryArray.push(ssid);
     }
 
 
   }else{//nothing returned
     alert("The list of schools for autocomplete could not be loaded.");
   }
-  sort_and_duplicates(multiBoundaryArray);
+  //sort_and_duplicates(multiBoundaryArray);
   sort_and_unique(arrayforautocomplete);
-
   initAutocomplete();
   searchfromurl();
 }
@@ -1615,40 +1614,43 @@ function buildCompareRow(row) {
   var programs = replacePipes(allschoolsdata[row][14]);
   var typenum = allschoolsdata[row][13];
   var stcount= allschoolsdata[row][18];
-  if(typeof stcount !== "number") {
-    stcount="";
-  }
+  // if(typeof stcount !== "number") {
+  //   stcount="";
+  // }
   var growth= allschoolsdata[row][19];
   var attainment= allschoolsdata[row][20];
   var culture= allschoolsdata[row][21];
   var graduation= allschoolsdata[row][22];
-    if(typeof graduation !== "number") {
-      graduation="";
-    }else{
-      graduation+="%";
-    }
+  if(graduation) {graduation+="%";}
+    // if(typeof graduation !== "number") {
+    //   graduation="";
+    // }else{
+    //   graduation+="%";
+    // }
   var mobility= allschoolsdata[row][23];
-    if(typeof mobility !== "number") {
-      mobility="";
-    }else{
-      mobility+="%";
-    }
-    //if(mobility) {mobility+="%";}
+  if(mobility) {mobility+="%";}
+    // if(typeof mobility !== "number") {
+    //   mobility="";
+    // }else{
+    //   mobility+="%";
+    // }
+
   var dress= allschoolsdata[row][24];
   var reading= allschoolsdata[row][25];
   //if(reading) {reading+="th";}
   var math= allschoolsdata[row][26];
   //if(math) {math+="th";}
   var ACT= allschoolsdata[row][27];
-    if(typeof ACT !== "number") {ACT="";}
+    //if(typeof ACT !== "number") {ACT="";}
   var ADA= allschoolsdata[row][28];
   var college= allschoolsdata[row][29];
-  if(typeof college !== "number") {
-    college="";
-  }else{
-    college+="%";
-  }
-  //if(college) {college+="%";}
+  if(college) {college+="%";}
+  // if(typeof college !== "number") {
+  //   college="";
+  // }else{
+  //   college+="%";
+  // }
+
 
 	$( "#btnCompareIcon"+uid ).toggleClass( "fa-square-o fa-check-square-o" );
 
@@ -3076,21 +3078,21 @@ function sort_and_unique( my_array ) {
 
 // returns duplicates
 // thanks to: http://stackoverflow.com/questions/840781/easiest-way-to-find-duplicate-values-in-a-javascript-array
-function sort_and_duplicates( name ) {
-  var uniq = name
-  .map((name) => {
-    return {count: 1, name: name}
-  })
-  .reduce((a, b) => {
-    a[b.name] = (a[b.name] || 0) + b.count
-    return a
-  }, {})
-
-  var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
-
-  //console.log(duplicates);
-  return duplicates;
-}
+// function sort_and_duplicates( name ) {
+//   var uniq = name
+//   .map((name) => {
+//     return {count: 1, name: name}
+//   })
+//   .reduce((a, b) => {
+//     a[b.name] = (a[b.name] || 0) + b.count
+//     return a
+//   }, {})
+//
+//   var duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1)
+//
+//   //console.log(duplicates);
+//   return duplicates;
+// }
 
 
 
