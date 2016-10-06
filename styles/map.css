@@ -251,7 +251,18 @@ button.compareHeart:active {background-color: transparent;
 
 .cpslogo img { height:76px; }
 
-
+#btnExportCompare, #btnEmailCompare {
+  background-color: transparent;
+  color:#fff;
+  padding: 0px 5px;
+  line-height: 1.3em;
+  font-size: .6em;
+}
+#btnExportCompare:focus, #btnExportCompare:active, #btnExportCompare:hover,
+#btnEmailCompare:focus, #btnEmailCompare:active, #btnEmailCompare:hover,
+ {
+  color:#ddd;
+}
 
 /* mobile screen ////////////////////////////////////////////////////////*/
 @media (max-width: 767px) {

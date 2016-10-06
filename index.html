@@ -33,21 +33,24 @@
     <script src="http://www.google.com/jsapi"></script>
 
     <script src="scripts/jquery-1.11.1.min.js"></script>
-    <script src="scripts/map.js?v=2.8" ></script>
+    <script src="scripts/map.js?v=2.92" ></script>
 	  <script src="scripts/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
     <!-- hopscotch feature tour -->
     <script src="scripts/hopscotch-dist/js/hopscotch.min.js"></script>
-    <script src="scripts/maptour1.js?v=2.8"></script>
+    <script src="scripts/maptour1.js?v=2.92"></script>
     <link rel="stylesheet" href="scripts/hopscotch-dist/css/hopscotch.min.css" />
 
 
     <!--only for autocomplete and slide -->
     <script src="scripts/jqueryui/jquery-ui.js"></script>
 
-    <!-- analytics and overlay hover -->
+    <!-- analytics and fusiontips overlay hover -->
     <script src="scripts/analytics_lib.js" ></script>
-    <script src="scripts/fusiontips.js?v=2.8" ></script>
+    <script src="scripts/fusiontips.js?v=2.92" ></script>
+
+    <!-- excel export
+    <script src="scripts/jquery.table2excel.js"></script> -->
 
     <!--only for autocomplete and slide-->
     <link href="scripts/jqueryui/jquery-ui.css" rel="stylesheet">
@@ -55,7 +58,7 @@
 
     <link href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css" media="all" rel="stylesheet"  />
     <link href="scripts/font-awesome-4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" >
-    <link href="styles/map.css?v=2.8" media="all" rel="stylesheet"  />
+    <link href="styles/map.css?v=2.91" media="all" rel="stylesheet"  />
 
     <script>
       $(document).ready(function () {
@@ -1220,14 +1223,19 @@
       <div class="table-responsive" style="border:0; height: 100%;">
         <table id="tblCompare" class="table table-condensed" style="white-space: nowrap;">
           <thead>
-            <tr style="color:#FFF; background-color:#36C;">
+            <tr class="noExl" style="color:#FFF; background-color:#36C;">
               <td style="text-align:center; vertical-align: middle;">
                 <button id="btnCompare" type="button" class="btnCompare" style="color:#FFF;">
                   <i class="fa fa-chevron-circle-down fa-2x"></i>
                 </button>
               </td>
               <td colspan="17">
-                <h4>Compare Schools <i class="fa fa-check-square-o fa-lg"></i></h4>
+                <h4>Compare Schools <i class="fa fa-check-square-o fa-lg"></i>
+                <!-- <a id="btnExportCompare" onclick="exportCompareTable();"  class="btn btn-default btn-xs">
+                EXPORT (beta) <i class="fa fa-share-square" aria-hidden="true"></i></a>
+                <a id="btnEmailCompare" onclick="emailCompareTable();"  class="btn btn-default btn-xs">
+                Email (beta) <i class="fa fa-share-square" aria-hidden="true"></i></a> -->
+              </h4>
               </td>
             </tr>
             <tr style="color:#36c; background-color:#C8DAFF;">
@@ -1452,7 +1460,7 @@
 
           <div class="row backgroundfillwhite">
             <div class="col-xs-12" style="padding-bottom:10px;">
-                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.8</button>
+                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.92</button>
                   <!-- VERSION -->
                   <div id="collapseVersionModal" class="collapse backgroundfillwhite">
 
@@ -1460,6 +1468,22 @@
 
                       <div class="well">
                         <h2 id="myModalLabel">School Locator - What's New</h2>
+
+                        <h4>v2.92</h4>
+                        <p>
+                          <strong>10/6/2016</strong>
+                          - Updated School Ratings SY 2016-17.
+                        </p>
+                        <h4>v2.91</h4>
+                        <p>
+                          <strong>9/8/2016</strong>
+                          - Updated Safe Passage overlay and downloadable map PDF for SY 2016-17.
+                        </p>
+                        <h4>v2.9</h4>
+                        <p>
+                          <strong>7/25/2016</strong>
+                          - Updated Elementary, Middle, High School, Charter, IL House, IL Senate, US Congressional, and Wards Overlays for 2016-17. School Compare feature and School Classifications are using 2015 data until new data is acquired.
+                        </p>
                         <h4>v2.8</h4>
                         <p>
                           <strong>5/1/2016</strong>
@@ -1593,13 +1617,17 @@
           </div>
 
           <div class="row backgroundfillwhite">
-              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
                 <a class="btn btn-default col-xs-12"  href="https://docs.google.com/a/cps.edu/spreadsheet/viewform?fromEmail=true&formkey=dFpRZDdPb3E2UW5jekNRZTBUWGNVNEE6MQ" target="_new">Send Feedback</a>
               </div>
-              <div class="col-xs-12 col-sm-6" style="padding-bottom:10px;">
-                <a class="btn btn-default col-xs-12 btnPDF" href="docs/CPS_School_Locations_SY15-16.pdf" download="CPS_School_Locations_SY15-16" target="_new">Download Map PDF</a>
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12 btnPDF" href="docs/CPS_School_Locations_SY16-17.pdf" download="CPS_School_Locations_SY16-17" target="_new">Download Map PDF</a>
+              </div>
+              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12" href="https://www.google.com/fusiontables/DataSource?docid=1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" target="_blank">View Underlying Data</a>
               </div>
           </div>
+
 
           <div class="row backgroundfillwhite">
             <div class="col-xs-12">

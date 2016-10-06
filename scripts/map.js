@@ -9,22 +9,30 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  var fusionTableId         = "1WhraEx0lq2fHImDmxFUw5Mhmf9ydUwFeyRrXM8Uh" ;  //SchoolData2015-Nov
+// new School Data merged with 2015 comparison data and 2015 Classifications.
+//var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
 
-  var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries
-  var SafePassageTableID    = "19IrE1B6ibYVtK9zA94ooofShtyMO09RWZkwQy6bL" ;  //  2015
-  var CHattendanceTableId   = "1UONnmNejdWRD7Rsx3gXsVqaNRlDlbyeHt_qfcd29" ;  //  2015
-  var ESattendanceTableId   = "1Ps63lWfnUUqe35gWUKBz06_hTsUidyakdzw-9-Yw" ;  //  2015
-  var MSattendanceTableId   = "1oB0SNqTijvZKcgpM9kkvnvmOvx_0UQwtEiE9cByh" ;  //  2015
-  var HSattendanceTableId   = "13Xmr3Th6C7J-YTquYDfUKIpOsPrcYIsPjbCcT_1C" ;  //  2015
+// new School Ratings
+  var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
+
+
+
+  var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-  var TiersTableId          = "1etFYRR2R06EizafwMo-zDsNb-xEkSsDV_sLIZxfB" ;  //2015
-  var ILhouseTableId        = "1uGeAQe0OcryHJz-g-ftIgYe26XB4pAUBm8i4V51W" ;
-  var ILsenateTableId       = "1-zs6vZFYizO9UE8J6BiyiTL0UqczNnoKYdX95HZR" ;
-  var UScongTableId         = "1IH9gZVtOhcI8DR6wJZbXlMN5wbzucr9SU38fkVjU" ;
-  var WardsTableId          = "1EHL3IkwTglYo9VwDowSmAT7bH-Ulv1bgpEXa_n1P" ;
+  var TiersTableId          = "1etFYRR2R06EizafwMo-zDsNb-xEkSsDV_sLIZxfB" ;  // 2015
+
+  var SafePassageTableID    = "1rlKxhXV1bOzde9US9Wa9iS_chHOqsc-YIHUi9Xmc" ;  //  2016
+  var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
+  var ESattendanceTableId   = "1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-" ;  //  2016
+  var MSattendanceTableId   = "1zv2fI3v0CxkRIrn-AYujwXq1ljcq6uGOtyGYlN8F" ;  //  2016
+  var HSattendanceTableId   = "1NXIcj0Eo65MNv-wczBoEMcovlsIJ1p66CfeP8JFV" ;  //  2016
+  var ILhouseTableId        = "1lvfheusomCd7Sh72GvFn23JVDQFhoNYQuUGI_JOQ" ;  //  2016
+  var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
+  var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
+  var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
+
 
   var SafePassage ;
   var CHattendance ;
@@ -71,9 +79,13 @@
   var StreetViewLoc = null;
   var panorama = null;
   var chicago;
+  var multiBoundaryArray = [];
+
   //schools with mulitple boundaries
-  var multiBoundaryArray = ["609694","609716","609741","609756","609779","609812","609833","609883",
-                            "609887","609928","610002","610142","610218","610345","610543"];
+  //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
+  //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
+
+
   var filtersForDisplay  = [];
 
 function initializeMap() {
@@ -149,70 +161,8 @@ function initializeMap() {
       { "saturation": -100 }
       ]
     }
-  ]
-  //var grayStyles = [
-    // {
-    //   "featureType": "road",
-    //   "elementType": "geometry.fill",
-    //   "stylers": [
-    //   { "lightness": 1 },
-    //   { "saturation": -100 }
-    //   ]
-    // },{
-    //   "featureType": "road.highway.controlled_access",
-    //   "elementType": "geometry.stroke",
-    //   "stylers": [
-    //   { "saturation": -100 },
-    //   { "visibility": "off" }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "geometry.stroke",
-    //   "stylers": [
-    //   { "visibility": "off" }
-    //   ]
-    // },{
-    //   "featureType": "road.local",
-    //   "elementType": "geometry.fill",
-    //   "stylers": [
-    //   { "color": "#808080" },
-    //   { "lightness": 50 }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "labels.text.stroke",
-    //   "stylers": [
-    //   { "saturation": -100 },
-    //   { "gamma": 9.91 }
-    //   ]
-    // },{
-    //   "featureType": "landscape",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // },{
-    //   "featureType": "administrative",
-    //   "stylers": [
-    //   { "visibility": "on" }
-    //   ]
-    // },{
-    //   "featureType": "poi",
-    //   "stylers": [
-    //   { "saturation": -50 }
-    //   ]
-    // },{
-    //   "featureType": "road",
-    //   "elementType": "labels",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // },{
-    //   "featureType": "transit",
-    //   "stylers": [
-    //   { "saturation": -70 }
-    //   ]
-    // }
-    //];
+  ];
+
 
     geocoder                      = new google.maps.Geocoder();
     chicago                       = new google.maps.LatLng(41.88, -87.68);
@@ -395,9 +345,9 @@ function clearMapFilters() {
 // Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT ACT ADA College
 
 // Runs after the map is initialized
-// Populate the autocomplete array
+// Populate the autocomplete array and the multiBoundaryArray
 function queryForAutocomplete(){
- var query = "SELECT School, Zip, Classification, ProgramType FROM " + fusionTableId ;
+ var query = "SELECT School, Zip, Classification, ProgramType, ID FROM " + fusionTableId ;
  encodeQuery(query, createAutocompleteArray);
 }
 
@@ -459,7 +409,8 @@ function createAutocompleteArrayPhil(d) {
 // create array for autocomplete
 function createAutocompleteArray(d) {
   if( d.rows != null ) {
-
+    var multiBoundaryArrayHolder = [];
+    var arrayforautocompleteHolder = [];
     var ulist     = d.rows;
     var ulistlength = d.rows.length;
 
@@ -467,21 +418,26 @@ function createAutocompleteArray(d) {
 
       var sname   = (ulist[i][0]);
       var szipp   = (ulist[i][1]);
+      var ssid    = (ulist[i][4]);
       //var sclas   = (ulist[i][2]);
       //var sprog   = replacePipes(ulist[i][3]);
 
-      arrayforautocomplete.push(sname);
-      arrayforautocomplete.push(szipp);
+      arrayforautocompleteHolder.push(sname);
+      arrayforautocompleteHolder.push(szipp);
       //arrayforautocomplete.push(sclas);
       //arrayforautocomplete.push(sprog);
+      multiBoundaryArrayHolder.push(ssid);
     }
 
 
   }else{//nothing returned
     alert("The list of schools for autocomplete could not be loaded.");
   }
+  multiBoundaryArray = return_duplicates(multiBoundaryArrayHolder);
+  //console.log(multiBoundaryArray);
 
-  sort_and_unique(arrayforautocomplete);
+  arrayforautocomplete = sort_and_unique(arrayforautocompleteHolder);
+
   initAutocomplete();
   searchfromurl();
 }
@@ -1486,10 +1442,6 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
     contents += " <b>Grades Served: </b>" + grades.substring(1) + "<br>"
   }
 
-  if(name === "DYETT ARTS HS") {
-    contents += " <b>Note:</b> " +
-    " On July 1, 2016, Dyett High School for the Arts will open at 555 East 51st Street as an open enrollment neighborhood high school with an arts program and a technology lab and training enter. Beginning in the fall of 2016, Dyett will welcome an incoming 9th grade class, and will eventually serve grades 9-12 by the fall of 2019. Students residing within the school attendance boundary are entitled to enrollment at Dyett. Students residing outside the attendance boundary may apply for any available seats through the guidelines set forth in the Office of Access and Enrollment's High School Guide. For more information, call (773) 535-8080 or search <a href='www.newdyett.org' target='_blank'>www.newdyett.org</a>."
-  }
   contents += "</div><div style='padding-bottom: 5px;'>"
 
   contents += "<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
@@ -1667,23 +1619,53 @@ function buildCompareRow(row) {
   var rating = allschoolsdata[row][17];
   var programs = replacePipes(allschoolsdata[row][14]);
   var typenum = allschoolsdata[row][13];
+
   var stcount= allschoolsdata[row][18];
+    // if(typeof stcount !== "number") {
+    //   stcount="";
+    // }
+
   var growth= allschoolsdata[row][19];
   var attainment= allschoolsdata[row][20];
   var culture= allschoolsdata[row][21];
+
   var graduation= allschoolsdata[row][22];
-      if(graduation) {graduation+="%";}
+  if(graduation) {graduation+="%";}
+    // if(typeof graduation !== "number") {
+    //   graduation="";
+    // }else{
+    //   graduation+="%";
+    // }
+
   var mobility= allschoolsdata[row][23];
-      if(mobility) {mobility+="%";}
+  if(mobility) {mobility+="%";}
+    // if(typeof mobility !== "number") {
+    //   mobility="";
+    // }else{
+    //   mobility+="%";
+    // }
+
   var dress= allschoolsdata[row][24];
+
   var reading= allschoolsdata[row][25];
   //if(reading) {reading+="th";}
+
   var math= allschoolsdata[row][26];
   //if(math) {math+="th";}
+
   var ACT= allschoolsdata[row][27];
+    //if(typeof ACT !== "number") {ACT="";}
+
   var ADA= allschoolsdata[row][28];
+
   var college= allschoolsdata[row][29];
-      if(college) {college+="%";}
+  if(college) {college+="%";}
+  // if(typeof college !== "number") {
+  //   college="";
+  // }else{
+  //   college+="%";
+  // }
+
 
 	$( "#btnCompareIcon"+uid ).toggleClass( "fa-square-o fa-check-square-o" );
 
@@ -3109,6 +3091,27 @@ function sort_and_unique( my_array ) {
 }
 
 
+
+// returns duplicates
+// thanks to: http://stackoverflow.com/questions/840781/easiest-way-to-find-duplicate-values-in-a-javascript-array
+function return_duplicates( arr ) {
+  var len=arr.length,
+      out=[],
+      counts={};
+
+  for (var i=0;i<len;i++) {
+    var item = arr[i];
+    counts[item] = counts[item] >= 1 ? counts[item] + 1 : 1;
+    if (counts[item] === 2) {
+      out.push(item);
+    }
+  }
+  //console.log(out);
+  return out;
+}
+
+
+
 function addCommas(nStr) {
   nStr += '';
   x = nStr.split('.');
@@ -3338,3 +3341,28 @@ function getColors(type){
   }
   return [headcolor, bkgcolor]
 }
+
+
+
+function exportCompareTable(){
+  alert("Export using Chrome or Firefox broswers.")
+	  $("#tblCompare").table2excel({
+	    // exclude CSS class
+	    exclude: ".noExl",
+	    name: "CompareSchools",
+	    filename: "CPS-CompareSchools" //do not include extension
+	  });
+	}
+
+
+//
+function emailCompareTable(){
+  //alert("Email using Chrome or Firefox broswers.")
+  var email = '';
+  var subject = 'CPS-CompareSchools';
+  var emailBody = $("#tblCompare").text();
+  //var attach = 'path';
+  window.location.href = "mailto:"+email+"?subject="+subject+"&body="+emailBody ;
+  //+"?attach="+attach;
+
+	}
