@@ -21,7 +21,7 @@
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-  var TiersTableId          = "1etFYRR2R06EizafwMo-zDsNb-xEkSsDV_sLIZxfB" ;  // 2015
+
 
   var SafePassageTableID    = "1rlKxhXV1bOzde9US9Wa9iS_chHOqsc-YIHUi9Xmc" ;  //  2016
   var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
@@ -32,6 +32,8 @@
   var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
   var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
   var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
+  var TiersTableId          = "17dekfhiMcuMseVMI6qNIxhvtcOIb8RqsYfqgYyHg" ;  //  2016
+
 
 
   var SafePassage ;
@@ -2489,7 +2491,7 @@ function initTiers() {
 
   Tiers.setMap(map);
   Tiers.enableMapTips({
-    select: "'Tier 2015'", // list of columns to query, typially need only one column.
+    select: "'Tier 2016'", // list of columns to query, typially need only one column.
     from: TiersTableId, // fusion table name
     geometryColumn: 'geometry', // geometry column name
     suppressMapTips: false, // optional, whether to show map tips. default false
