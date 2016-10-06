@@ -9,8 +9,13 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  // new School Data merged with 2015 comparison data and 2015 Classifications.
-  var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
+// new School Data merged with 2015 comparison data and 2015 Classifications.
+//var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
+
+// new School Ratings
+  var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
+
+
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
