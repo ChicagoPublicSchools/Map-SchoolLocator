@@ -101,6 +101,18 @@
         $(document).on("click", "button.btnFAQ", function() {
           _trackClickEventWithGA("Click", "Info", "FAQ");
         });
+        $(document).on("click", "button.btnGitHub", function() {
+          _trackClickEventWithGA("Click", "Info", "GitHub");
+        });
+        $(document).on("click", "button.btnFusionTable", function() {
+          _trackClickEventWithGA("Click", "Info", "btnFusionTable");
+        });
+        $(document).on("click", "button.btnVersionNotes", function() {
+          _trackClickEventWithGA("Click", "Info", "btnVersionNotes");
+        });
+        $(document).on("click", "button.btnSendFeedback", function() {
+          _trackClickEventWithGA("Click", "Info", "btnSendFeedback");
+        });
 
 
 
@@ -1460,7 +1472,7 @@
 
           <div class="row backgroundfillwhite">
             <div class="col-xs-12" style="padding-bottom:10px;">
-                <button type="button" class="btn btn-default col-xs-12" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.92</button>
+                <button type="button" class="btn btn-default col-xs-12 btnVersionNotes" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">Version Notes 2.92</button>
                   <!-- VERSION -->
                   <div id="collapseVersionModal" class="collapse backgroundfillwhite">
 
@@ -1617,16 +1629,24 @@
           </div>
 
           <div class="row backgroundfillwhite">
-              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
-                <a class="btn btn-default col-xs-12"  href="https://docs.google.com/a/cps.edu/spreadsheet/viewform?fromEmail=true&formkey=dFpRZDdPb3E2UW5jekNRZTBUWGNVNEE6MQ" target="_new">Send Feedback</a>
+              <div class="col-xs-12 col-lg-6" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12 btnSendFeedback"  href="https://docs.google.com/a/cps.edu/spreadsheet/viewform?fromEmail=true&formkey=dFpRZDdPb3E2UW5jekNRZTBUWGNVNEE6MQ" target="_new">Send Feedback</a>
               </div>
-              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
+              <div class="col-xs-12 col-lg-6" style="padding-bottom:10px;">
                 <a class="btn btn-default col-xs-12 btnPDF" href="docs/CPS_School_Locations_SY16-17.pdf" download="CPS_School_Locations_SY16-17" target="_new">Download Map PDF</a>
               </div>
-              <div class="col-xs-12 col-lg-4" style="padding-bottom:10px;">
-                <a class="btn btn-default col-xs-12" href="https://www.google.com/fusiontables/DataSource?docid=1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" target="_blank">View Underlying Data</a>
-              </div>
           </div>
+
+          <div class="row backgroundfillwhite">
+            <div class="col-xs-12 col-lg-6" style="padding-bottom:10px;">
+              <a class="btn btn-default col-xs-12 btnFusionTable" href="https://www.google.com/fusiontables/DataSource?docid=1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" target="_blank">View Underlying Data</a>
+            </div>
+              <div class="col-xs-12 col-lg-6" style="padding-bottom:10px;">
+                <a class="btn btn-default col-xs-12 btnGitHub" href="https://github.com/ChicagoPublicSchools/Map-SchoolLocator" target="_new">View GitHub Repository</a>
+              </div>
+
+          </div>
+
 
 
           <div class="row backgroundfillwhite">
