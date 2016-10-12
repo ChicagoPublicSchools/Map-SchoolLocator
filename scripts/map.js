@@ -70,7 +70,7 @@
   var zipcodeboundary       = null; // for passing the zip
   var geoaddress            = null; // geocoded pin placement address
   var radiusLoc             = null;
-  var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8";
+  var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //with restriction
   var googleAPIurl          = "https://www.googleapis.com/fusiontables/v1/query";
   var APIurl                = "http://localhost/SchoolProfile/dataservice.asmx";
   var arrayforautocomplete =[];
