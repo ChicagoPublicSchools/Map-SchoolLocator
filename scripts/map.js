@@ -14,15 +14,10 @@
 
 // new School Ratings
   var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
-
-
-
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-
-
   var SafePassageTableID    = "1rlKxhXV1bOzde9US9Wa9iS_chHOqsc-YIHUi9Xmc" ;  //  2016
   var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
   var ESattendanceTableId   = "1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-" ;  //  2016
@@ -70,7 +65,8 @@
   var zipcodeboundary       = null; // for passing the zip
   var geoaddress            = null; // geocoded pin placement address
   var radiusLoc             = null;
-  var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //with restriction
+  var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
+  //var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
   var googleAPIurl          = "https://www.googleapis.com/fusiontables/v1/query";
   var APIurl                = "http://localhost/SchoolProfile/dataservice.asmx";
   var arrayforautocomplete =[];
@@ -485,28 +481,34 @@ function initAutocomplete() {
 
 // runs after the autocompleteArray is created
 // From Profile pages, URL search:  ?Schools=610212;609848;609774;609695
-// From Early Childhood:            ?ECP
+// From Early Childhood:            ?ECP // ECP is depricated
+// From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622
 // Looks at URL for ? and determines what to display
 function searchfromurl() {
 
   var pageurl = top.location.href
   var x = pageurl.split('?')[1];
   if(x === "ECP"){ // Early Childhood Program
-    _trackClickEventWithGA("Search", "URL", "Show All Early Childhood Programs");
-    //searchtype = "ecp";
-    // var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
-    //                       " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-    //                       " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College"+
-    //                       " FROM " + fusionTableId + " WHERE ProgramType CONTAINS 'Early_Childhood_Program||' ";
-    // encodeQuery(query, resultListBuilder);
-
-     searchtype = "ecp";//early childhood program
-     $("#pt10").prop("checked", true);
-     filteredSearch();
+     $('#ECPmodal').modal('show');
     return;
   }
+
+  if(x != undefined){
+    var i = x.split('=')[0];
+    var y = x.split('=')[1];
+    if(i === "Address"){
+      _trackClickEventWithGA("Search", "URL", "Address");
+      console.log(i);
+      var nAddress = y.replace(/\+/g, " ");
+      $("#autocomplete").val(nAddress);
+       searchInputField();
+      return;
+    }
+  }
+
   var q = pageurl.split('=')[1];
   if(q != undefined){
+
     var schoollist = [];
     q = q.split(';');
     for(var i = 0; i < q.length; i++){

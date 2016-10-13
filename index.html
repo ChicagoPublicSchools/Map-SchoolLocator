@@ -28,7 +28,8 @@
     <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&callback=initializeMap"
         async defer></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&libraries=visualization"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&libraries=visualization"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"></script>
 
     <script src="http://www.google.com/jsapi"></script>
 
@@ -282,6 +283,9 @@
   </head>
 
   <body>
+
+
+
     <a id="btnCPSedu" href="http://cps.edu" target="_blank" class="cpslogo">
       <img class="hidden-xs" src="images/cpslogo.png"  />
       <img class="visible-xs-block" src="images/cpslogo2.png"  />
@@ -777,7 +781,7 @@
                 </div>
               </div>
 
-              <div class="panel panel-default panel-filtered">
+              <div class="panel panel-default panel-filtered hidden">
                 <div class="panel-heading" role="tab" id="headingFourFiltered">
                   <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#filteraccordion" href="#collapseFourFiltered" aria-expanded="false" aria-controls="collapseFour">
@@ -1935,6 +1939,25 @@
             </span>
           </button>
     </div>
+
+
+    <div class="modal fade" id="ECPmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Early Childhood Programs</h4>
+          </div>
+          <div class="modal-body">
+            Please visit <a href='https://chicagoearlylearning.org/' target='_blank'>Chicago Early Learning</a> for early childhood programs.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 
     <script>
