@@ -65,8 +65,8 @@
   var zipcodeboundary       = null; // for passing the zip
   var geoaddress            = null; // geocoded pin placement address
   var radiusLoc             = null;
-  var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
-  //var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
+  //var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
+  var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
   var googleAPIurl          = "https://www.googleapis.com/fusiontables/v1/query";
   var APIurl                = "http://localhost/SchoolProfile/dataservice.asmx";
   var arrayforautocomplete =[];
@@ -479,11 +479,12 @@ function initAutocomplete() {
 }
 
 
-// runs after the autocompleteArray is created
+// Runs after the autocompleteArray is created
+// Looks at URL for ? and determines what to display
 // From Profile pages, URL search:  ?Schools=610212;609848;609774;609695
 // From Early Childhood:            ?ECP // ECP is depricated
 // From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622
-// Looks at URL for ? and determines what to display
+// To show all schools              ?Address=
 function searchfromurl() {
 
   var pageurl = top.location.href
@@ -498,7 +499,6 @@ function searchfromurl() {
     var y = x.split('=')[1];
     if(i === "Address"){
       _trackClickEventWithGA("Search", "URL", "Address");
-      console.log(i);
       var nAddress = y.replace(/\+/g, " ");
       $("#autocomplete").val(nAddress);
        searchInputField();
