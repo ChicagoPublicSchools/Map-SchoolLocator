@@ -65,8 +65,8 @@
   var zipcodeboundary       = null; // for passing the zip
   var geoaddress            = null; // geocoded pin placement address
   var radiusLoc             = null;
-  //var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
-  var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
+  var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
+  //var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
   var googleAPIurl          = "https://www.googleapis.com/fusiontables/v1/query";
   var APIurl                = "http://localhost/SchoolProfile/dataservice.asmx";
   var arrayforautocomplete =[];
@@ -78,7 +78,7 @@
   var panorama = null;
   var chicago;
   var multiBoundaryArray = [];
-
+  var hsonly = 0;
   //schools with mulitple boundaries
   //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
   //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
@@ -483,7 +483,7 @@ function initAutocomplete() {
 // Looks at URL for ? and determines what to display
 // From Profile pages, URL search:  ?Schools=610212;609848;609774;609695
 // From Early Childhood:            ?ECP // ECP is depricated
-// From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622
+// From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622&Type=HS
 // To show all schools              ?Address=
 function searchfromurl() {
 
@@ -495,11 +495,20 @@ function searchfromurl() {
   }
 
   if(x != undefined){
-    var i = x.split('=')[0];
-    var y = x.split('=')[1];
+    var a = x.split('=')[0];
+    var b = x.split('=')[1];
+    var c = x.split('&')[1];
+    var d = c.split('=')[1];
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(d);
+
     if(i === "Address"){
+
+      hsonly=1;
       _trackClickEventWithGA("Search", "URL", "Address");
-      var nAddress = y.replace(/\+/g, " ");
+      var nAddress = b.replace(/\+/g, " ");
       $("#autocomplete").val(nAddress);
        searchInputField();
       return;
@@ -614,7 +623,6 @@ function searchInputField() {
 
 
 // called when user selects a filter and clicks the Update button
-// called from the ?ECP url search
 function filteredSearch() {
   if (searchtype == "zip") {
     var theInput = $.trim( $("#autocomplete").val().toUpperCase() );
@@ -693,7 +701,9 @@ function addressSearch(theAddress) {
         positionMarkersOnMap();
         whereClause = " WHERE "
         whereClause += "Boundary = 'Attendance Area School' ";
-        //whereClause += " AND Boundary not equal to 'Citywide' ";
+        if (hsonly) {
+          whereClause += " AND Typenum = '3' ";
+        }
         whereClause += " AND ST_INTERSECTS('Polygon', CIRCLE(LATLNG"+results[0].geometry.location.toString() + "," + .00001 + "))";
         whereClause += " ORDER BY 'School'";
         var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
@@ -1099,9 +1109,9 @@ function resultListBuilder(d) {
 
 
     if (searchtype === "address"){
-      // display the list of neihborhood schools you can attend
-      // schools with boundaries that contain the address loc are listed
-      // display the polygons of all the neighborhood schools
+        // display the list of neihborhood schools you can attend
+        // schools with boundaries that contain the address loc are listed
+        // display the polygons of all the neighborhood schools
       $("#txtGeoLoc").html( pinloctext );
       $("#pinLocAlert").show();
       $("#resultListPoly").show();
@@ -1113,6 +1123,10 @@ function resultListBuilder(d) {
       $("#filterresults").collapse("hide");
 
       displaySchoolPolygon( row_uidarray );
+
+      // if(hsonly){
+      //   cleanURL();
+      // }
 
     } else if((searchtype !== "school") || (searchtype === "school" && numRows >1) ){
       // display the list of all schools in the query
@@ -2329,6 +2343,7 @@ function clearMapElements() {
   allD = null;
   searchtype = null;
   addrMarker = null;
+  //hsonly = 0;
 
   $("#pinLocAlert").hide();
 
