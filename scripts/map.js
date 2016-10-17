@@ -9,11 +9,9 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-// new School Data merged with 2015 comparison data and 2015 Classifications.
-//var fusionTableId         = "1DhyxEXfIN5vmnp5eLD-zhxTPV3bkqnYPHJSwLGlK" ;  //SchoolDataMerged_July2016
-
-// new School Ratings
+  // 2016-17 School Data and Ratings merged with 2015 Comparison Data and 2015 Classifications
   var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
+
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
@@ -65,8 +63,7 @@
   var zipcodeboundary       = null; // for passing the zip
   var geoaddress            = null; // geocoded pin placement address
   var radiusLoc             = null;
-  var googleAPIkey          = "AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"; //Local
-  //var googleAPIkey          = "AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"; //Production
+  var googleAPIkey          = getGoogleAPIkey();
   var googleAPIurl          = "https://www.googleapis.com/fusiontables/v1/query";
   var APIurl                = "http://localhost/SchoolProfile/dataservice.asmx";
   var arrayforautocomplete =[];
@@ -78,7 +75,7 @@
   var panorama = null;
   var chicago;
   var multiBoundaryArray = [];
-  var hsonly = 0;
+  var addressQtype = "";
   //schools with mulitple boundaries
   //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
   //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
@@ -247,6 +244,15 @@ LongPress.prototype.onMapDrag_ = function(e) {
   clearTimeout(this.timeoutId_);
 };
 
+
+function getGoogleAPIkey() {
+  var pageurl = top.location.href;
+  if(pageurl.indexOf("file:///") >=0) {
+    return ("AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"); //Local
+  }else{
+    return ("AIzaSyDPyV9JDVE0rLOHBiN4npwdhsm53GBiMuk"); //Production
+  }
+}
 
 
 // set up the boxes and radio buttons for filtering
@@ -482,69 +488,81 @@ function initAutocomplete() {
 // Runs after the autocompleteArray is created
 // Looks at URL for ? and determines what to display
 // From Profile pages, URL search:  ?Schools=610212;609848;609774;609695
-// From Early Childhood:            ?ECP // ECP is depricated
-// From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622&Type=HS
-// To show all schools              ?Address=
+// From Early Childhood:            ?ECP // ECP is deprecated
+// From external sites (HS Bound)   ?Address=1234+N+Western+Chicago+IL+60622&Type=HS/ES
+// To show all schools in district  ?Address=
 function searchfromurl() {
 
   var pageurl = top.location.href
   var x = pageurl.split('?')[1];
   if(x === "ECP"){ // Early Childhood Program
-     $('#ECPmodal').modal('show');
+    $('#ECPmodal').modal('show');
     return;
   }
-
+//debugger;
   if(x != undefined){
-    var a = x.split('=')[0];
-    var b = x.split('=')[1];
-    var c = x.split('&')[1];
-    var d = c.split('=')[1];
-    console.log(a);
-    console.log(b);
-    console.log(c);
-    console.log(d);
+    var addressLable = x.split('=')[0];   // Address or Schools
+    var b = x.split('=')[1];              // 1234+N+Western&Type or 610212;609848;609774;609695
 
-    if(i === "Address"){
+    if(addressLable === "Address") {
+      var addressContent = b.split('&')[0]; // 1234+N+Western
+      var c = x.split('&')[1];              // Look for &Type=HS/ES
 
-      hsonly=1;
-      _trackClickEventWithGA("Search", "URL", "Address");
-      var nAddress = b.replace(/\+/g, " ");
-      $("#autocomplete").val(nAddress);
-       searchInputField();
-      return;
+      if( c != undefined){
+        var typeContent = c.split('=')[1];  // HS/ES
+        if(typeContent === "HS"){
+          addressQtype="HS";
+          _trackClickEventWithGA("Search", "URL", "Address-HS");
+        }
+        if(typeContent === "ES"){
+          addressQtype="ES";
+          _trackClickEventWithGA("Search", "URL", "Address-ES");
+        }
+        // otherwise Type="" and all neihborhood schools will be displayed.
+        var addressContent = addressContent.replace(/\+/g, " ");
+        $("#autocomplete").val(addressContent);
+        searchInputField();
+        return;
+
+      }else{ //Address=
+        _trackClickEventWithGA("Search", "URL", "Address-All");
+        var addressContent = addressContent.replace(/\+/g, " ");
+        $("#autocomplete").val(addressContent);
+        searchInputField();
+        return;
+      }
     }
-  }
 
-  var q = pageurl.split('=')[1];
-  if(q != undefined){
+    if(addressLable === "Schools") {
+      if(b != undefined){
+        var schoollist = [];
+        b = b.split(';');
+        for(var i = 0; i < b.length; i++){
+          schoollist.push(b[i]);
+        }
 
-    var schoollist = [];
-    q = q.split(';');
-    for(var i = 0; i < q.length; i++){
-      schoollist.push(q[i]);
+        if(schoollist.length ===1) {
+          // url search with one result - change to school search
+          _trackClickEventWithGA("Search", "URL", "Profile Page: "+schoollist);
+          searchtype = "school";
+        }else{
+          _trackClickEventWithGA("Search", "URL", "Profile Comparison: "+schoollist);
+          // url search with more than one result
+          searchtype = "url";
+        }
+        // whereClause = filterSchools();
+        var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
+        " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
+        " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+        " FROM " + fusionTableId + "   WHERE ID IN (" + schoollist + ")"; // + whereClause;
+        encodeQuery(query, resultListBuilder);
+      }
     }
-
-    if(schoollist.length ===1) {
-      // url search with one result - change to school search
-      _trackClickEventWithGA("Search", "URL", "Profile Page: "+schoollist);
-      searchtype = "school";
-    }else{
-       _trackClickEventWithGA("Search", "URL", "Profile Comparison: "+schoollist);
-      // url search with more than one result
-      searchtype = "url";
-    }
-    // whereClause = filterSchools();
-    var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
-                          " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
-                          " FROM " + fusionTableId + "   WHERE ID IN (" + schoollist + ")"; // + whereClause;
-    encodeQuery(query, resultListBuilder);
   }else{
-    // q is undefined - not a url search
+    // not a url search
     startTour();
   }
 }
-
 
 // determines what type of search based on input
 function searchInputField() {
@@ -701,8 +719,11 @@ function addressSearch(theAddress) {
         positionMarkersOnMap();
         whereClause = " WHERE "
         whereClause += "Boundary = 'Attendance Area School' ";
-        if (hsonly) {
-          whereClause += " AND Typenum = '3' ";
+        if (addressQtype==="HS") {
+          whereClause += " AND Typenum = 3 "; //HS
+        }
+        if (addressQtype==="ES") {
+          whereClause += " AND Typenum IN (1,2) "; //ES and MS
         }
         whereClause += " AND ST_INTERSECTS('Polygon', CIRCLE(LATLNG"+results[0].geometry.location.toString() + "," + .00001 + "))";
         whereClause += " ORDER BY 'School'";
@@ -710,7 +731,7 @@ function addressSearch(theAddress) {
                           " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
                           " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
                           " FROM " + fusionTableId + whereClause;
-         //console.log(query);
+        //console.log(query);
         //encodeQuery(query, resultListHomeSchool);
         encodeQuery(query, resultListBuilder);
 
@@ -1017,7 +1038,15 @@ function resultListBuilder(d) {
     }
     if (searchtype == "address" ) {
        name = "neighborhood schools"
+       if(addressQtype !== "" ){
+         name = "neighborhood school"
+       }
     }
+
+
+
+
+
     if (searchtype == "radius" ) {
        r = $("#ddlRadius option:selected").text();
        w = " within ";
@@ -1124,9 +1153,9 @@ function resultListBuilder(d) {
 
       displaySchoolPolygon( row_uidarray );
 
-      // if(hsonly){
-      //   cleanURL();
-      // }
+      //clearURL in case it's an addressURL search
+      cleanURL();
+
 
     } else if((searchtype !== "school") || (searchtype === "school" && numRows >1) ){
       // display the list of all schools in the query
@@ -2343,7 +2372,7 @@ function clearMapElements() {
   allD = null;
   searchtype = null;
   addrMarker = null;
-  //hsonly = 0;
+
 
   $("#pinLocAlert").hide();
 
@@ -3177,6 +3206,9 @@ function cleanURL() {
     var newUrl = x;
     history.pushState(stateObject,title,newUrl);
   }
+
+   addressQtype="" ;
+
 }
 
 

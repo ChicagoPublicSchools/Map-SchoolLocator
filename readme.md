@@ -37,11 +37,13 @@ There are four types of search results:
 #### Zip Code Search
 **A Zip Code Search results in all the schools within a zip code being displayed.** If a zip code is typed and chosen from the drop-down the display lists all of the schools located with that zip code. The map shows the school locations.
 
-####URL Lookup
-**Pass in the school ID in order to target one or more schools.** The URL should end with ?Schools=609720 or for multiple schools ?Schools=609720;609678. The ?ECP query will show all schools with an Early Childhood Program.
+#### URL Lookup
+**Pass in the school ID or your address in order to target one or more schools.** The URL should end with ?Schools=609720 or for multiple schools ?Schools=609720;609678. To view your neighborhood high, middle, and elementary school options, pass in ?Address=1234+N+Western+Chicago+IL+60622. Add &Type=HS or ES to return only high or elementary neighborhood schools. City, State and Zip are not required but should be added for more accurate results.
+
+This example will return the neighborhood high school for a student residing at 1234 N Western. http://cps.edu/ScriptLibrary/Map-SchoolLocator/index.html?Address=1234+N+Western+Chicago+IL+60622&Type=HS
 
 
-#
+
 >To show all schools, click the Magnifying Glass when the input box is empty.
 
 ## Compare Schools
@@ -55,7 +57,7 @@ Filters can be applied to the results in order to narrow your search. You may ha
 1. Grade Category
 2. Performance Rating
 3. School Classification
-4. Programs Offered (more programs coming soon)
+4. Programs Offered (coming soon)
 
 ## Overlays
 An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions. For example, a zip code overlay will show boundaries for all the zip codes in Chicago. The CPS School Locator includes the following overlays:
@@ -84,7 +86,7 @@ An overlay is a transparent layer of additional information that appears on top 
 3. Illinois Senate District
 4. US Congressional District
 
-##Features
+## Features
  * Toggle between School Category and School Rating icons
  * Google Street View
  * Link to CPS School Profile
@@ -94,20 +96,19 @@ An overlay is a transparent layer of additional information that appears on top 
 
 
 
-#**How to make a School Locator for your district**
+**How to make a School Locator for your district**
 
 The code posted here is the actual code used in the CPS School Locator so it is particular to the data that is used in CPS. It is not "templetized" - it is a work in progress. It is posted here to show you how we did it and hopefully, help get you started in developing your own locator.
 
-If you have questions regarding the locator, please remember that we have limited resources - it may take us a while to respond.
 
 
-##Dependencies
+## Dependencies
  * [Google Fusion Tables](https://support.google.com/fusiontables/answer/184641)
  * [Google Maps](https://developers.google.com/maps/documentation/javascript/)
  * [jQuery](http://jquery.com/)
  * [Hopscotch](https://github.com/linkedin/hopscotch)
  * [Bootstrap](http://getbootstrap.com/)
- * [FontAwesome](http://fortawesome.github.io/Font-Awesome/)
+ * [FontAwesome](http://fontawesome.io/)
  * [FusionTips](https://github.com/derekeder/fusiontips)
 
 
