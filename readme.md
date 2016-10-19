@@ -62,29 +62,31 @@ Filters can be applied to the results in order to narrow your search. You may ha
 ## Overlays
 An overlay is a transparent layer of additional information that appears on top of the existing map to help denote specific boundaries or regions. For example, a zip code overlay will show boundaries for all the zip codes in Chicago. The CPS School Locator includes the following overlays:
 
-**Attendance Boundaries**
+**School Boundaries**
 
-1. Elementary School Attendance
-2. Middle School Attendance
-3. High School Attendance
-4. Charter School Preference Boundary
+1. [Elementary School Attendance](https://fusiontables.google.com/DataSource?docid=1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-#rows:id=1)
+2. [Middle School Attendance](https://fusiontables.google.com/DataSource?docid=1zv2fI3v0CxkRIrn-AYujwXq1ljcq6uGOtyGYlN8F#rows:id=1)
+3. [High School Attendance](https://fusiontables.google.com/DataSource?docid=1NXIcj0Eo65MNv-wczBoEMcovlsIJ1p66CfeP8JFV#rows:id=1)
+4. [Charter School Preference Boundary](https://fusiontables.google.com/DataSource?docid=1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ#rows:id=1)
+5. [Local School Council Boundary](https://fusiontables.google.com/DataSource?docid=12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe#rows:id=1)
+
 
 **Geographic Overlays**
 
-1. CPS Networks
-2. Safe Passage Routes
-3. CPS Tiers
-4. Community Areas
-5. Zip Codes
+1. [CPS Networks](https://fusiontables.google.com/DataSource?docid=1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE#rows:id=1)
+2. [Safe Passage Routes](https://fusiontables.google.com/DataSource?docid=12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe#rows:id=1)
+3. [CPS Tiers](https://fusiontables.google.com/DataSource?docid=17dekfhiMcuMseVMI6qNIxhvtcOIb8RqsYfqgYyHg#rows:id=1)
+4. [Community Areas](https://fusiontables.google.com/DataSource?docid=1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws#rows:id=1)
+5. [Zip Codes](https://fusiontables.google.com/DataSource?docid=1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM#rows:id=1)
 6. Transit
 7. Bike Paths
 
 **Political Overlays**
 
-1. Wards
-2. Illinois House District
-3. Illinois Senate District
-4. US Congressional District
+1. [Wards](https://fusiontables.google.com/DataSource?docid=1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD#rows:id=1)
+2. [Illinois House District](https://fusiontables.google.com/DataSource?docid=1lvfheusomCd7Sh72GvFn23JVDQFhoNYQuUGI_JOQ#rows:id=1)
+3. [Illinois Senate District](https://fusiontables.google.com/DataSource?docid=1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk&pli=1#rows:id=1)
+4. [US Congressional District](https://fusiontables.google.com/DataSource?docid=1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO#rows:id=1)
 
 ## Features
  * Toggle between School Category and School Rating icons
@@ -92,7 +94,7 @@ An overlay is a transparent layer of additional information that appears on top 
  * Link to CPS School Profile
  * Directions by Google
  * Introductory tour
- * LSC Boundaries button
+ * LSC Boundaries
 
 
 
