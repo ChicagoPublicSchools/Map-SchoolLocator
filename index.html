@@ -34,12 +34,12 @@
     <script src="http://www.google.com/jsapi"></script>
 
     <script src="scripts/jquery-1.11.1.min.js"></script>
-    <script src="scripts/map.js?v=2.93" ></script>
+    <script src="scripts/map.js?v=2.95" ></script>
 	  <script src="scripts/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 
     <!-- hopscotch feature tour -->
     <script src="scripts/hopscotch-dist/js/hopscotch.min.js"></script>
-    <script src="scripts/maptour1.js?v=2.93"></script>
+    <script src="scripts/maptour1.js?v=2.95"></script>
     <link rel="stylesheet" href="scripts/hopscotch-dist/css/hopscotch.min.css" />
 
 
@@ -48,7 +48,7 @@
 
     <!-- analytics and fusiontips overlay hover -->
     <script src="scripts/analytics_lib.js" ></script>
-    <script src="scripts/fusiontips.js?v=2.93" ></script>
+    <script src="scripts/fusiontips.js?v=2.95" ></script>
 
     <!-- excel export
     <script src="scripts/jquery.table2excel.js"></script> -->
@@ -330,9 +330,11 @@
           <div id="pinLocAlert" class="alert alert-info-blue alert-dismissible clearfix" role="alert" >
             <div class="col-xs-1" style="padding:0; margin-left:0; text-align: center;">
               <img class="img" style="height:30px; margin-top:10px;"
-             src="images/yellow-pin-lg.png" alt="address location"></div>
+             src="images/yellow-pin-lg.png" alt="address location">
+             <span id="txtTierLoc"></span></div>
             <div class="col-xs-10" style="line-height:1.1em; padding:2px 0 0 5px;">
               <span id="txtGeoLoc"></span>
+
             </div>
             <div class="col-xs-1" style="padding-left:0px; padding-right:5px;">
               <button type="button" class="close close-lg closepinloc"
@@ -1326,7 +1328,7 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class='comparerow'>
           </tbody>
          </table>
       </div>
@@ -1477,7 +1479,7 @@
           <div class="row backgroundfillwhite">
             <div class="col-xs-12" style="padding-bottom:10px;">
                 <button type="button" class="btn btn-default col-xs-12 btnVersionNotes" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">
-                  Version Notes 2.94</button>
+                  Version Notes 2.95</button>
                   <!-- VERSION -->
                   <div id="collapseVersionModal" class="collapse backgroundfillwhite">
 
@@ -1485,6 +1487,12 @@
 
                       <div class="well">
                         <h2 id="myModalLabel">School Locator - What's New</h2>
+                        <h4>v2.95</h4>
+                        <p>
+                          <strong>10/20/2016</strong>
+                          - Added the Tier number to the results panel (under the yellow pin icon) when an address search is executed.
+                          
+                        </p>
                         <h4>v2.94</h4>
                         <p>
                           <strong>10/17/2016</strong>

@@ -76,6 +76,7 @@
   var chicago;
   var multiBoundaryArray = [];
   var addressQtype = "";
+  var currentTier = "";
   //schools with mulitple boundaries
   //var multiBoundaryArray = ["609694","609716","609727","609741","609756","609772","609779","609812",
   //                          "609833","609883","609887","609928","609935","610002","610142","610218","610345","610543"];
@@ -735,6 +736,7 @@ function addressSearch(theAddress) {
         //encodeQuery(query, resultListHomeSchool);
         encodeQuery(query, resultListBuilder);
 
+
       } else {//geocoder status not ok
         alert("We could not find your address: " + status);
       }
@@ -788,6 +790,24 @@ function radiusSearch() {
 }
 
 
+
+// query to get the tier of the current address and display it in the results panel
+function getTiers(a) {
+  if (!a) {return}
+  var tw = " WHERE ST_INTERSECTS('geometry', CIRCLE(LATLNG"+a.toString() + "," + .00001 + "))";
+  var qw = "SELECT 'Tier 2016' FROM " + TiersTableId + tw;
+  encodeQuery(qw, sendTier);
+
+}
+
+function sendTier(d) {
+  if( d.rows != null ) {
+   currentTier = d.rows[0];
+   var currentTierText = '<br /><span style="color: #EBED72; font-size:12px;">Tier '+currentTier+'</span>';
+   $("#txtTierLoc").html( currentTierText );
+  }
+
+}
 
 function advancedsearch() {
   //searchtype = "advancedsearch";
@@ -862,6 +882,7 @@ function resultListBuilder(d) {
 
 
   if( d.rows != null ) {
+    getTiers(radiusLoc);
     allD = d;
     allschoolsdata = allD.rows;
     var rows = allD.rows;
@@ -976,7 +997,7 @@ function resultListBuilder(d) {
       // tracks the school name of the row that is clicked with google analytics
       results += "" +
       //"<div id='resultList"+marker.uid+"' class='container-fluid resultsrow' style='cursor:pointer;'  onclick='"+detailLink+"(" +i+ "); toggledetail(" +marker.uid+ "); '>" +
-      "<div id='resultList"+marker.uid+"' class='container-fluid resultsrow' style='cursor:pointer;'  onclick=' autoopeninfoAllSchools(" +i+ ","+marker.dupe+", false); toggledetail(" +marker.uid+ "); _trackClickEventWithGA(&quot;Click&quot;, &quot;Result List&quot;,&quot;" +marker.name+"&quot;);  '>" +
+      "<div id='resultList"+marker.uid+"' class='container-fluid resultsrow' style='cursor:pointer;'  onclick='autoopeninfoAllSchools(" +i+ ","+marker.dupe+", false); toggledetail(" +marker.uid+ "); _trackClickEventWithGA(&quot;Click&quot;, &quot;Result List&quot;,&quot;" +marker.name+"&quot;);  '>" +
        "<div class='row' onmouseenter='animatemarker(" +i+ ");' onmouseleave='stopanimatemarker(" +i+ ");'>" +
             "<div class='col-xs-1 ' style='padding-left:7px; padding-right:0px; margin-top:-3px;'><img src='" +marker.imagesm+ "' style='width:14px; height:20px;' /></div>" +
             "<div class='col-xs-1 ' style='padding-left:0px; padding-right:5px; margin-top:-3px;'><button style='color:"+linkcolor+ ";' type='button' class='btn btn-default btn-xs compareHeart' id='btnCompare"+marker.uid+"' onClick='buildCompareRow(" +i+ ")'>";
@@ -1042,8 +1063,6 @@ function resultListBuilder(d) {
          name = "neighborhood school"
        }
     }
-
-
 
 
 
@@ -1305,7 +1324,7 @@ function resultListBuilder(d) {
 
 
   // adds the function to the newly created rows
-  // allows the ability to click on the comapre box
+  // allows the ability to click on the compare box
   // without triggering the row click
   $('.compareHeart').click(function (e) {
         e.stopPropagation();
@@ -1345,7 +1364,9 @@ function resultListBuilder(d) {
 // ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid, Zip, Marker, Typenum, ProgramType, Lat, Long, Rating
 // Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT ACT ADA, College
 // mk = from a markerclick, used to show multi boundary msg in detail when marker is clicked.
-function autoopeninfoAllSchools(row, dupe, mk) {
+function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
+
+
   var id = allschoolsdata[row][0];
   var name = allschoolsdata[row][1];
   var address = allschoolsdata[row][2] + ", " + allschoolsdata[row][3] + ", " + allschoolsdata[row][11];
@@ -1377,6 +1398,13 @@ function autoopeninfoAllSchools(row, dupe, mk) {
   var position = new google.maps.LatLng(lat,lng);
   StreetViewLoc = new google.maps.LatLng(lat,lng);
 
+  // console.log(uid+' '+uidcompare)
+  // if (uidcompare){
+  //   if (uid != uidcompare) {
+  //     alert("This school's detail panel cannot be displayed at this time. The panel can only be displayed for schools that were on the initial search. ")
+  //     return;
+  //   }
+  // }
   populateDetailDiv(id, name, address, phone, type, classif, gradesb, grades, position, uid, pt, rating, boundary, addresssmall, stcount, growth, attainment, culture, graduation, mobility, dress, reading, math, ACT, ADA, college, dupe, mk, row );
 }
 
@@ -1640,13 +1668,12 @@ function setPerformanceRatingData() {
 }
 
 
-
+//not used?
 function toggleCompareIcon(uid) {
 
   $( "#btnCompareIcon"+uid ).toggleClass( "fa-square-o fa-check-square-o" );
   if($("#btnCompareIcon"+uid).hasClass("fa-check-square-o")) {
       compareArray.push(uid);
-	  //buildCompareRow(row);
 	  $('#btnCompareContainer').collapse("show");
     }else{
       compareArray.splice(compareArray.indexOf(uid ), 1);
@@ -1654,6 +1681,8 @@ function toggleCompareIcon(uid) {
     //console.log(compareArray);
 
 }
+
+
 
 
 function buildCompareRow(row) {
@@ -1666,16 +1695,13 @@ function buildCompareRow(row) {
   var rating = allschoolsdata[row][17];
   var programs = replacePipes(allschoolsdata[row][14]);
   var typenum = allschoolsdata[row][13];
-
   var stcount= allschoolsdata[row][18];
     // if(typeof stcount !== "number") {
     //   stcount="";
     // }
-
   var growth= allschoolsdata[row][19];
   var attainment= allschoolsdata[row][20];
   var culture= allschoolsdata[row][21];
-
   var graduation= allschoolsdata[row][22];
   if(graduation) {graduation+="%";}
     // if(typeof graduation !== "number") {
@@ -1683,7 +1709,6 @@ function buildCompareRow(row) {
     // }else{
     //   graduation+="%";
     // }
-
   var mobility= allschoolsdata[row][23];
   if(mobility) {mobility+="%";}
     // if(typeof mobility !== "number") {
@@ -1691,20 +1716,14 @@ function buildCompareRow(row) {
     // }else{
     //   mobility+="%";
     // }
-
   var dress= allschoolsdata[row][24];
-
   var reading= allschoolsdata[row][25];
   //if(reading) {reading+="th";}
-
   var math= allschoolsdata[row][26];
   //if(math) {math+="th";}
-
   var ACT= allschoolsdata[row][27];
     //if(typeof ACT !== "number") {ACT="";}
-
   var ADA= allschoolsdata[row][28];
-
   var college= allschoolsdata[row][29];
   if(college) {college+="%";}
   // if(typeof college !== "number") {
@@ -1712,7 +1731,7 @@ function buildCompareRow(row) {
   // }else{
   //   college+="%";
   // }
-
+  var dupe = isDupe(row[0])
 
 	$( "#btnCompareIcon"+uid ).toggleClass( "fa-square-o fa-check-square-o" );
 
@@ -1721,8 +1740,12 @@ function buildCompareRow(row) {
     // add the row to the table
     _trackClickEventWithGA("Click", "Compare-List", name);
     var linkcolor = getLinkColor(typenum);
-		$("<tr id='closeTR"+uid+"' style='color:"+linkcolor+ ";'>"+
-      "<td style='text-align:center;'><button id='close"+uid+"' onclick='$(this).closest(&quot;tr&quot;).remove(); toggleCompareIconClosed("+uid+");'><i class='fa fa-times'></i></button></td>"+
+		$("<tr id='closeTR"+uid+"' style='color:"+linkcolor+ "; cursor:pointer;'  " +
+      //"onclick='autoopeninfoAllSchools(" +row+ ","+dupe+", false); opendetail(" +uid+ ");  ' "+
+      //"onmouseenter='animatemarker(" +row+ ");' onmouseleave='stopanimatemarker(" +row+ ");' "+
+      //"onclick='autoopeninfoAllSchools(" +row+ ","+dupe+", false,"+uid+"); opendetail(" +uid+ ");  ' "+
+      ">"+
+      "<td style='text-align:center;'><button id='close"+uid+"' class='closeCompare' onclick='$(this).closest(&quot;tr&quot;).remove(); toggleCompareIconClosed("+uid+"); event.stopPropagation(); '><i class='fa fa-times'></i></button></td>"+
       "<td>"+name+"</td><td>"+stcount+"</td><td>"+rating+"</td><td>"+reading+"</td><td>"+math+"</td><td>"+ACT+"</td><td>"+graduation+"</td><td>"+college+"</td>"+
       "<td>"+growth+"</td><td>"+attainment+"</td><td>"+culture+"</td><td>"+mobility+"</td><td>"+dress+"</td><td>"+ADA+"</td>"+
       "<td>"+classification+"</td><td>"+phone+"</td><td>&nbsp;</td></tr>").prependTo("#tblCompare > tbody");
@@ -1781,7 +1804,8 @@ function chevronClick(btn) {
 // casuses the marker to switch to the larger image and
 // bounce for one animation cycle
 function animatemarker(markernum){
-  if( markersArray.length === 0 ){return;}
+  //if( markersArray.length === 0){return;}
+  if(!markersArray[markernum]){return;}
   if(icontype === "gradecategory") {
     var newimage = markersArray[markernum].imagelg;
   }else{
@@ -1789,7 +1813,11 @@ function animatemarker(markernum){
   }
   markersArray[markernum].setIcon(newimage);
   markersArray[markernum].setAnimation(google.maps.Animation.BOUNCE);
-  setTimeout(function(){ markersArray[markernum].setAnimation(null); }, 750);
+
+  setTimeout(function(){
+    if(!markersArray[markernum]){return;}
+    markersArray[markernum].setAnimation(null);
+   }, 750);
 
 }
 
@@ -1797,6 +1825,7 @@ function animatemarker(markernum){
 //switches to the smaller image
 function stopanimatemarker(markernum){
   //if( searchtype != "radius" ){
+  if(!markersArray[markernum]){return;}
     if(icontype == "gradecategory") {
       var newimage = markersArray[markernum].imagesm;
     }else{
@@ -1842,7 +1871,10 @@ function toggledetail(suid) {
   // adjustResultsHeight();
 }
 
-
+function opendetail(suid) {
+   $("#divDetailContainer").collapse('show');
+   $("#divResultsContainer").collapse('hide');
+}
 
 function adjustResultsHeight() {
   var mapheight = $('#map_canvas').position().top+$('#map_canvas').outerHeight(true);

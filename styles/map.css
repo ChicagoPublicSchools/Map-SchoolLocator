@@ -411,6 +411,7 @@ td .options-v
                     background-color: #fff;}
 
 .resultsrow :hover {background-color: #efefef;  }
+.comparerow :hover {background-color: #dddddd;  }
 
 
 .resultdetail {
