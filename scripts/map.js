@@ -9,8 +9,9 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  // 2016-17 School Data and Ratings merged with 2015 Comparison Data and 2015 Classifications
-  var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
+  // 2016-17 School Data and Ratings merged with 2016 Comparison Data
+  var fusionTableId         = "1VEtXQSfAFnwARm5mVxFY47a2XQZlFx10TjvJerI0" ;  //SchoolDataMerged_Nov2016
+  //var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
@@ -986,6 +987,11 @@ function resultListBuilder(d) {
       if (sgrad == "*") {
         sgrad = rows[i][8];
       }
+      //console.log(sgrad.indexOf("_"));
+      if (sgrad.indexOf("_") != -1 ) {
+        sgrad = sgrad.substring(1);
+      }
+
 
       var linkcolor = getLinkColor(stype);
 
@@ -1013,7 +1019,7 @@ function resultListBuilder(d) {
                 "<div style='color:"+linkcolor+ "; ' >"+marker.name+
                 "</div>"+
               "</div>" +
-            "<div class='col-xs-2 ' style='padding:0; color:"+linkcolor+";'>" +sgrad.substring(1)+"</div>" +
+            "<div class='col-xs-2 ' style='padding:0; color:"+linkcolor+";'>" +sgrad+"</div>" +
             "<div class='col-xs-1 ' style='padding-left:0px; margin-top:-3px;'><img src='" +marker.perfimage+ "' style='height:20px;' /></div>" +
         "</div>" +
       "</div>" ;
@@ -1507,14 +1513,25 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
     if((mk===true && dupe===true) && (searchtype!=="address")) {// from marker click - show multiple boundaries message
       contents += "Mulitple boundaries found. Click on boundaries to view grades served.<br>";
     }else{
-      contents += gradesb.substring(1) + "<br>";
+      //contents += gradesb + "<br>";
+      if (gradesb.indexOf("_") != -1) {
+        contents += gradesb.substring(1) + "<br>"; //if the ft has _ before the number
+      } else {
+        contents += gradesb + "<br>";
+      }
+
     }
 
   }else{
     contents += " <b>Boundary Grades Served: </b>No Boundary<br>"
   }
   if(grades !== "") {
-    contents += " <b>Grades Served: </b>" + grades.substring(1) + "<br>"
+    if (grades.indexOf("_") != -1) {
+      contents += " <b>Grades Served: </b>" + grades.substring(1) + "<br>"
+    } else {
+      contents += " <b>Grades Served: </b>" + grades + "<br>"
+    }
+
   }
 
   contents += "</div><div style='padding-bottom: 5px;'>"
