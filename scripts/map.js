@@ -10,7 +10,10 @@
   var searchZip             = null;
 
   // 2016-17 School Data and Ratings merged with 2016 Comparison Data
-  var fusionTableId         = "1VEtXQSfAFnwARm5mVxFY47a2XQZlFx10TjvJerI0" ;  //SchoolDataMerged_Nov2016
+
+  var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  //SchoolDataMerged_March2017 // new owner
+
+  //var fusionTableId         = "1VEtXQSfAFnwARm5mVxFY47a2XQZlFx10TjvJerI0" ;  //SchoolDataMerged_Nov2016
   //var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
