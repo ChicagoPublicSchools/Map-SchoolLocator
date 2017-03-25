@@ -29,7 +29,8 @@
   var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
   var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
   var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
-  var TiersTableId          = "17dekfhiMcuMseVMI6qNIxhvtcOIb8RqsYfqgYyHg" ;  //  2016
+  //var TiersTableId          = "17dekfhiMcuMseVMI6qNIxhvtcOIb8RqsYfqgYyHg" ;  //  2016
+  var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016 // tiers
 
 
 
