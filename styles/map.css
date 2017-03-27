@@ -62,13 +62,13 @@ body, html { height: 100%; overflow-x:hidden; /*background-color: #FFF;*/ }
 
 
 #divHelpContainer,
-#divAdvancedContainer  {position:absolute; top:0; bottom:0; right:0; ;
+#divAdvancedContainer  {position:absolute; top:0; bottom:0; right:0;
                         width:335px; z-index: 5; display:none;
                         background: transparent;  }
 
 
 #divHelp,
-#divAdvanced           {position:absolute; top:0; bottom:0; right:0;  ;
+#divAdvanced           {position:absolute; top:0; bottom:0; right:0;
                         color:#333; opacity: .90;
                         overflow-y:auto; overflow-x:hidden;
                         height:100%; width:100%; z-index: 5; }

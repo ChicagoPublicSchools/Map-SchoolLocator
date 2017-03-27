@@ -12,15 +12,11 @@
   // 2016-17 School Data and Ratings merged with 2016 Comparison Data
 
   var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  //SchoolDataMerged_March2017 // new owner
-
-  //var fusionTableId         = "1VEtXQSfAFnwARm5mVxFY47a2XQZlFx10TjvJerI0" ;  //SchoolDataMerged_Nov2016
-  //var fusionTableId         = "1fQ0J7PZIU3OSSsLAzm-MK13w82Cod7AywqRLg50l" ;  //SchoolDataMerged_Oct2016
-
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-  var SafePassageTableID    = "1rlKxhXV1bOzde9US9Wa9iS_chHOqsc-YIHUi9Xmc" ;  //  2016
+  var SafePassageTableID    = "1rMgHR1PraC3BUDoYgxlmukEUuFqTZVoRsoHnzOgG" ;  //  2016 // new owner
   var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
   var ESattendanceTableId   = "1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-" ;  //  2016
   var MSattendanceTableId   = "1zv2fI3v0CxkRIrn-AYujwXq1ljcq6uGOtyGYlN8F" ;  //  2016
@@ -29,8 +25,7 @@
   var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
   var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
   var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
-  //var TiersTableId          = "17dekfhiMcuMseVMI6qNIxhvtcOIb8RqsYfqgYyHg" ;  //  2016
-  var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016 // tiers new owner
+  var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016 // new owner
 
 
 
