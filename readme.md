@@ -1,7 +1,7 @@
 CPS School Locator
 ======
 
-Valid for School Year: 2016-17
+Valid for School Year: 2017-18
 
 ---
 
@@ -116,4 +116,4 @@ The code posted here is the actual code used in the CPS School Locator so it is 
 
 
 
-Copyright (c) 2016 Chicago Public Schools. Released under the MIT License.
+Copyright (c) 2017 Chicago Public Schools. Released under the MIT License.

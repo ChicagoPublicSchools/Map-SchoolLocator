@@ -9,23 +9,27 @@
   var searchLSCBoundary     = null;
   var searchZip             = null;
 
-  // 2016-17 School Data and Ratings merged with 2016 Comparison Data
+  // 2017-18 School Data and Ratings merged with 2017 Comparison Data
 
-  var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  //SchoolDataMerged_March2017 // new owner
+//var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  // SchoolDataMerged_March2017 // new owner
+  var fusionTableId         = "1hF-ohVx5MzvOVTQ69r99HPwAp1t8HDKRmiB3-iBa" ;  // SchoolDataMerged_August2017
+
+
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
   var SafePassageTableID    = "1rMgHR1PraC3BUDoYgxlmukEUuFqTZVoRsoHnzOgG" ;  //  2016 // new owner
   var CHattendanceTableId   = "1VjPpibBwSQofLDVc9bJglve1shJnJ4aedwtJKNbZ" ;  //  2016
-  var ESattendanceTableId   = "1nk2zVa4Nff9MlV5txIkjHbB_XXF0uaXXaVem6bf-" ;  //  2016
-  var MSattendanceTableId   = "1zv2fI3v0CxkRIrn-AYujwXq1ljcq6uGOtyGYlN8F" ;  //  2016
-  var HSattendanceTableId   = "1NXIcj0Eo65MNv-wczBoEMcovlsIJ1p66CfeP8JFV" ;  //  2016
-  var ILhouseTableId        = "1lvfheusomCd7Sh72GvFn23JVDQFhoNYQuUGI_JOQ" ;  //  2016
-  var ILsenateTableId       = "1H7my_qI1_hNeMuqUJcYhBUWzCjvdaJeBaiV6CkCk" ;  //  2016
-  var UScongTableId         = "1xaQnriJ9YuF9wqj_lnk_OPVeOnYb4NEYMt-b71WO" ;  //  2016
-  var WardsTableId          = "1vKuFogOwwJ2YdXOVHLxbqy6Uc7ILpIbRePGK2GoD" ;  //  2016
   var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016 // new owner
+
+  var ESattendanceTableId   = "1l3hIcuMMykh84WhqZqpAFkR9mA153Ciu3AUYpH1F" ;  //  2017
+  var MSattendanceTableId   = "1u889YvI7BmIyCl1q5fiG5h3KMKKGj2qhDKfVVF3U" ;  //  2017
+  var HSattendanceTableId   = "12LEhnOwOLOryT8V4KwaKztexyGoWYI5nxm3g2FWh" ;  //  2017
+  var ILhouseTableId        = "159V9gvYipig2O_ZS4fL7icjP9-imRqJtt4EZM7yb" ;  //  2017
+  var ILsenateTableId       = "1eNwHPn062cvhzsulHoKS1MpR0U14jl0UBcRwFDOV" ;  //  2017
+  var UScongTableId         = "1HVrWlFkU8HkTwW6zcqBofPbTFpxrnGcEaHXR9iJR" ;  //  2017
+  var WardsTableId          = "1a_J80qToS_pTnhFcDB78A_mDiGkJ-05OEmMaiFpo" ;  //  2017
 
 
 
@@ -1764,7 +1768,7 @@ function buildCompareRow(row) {
       "<td style='text-align:center;'><button id='close"+uid+"' class='closeCompare' onclick='$(this).closest(&quot;tr&quot;).remove(); toggleCompareIconClosed("+uid+"); event.stopPropagation(); '><i class='fa fa-times'></i></button></td>"+
       "<td>"+name+"</td><td>"+stcount+"</td><td>"+rating+"</td><td>"+reading+"</td><td>"+math+"</td><td>"+ACT+"</td><td>"+graduation+"</td><td>"+college+"</td>"+
       "<td>"+growth+"</td><td>"+attainment+"</td><td>"+culture+"</td><td>"+mobility+"</td><td>"+dress+"</td><td>"+ADA+"</td>"+
-      "<td>"+classification+"</td><td>"+phone+"</td><td>&nbsp;</td></tr>").prependTo("#tblCompare > tbody");
+      "<td>"+phone+"</td><td>&nbsp;</td></tr>").prependTo("#tblCompare > tbody");
 		$('#divCompareContainer').collapse("show");
 
 		}else{
