@@ -23,13 +23,12 @@
     <!-- <link rel="apple-touch-startup-image" href="images/startup.png"> -->
 
     <title>CPS School Locator</title>
-    <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> sensor not required-->
-
-    <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&callback=initializeMap"
         async defer></script> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&libraries=visualization"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBgH1Z_xKIjf1FVwvexUWfW-2FEhUjvF8&libraries=places"></script>
 
     <script src="http://www.google.com/jsapi"></script>
 
@@ -56,6 +55,8 @@
     <!--only for autocomplete and slide-->
     <link href="scripts/jqueryui/jquery-ui.css" rel="stylesheet">
 
+    <script src="scripts/jquery.geocomplete.min.js"></script>
+
 
     <link href="scripts/bootstrap-3.3.4-dist/css/bootstrap.min.css" media="all" rel="stylesheet"  />
     <link href="scripts/font-awesome-4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" >
@@ -64,7 +65,7 @@
     <script>
       $(document).ready(function () {
 
-
+        $("#autocomplete").geocomplete();
         initializeMap();
 
         // init the compare info popovers
