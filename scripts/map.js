@@ -11,15 +11,14 @@
 
   // 2017-18 School Data and Ratings merged with 2017 Comparison Data
 
-//var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  // SchoolDataMerged_March2017 // new owner
-  var fusionTableId         = "1hF-ohVx5MzvOVTQ69r99HPwAp1t8HDKRmiB3-iBa" ;  // SchoolDataMerged_August2017
+  var fusionTableId         = "1hF-ohVx5MzvOVTQ69r99HPwAp1t8HDKRmiB3-iBa" ;  // SchoolDataMerged_Sept2017
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-  var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016
 
+  var TiersTableId          = "1V6Bw67XxKNLri6R028gKPirNLvmDjA4TLFj0Ynwx" ;  //  2017
   var CHattendanceTableId   = "1OWvbNRylDS2Ji9Lf_ArJxYHm1N7yf1GeSTOpaC_K" ;  //  2017
   var SafePassageTableID    = "1EW4rmZItJgBzR8oxiciDVVHvr5JcDjFthJYggWBD" ;  //  2017
   var ESattendanceTableId   = "1l3hIcuMMykh84WhqZqpAFkR9mA153Ciu3AUYpH1F" ;  //  2017
@@ -798,7 +797,7 @@ function radiusSearch() {
 function getTiers(a) {
   if (!a) {return}
   var tw = " WHERE ST_INTERSECTS('geometry', CIRCLE(LATLNG"+a.toString() + "," + .00001 + "))";
-  var qw = "SELECT 'Tier 2016' FROM " + TiersTableId + tw;
+  var qw = "SELECT 'Tier 2017' FROM " + TiersTableId + tw;
   encodeQuery(qw, sendTier);
 
 }
@@ -2588,7 +2587,7 @@ function initTiers() {
 
   Tiers.setMap(map);
   Tiers.enableMapTips({
-    select: "'Tier 2016'", // list of columns to query, typially need only one column.
+    select: "'Tier 2017'", // list of columns to query, typially need only one column.
     from: TiersTableId, // fusion table name
     geometryColumn: 'geometry', // geometry column name
     suppressMapTips: false, // optional, whether to show map tips. default false
