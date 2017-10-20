@@ -11,15 +11,14 @@
 
   // 2017-18 School Data and Ratings merged with 2017 Comparison Data
 
-//var fusionTableId         = "1vLkJOXC4YSlzRyNCoEzJMZJkvykTYd1ohPz2rf8f" ;  // SchoolDataMerged_March2017 // new owner
-  var fusionTableId         = "1hF-ohVx5MzvOVTQ69r99HPwAp1t8HDKRmiB3-iBa" ;  // SchoolDataMerged_August2017
+  var fusionTableId         = "14vFi5q2vVv8Gj0Y4cn2Xx_lE9McO2F2yy7qaIBQc" ;  // SchoolDataMerged_Oct2017
 
   var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
-  var TiersTableId          = "15h06grWef2iXU8i-2PtXoy_-DnSb5EglVA7ImMNt" ;  //  2016
 
+  var TiersTableId          = "1V6Bw67XxKNLri6R028gKPirNLvmDjA4TLFj0Ynwx" ;  //  2017
   var CHattendanceTableId   = "1OWvbNRylDS2Ji9Lf_ArJxYHm1N7yf1GeSTOpaC_K" ;  //  2017
   var SafePassageTableID    = "1EW4rmZItJgBzR8oxiciDVVHvr5JcDjFthJYggWBD" ;  //  2017
   var ESattendanceTableId   = "1l3hIcuMMykh84WhqZqpAFkR9mA153Ciu3AUYpH1F" ;  //  2017
@@ -798,7 +797,7 @@ function radiusSearch() {
 function getTiers(a) {
   if (!a) {return}
   var tw = " WHERE ST_INTERSECTS('geometry', CIRCLE(LATLNG"+a.toString() + "," + .00001 + "))";
-  var qw = "SELECT 'Tier 2016' FROM " + TiersTableId + tw;
+  var qw = "SELECT 'Tier 2017' FROM " + TiersTableId + tw;
   encodeQuery(qw, sendTier);
 
 }
@@ -904,7 +903,8 @@ function resultListBuilder(d) {
 
     for (var i = 0; i < numRows; i++) { //start loop to build marker
       infoWindowsas = new google.maps.InfoWindow();
-      var pt = replacePipes(rows[i][14]);
+      //var pt = replacePipes(rows[i][14]);
+      var pt =  (rows[i][14]);
       var lat = (rows[i][15]);
       var lng = (rows[i][16]);
       var position = new google.maps.LatLng(lat, lng);
@@ -1157,7 +1157,7 @@ function resultListBuilder(d) {
         'Based on this location, <span style="font-weight:bold; color: #EBED72;">'+
         geoaddress+'</span>,  you can attend the ' +
         numRows+ ' '  +name+ ' below.'+
-        '<span class="text-muted"> Wrong location? Add zip code and search again.</span>'
+        '<span style="font-size: .875em;"> All data visualizations on maps should be considered approximate. Neighborhood attendance boundaries can only be officially confirmed through the Office of Planning and Data Management at 773.553.3270.</span>'
     }
 
 
@@ -1385,7 +1385,8 @@ function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
   var grades = allschoolsdata[row][8];
   var boundary = allschoolsdata[row][9];
   var uid = allschoolsdata[row][10];
-  var pt = replacePipes(allschoolsdata[row][14]);
+  //var pt = replacePipes(allschoolsdata[row][14]);
+  var pt = allschoolsdata[row][14];
   var lat = allschoolsdata[row][15];
   var lng = allschoolsdata[row][16];
   var rating = allschoolsdata[row][17];
@@ -1492,19 +1493,42 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   if(type !== "") {
     contents += " <b>Type: </b>" + type + "<br>" ;
   }
-  if(classif !== "") {
-    contents += "<b>Classification: </b>" + classif ;
-    // if(name === "HANCOCK HS" || name === "SOLORIO HS" || name === "HUBBARD HS" || name === "CURIE HS" ) {
-    //   contents += ". <span style='color:red'> The boundary for Curie, Hubbard, and Solorio high schools will change in the 2015-16 school year. Please call 773-553-3270 for details regarding this change.</span> <a style='color:red; text-decoration:underline;' href='javascript:toggle3NewHSBoundaries()'>See New 9th Grade Boundaries</a> "
-    //  }
+  if(pt !== "") {// added program types
+    contents += "<b>Program Types: </b>" + pt ;
     contents +=  "<br> "
   }
-  // if(pt !== "NA" && pt !== "" ) {
-  //   contents += "<b>Programs Offered: </b>" + pt + "<br>" ;
-  // }
+  if(classif !== "") {// added program names to the Classification column. Will rename to Programs at a later time.
+    contents += "<b>Programs Offered: </b>" + classif ;
+    contents +=  "<br> "
+  }
+  //growth, attainment, culture, , mobility, dress,
+  if(stcount !== "") {
+    contents += "<b>Number of Students: </b>" + stcount ;
+    contents +=  "<br> "
+  }
   if(rating !== "" && rating !== "NULL" ) {
       var myrating = rating.toLowerCase();
-      contents += " <b>Performance Rating: </b><span style='text-transform: capitalize;'>" + myrating + "</span><br> "
+      contents += " <b>Performance Rating: </b><span style='text-transform: capitalize;'>" + myrating + "</span><br> ";
+  }
+  if(reading !== "") {
+    contents += "<b>Reading Attainment (2016): </b>" + reading ;
+    contents +=  "<br> "
+  }
+  if(math !== "") {
+    contents += "<b>Math Attainment (2016): </b>" + math ;
+    contents +=  "<br> "
+  }
+  if(ACT !== "") {
+    contents += "<b>ACT Average (2016): </b>" + ACT ;
+    contents +=  "<br> "
+  }
+  if(graduation !== "") {
+    contents += "<b>Graduation Rate (2016): </b>" + graduation ;
+    contents +=  "<br> "
+  }
+  if(college !== "") {
+    contents += "<b>College Enrollment (2016): </b>" + college ;
+    contents +=  "<br> "
   }
 
   // boundary grades that show if a school has an attendance area
@@ -1712,7 +1736,8 @@ function buildCompareRow(row) {
   var type = allschoolsdata[row][5];
   var classification = allschoolsdata[row][6];
   var rating = allschoolsdata[row][17];
-  var programs = replacePipes(allschoolsdata[row][14]);
+  //var programs = replacePipes(allschoolsdata[row][14]);
+  var programs = allschoolsdata[row][14];
   var typenum = allschoolsdata[row][13];
   var stcount= allschoolsdata[row][18];
     // if(typeof stcount !== "number") {
@@ -1766,8 +1791,10 @@ function buildCompareRow(row) {
       ">"+
       "<td style='text-align:center;'><button id='close"+uid+"' class='closeCompare' onclick='$(this).closest(&quot;tr&quot;).remove(); toggleCompareIconClosed("+uid+"); event.stopPropagation(); '><i class='fa fa-times'></i></button></td>"+
       "<td>"+name+"</td><td>"+stcount+"</td><td>"+rating+"</td><td>"+reading+"</td><td>"+math+"</td><td>"+ACT+"</td><td>"+graduation+"</td><td>"+college+"</td>"+
-      "<td>"+growth+"</td><td>"+attainment+"</td><td>"+culture+"</td><td>"+mobility+"</td><td>"+dress+"</td><td>"+ADA+"</td>"+
-      "<td>"+phone+"</td><td>&nbsp;</td></tr>").prependTo("#tblCompare > tbody");
+      "<td>"+growth+"</td><td>"+attainment+"</td><td>"+culture+"</td><td>"+mobility+"</td><td>"+dress+"</td>"+
+      //"<td>"+ADA+"</td>"+
+      //"<td>"+phone+"</td>"+
+      "<td>&nbsp;</td></tr>").prependTo("#tblCompare > tbody");
 		$('#divCompareContainer').collapse("show");
 
 		}else{
@@ -2588,7 +2615,7 @@ function initTiers() {
 
   Tiers.setMap(map);
   Tiers.enableMapTips({
-    select: "'Tier 2016'", // list of columns to query, typially need only one column.
+    select: "'Tier 2017'", // list of columns to query, typially need only one column.
     from: TiersTableId, // fusion table name
     geometryColumn: 'geometry', // geometry column name
     suppressMapTips: false, // optional, whether to show map tips. default false
