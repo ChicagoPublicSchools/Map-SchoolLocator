@@ -724,7 +724,7 @@ function addressSearch(theAddress) {
         whereClause = " WHERE "
         whereClause += "Boundary = 'Attendance Area School' ";
         if (addressQtype==="HS") {
-          whereClause += " AND Typenum = 3 "; //HS
+          whereClause += " AND Typenum = 3 "; //HS //addressQtype is for a search initiated thru the URL for only HS or ES.
         }
         if (addressQtype==="ES") {
           whereClause += " AND Typenum IN (1,2) "; //ES and MS
