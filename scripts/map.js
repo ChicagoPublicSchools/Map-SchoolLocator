@@ -349,7 +349,7 @@ function clearMapFilters() {
 
 // ID  Uniqueid  Location  Lat Long  School  Address City  Zip Phone Grades  BoundaryGrades  GradesLong
 // Type  Typenum Classification  Boundary  Marker  Polygon ProgramType Rating
-// Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT ACT ADA College
+// Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT SAT ADA College
 
 // Runs after the map is initialized
 // Populate the autocomplete array and the multiBoundaryArray
@@ -556,7 +556,7 @@ function searchfromurl() {
         // whereClause = filterSchools();
         var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
         " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-        " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+        " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
         " FROM " + fusionTableId + "   WHERE ID IN (" + schoollist + ")"; // + whereClause;
         encodeQuery(query, resultListBuilder);
       }
@@ -667,7 +667,7 @@ function schoolSearch(theInput) {
   searchtype = "school";
   var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                     " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                    " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                    " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                     " FROM " + fusionTableId + " WHERE School = '" + theInput + "'";
   encodeQuery(query, resultListBuilder);
 }
@@ -686,7 +686,7 @@ function zipcodeSearch(theInput) {
   var whereClause = filterSchools();
   var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                     " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                    " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                    " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                     " FROM " + fusionTableId + " WHERE Zip = '" + theInput + "'" + whereClause;
 
   encodeQuery(query, resultListBuilder);
@@ -732,7 +732,7 @@ function addressSearch(theAddress) {
         whereClause += " ORDER BY 'School'";
         var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                           " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                           " FROM " + fusionTableId + whereClause;
         //console.log(query);
         //encodeQuery(query, resultListHomeSchool);
@@ -782,7 +782,7 @@ function radiusSearch() {
     whereClause += " ORDER BY 'School'";
     var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                           " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                           " FROM " + fusionTableId + " WHERE Lat not equal to '' " + whereClause ;
     encodeQuery(query, resultListBuilder);
 
@@ -829,13 +829,13 @@ function advancedsearch() {
     // ECP and URL searches - filter through list of schools
     var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                             " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                            " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                            " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                             " FROM " + fusionTableId + " WHERE ID IN (" + schoollist + ")" + whereClause;
   } else {
     // All other searches - filter all schools
     var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                             " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                            " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                            " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                             " FROM " + fusionTableId + " WHERE ID NOT EQUAL TO '' " + whereClause;
   }
     // clear previous markers from the screen but keep them in the arroy
@@ -955,7 +955,7 @@ function resultListBuilder(d) {
         dress: rows[i][24],
         reading: rows[i][25],
         math: rows[i][26],
-        ACT: rows[i][27],
+        SAT: rows[i][27],
         ADA: rows[i][28],
         college: rows[i][29],
 
@@ -1370,7 +1370,7 @@ function resultListBuilder(d) {
 
 
 // ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid, Zip, Marker, Typenum, ProgramType, Lat, Long, Rating
-// Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT ACT ADA, College
+// Count Growth Attainment Culture SpecialEdCount Mobility Dress PSAE ISAT SAT ADA, College
 // mk = from a markerclick, used to show multi boundary msg in detail when marker is clicked.
 function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
 
@@ -1400,7 +1400,7 @@ function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
   var dress= allschoolsdata[row][24];
   var reading= allschoolsdata[row][25];
   var math= allschoolsdata[row][26];
-  var ACT= allschoolsdata[row][27];
+  var SAT= allschoolsdata[row][27];
   var ADA= allschoolsdata[row][28];
   var college= allschoolsdata[row][29];
   var addresssmall=allschoolsdata[row][2];
@@ -1414,7 +1414,7 @@ function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
   //     return;
   //   }
   // }
-  populateDetailDiv(id, name, address, phone, type, classif, gradesb, grades, position, uid, pt, rating, boundary, addresssmall, stcount, growth, attainment, culture, graduation, mobility, dress, reading, math, ACT, ADA, college, dupe, mk, row );
+  populateDetailDiv(id, name, address, phone, type, classif, gradesb, grades, position, uid, pt, rating, boundary, addresssmall, stcount, growth, attainment, culture, graduation, mobility, dress, reading, math, SAT, ADA, college, dupe, mk, row );
 }
 
 
@@ -1422,7 +1422,7 @@ function autoopeninfoAllSchools(row, dupe, mk, uidcompare) {
 // style and populate the detaildiv with data
 // if same marker clicked, toggle infowindow, polygon, safepassage and detaildiv off
 // open the info window with just the name and short address
-function populateDetailDiv(id, name, address, phone, type, classif, gradesb, grades, position, uid, pt, rating, boundary, addresssmall, stcount, growth, attainment, culture, graduation, mobility, dress, reading, math, ACT, ADA, college, dupe, mk, row ) {
+function populateDetailDiv(id, name, address, phone, type, classif, gradesb, grades, position, uid, pt, rating, boundary, addresssmall, stcount, growth, attainment, culture, graduation, mobility, dress, reading, math, SAT, ADA, college, dupe, mk, row ) {
 
   if (infowindow != null) {
     if (infowindow.iname == uid) {
@@ -1511,23 +1511,23 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
       contents += " <b>Performance Rating: </b><span style='text-transform: capitalize;'>" + myrating + "</span><br> ";
   }
   if(reading !== "") {
-    contents += "<b>Reading Attainment (2016): </b>" + reading ;
+    contents += "<b>Reading Attainment: </b>" + reading ;
     contents +=  "<br> "
   }
   if(math !== "") {
-    contents += "<b>Math Attainment (2016): </b>" + math ;
+    contents += "<b>Math Attainment: </b>" + math ;
     contents +=  "<br> "
   }
-  if(ACT !== "") {
-    contents += "<b>ACT Average (2016): </b>" + ACT ;
+  if(SAT !== "") {
+    contents += "<b>SAT Average: </b>" + SAT ;
     contents +=  "<br> "
   }
   if(graduation !== "") {
-    contents += "<b>Graduation Rate (2016): </b>" + graduation ;
+    contents += "<b>Graduation Rate: </b>" + graduation + "%";
     contents +=  "<br> "
   }
   if(college !== "") {
-    contents += "<b>College Enrollment (2016): </b>" + college ;
+    contents += "<b>College Enrollment: </b>" + college + "%" ;
     contents +=  "<br> "
   }
 
@@ -1765,8 +1765,8 @@ function buildCompareRow(row) {
   //if(reading) {reading+="th";}
   var math= allschoolsdata[row][26];
   //if(math) {math+="th";}
-  var ACT= allschoolsdata[row][27];
-    //if(typeof ACT !== "number") {ACT="";}
+  var SAT= allschoolsdata[row][27];
+    //if(typeof SAT !== "number") {SAT="";}
   var ADA= allschoolsdata[row][28];
   var college= allschoolsdata[row][29];
   if(college) {college+="%";}
@@ -1790,7 +1790,7 @@ function buildCompareRow(row) {
       //"onclick='autoopeninfoAllSchools(" +row+ ","+dupe+", false,"+uid+"); opendetail(" +uid+ ");  ' "+
       ">"+
       "<td style='text-align:center;'><button id='close"+uid+"' class='closeCompare' onclick='$(this).closest(&quot;tr&quot;).remove(); toggleCompareIconClosed("+uid+"); event.stopPropagation(); '><i class='fa fa-times'></i></button></td>"+
-      "<td>"+name+"</td><td>"+stcount+"</td><td>"+rating+"</td><td>"+reading+"</td><td>"+math+"</td><td>"+ACT+"</td><td>"+graduation+"</td><td>"+college+"</td>"+
+      "<td>"+name+"</td><td>"+stcount+"</td><td>"+rating+"</td><td>"+reading+"</td><td>"+math+"</td><td>"+SAT+"</td><td>"+graduation+"</td><td>"+college+"</td>"+
       "<td>"+growth+"</td><td>"+attainment+"</td><td>"+culture+"</td><td>"+mobility+"</td><td>"+dress+"</td>"+
       //"<td>"+ADA+"</td>"+
       //"<td>"+phone+"</td>"+
@@ -3009,7 +3009,7 @@ function addrFromLatLng(latLngPoint, longpress) {
         whereClause += " ORDER BY 'School'";
         var query = "SELECT ID, School, Address, City, Phone, Type, Classification, BoundaryGrades, Grades, Boundary, Uniqueid,"+
                           " Zip, Marker, Typenum, ProgramType, Lat, Long, Rating, "+
-                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, ACT, ADA, College "+
+                          " Count, Growth, Attainment, Culture, Graduation, Mobility, Dress, Reading, Math, SAT, ADA, College "+
                           " FROM " + fusionTableId + whereClause;
         //console.log(query);
         encodeQuery(query, resultListBuilder);
