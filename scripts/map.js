@@ -1563,11 +1563,11 @@ function populateDetailDiv(id, name, address, phone, type, classif, gradesb, gra
   contents += "</div><div style='padding-bottom: 5px;'>"
 
   contents += "<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
-    "' href='/Schools/Pages/school.aspx?SchoolID=" + id +
+    "' href='http://cps.edu/Schools/Pages/school.aspx?SchoolID=" + id +
     "' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;School Profile&quot; ,&quot;"+ name +"&quot;);' >More Info</a>"
 
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
-  "' href='/Schools/Pages/school.aspx?SchoolID=" + id +
+  "' href='http://cps.edu/Schools/Pages/school.aspx?SchoolID=" + id +
   "#admissions' target='_blank' onclick='_trackClickEventWithGA(&quot;Click&quot;,&quot;Enroll&quot; ,&quot;"+ name+"&quot;);' >Enroll</a>";
 
   contents +="<a class='btnDetailPanel btn btn-xs'  style='background-color:" + headcolor +
@@ -2944,6 +2944,14 @@ function encodeQuery(q,sf) {
 
 
 function findMe() {
+  //check to see if http or https (only works with https)
+  var pageurl = top.location.href
+  var x = pageurl.split(':')[0];
+  if(x !== "https"){
+      $('#FindMemodal').modal('show');
+    return;
+  }
+
   clearMapElements();
   searchtype = "radius";
   // Try W3C Geolocation (Preferred)

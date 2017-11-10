@@ -1480,7 +1480,7 @@
           <div class="row backgroundfillwhite">
             <div class="col-xs-12" style="padding-bottom:10px;">
                 <button type="button" class="btn btn-default col-xs-12 btnVersionNotes" data-toggle="collapse" data-target="#collapseVersionModal" aria-expanded="false" aria-controls="collapseVersionModal">
-                  Version Notes 2.99</button>
+                  Version Notes 2.99.1</button>
                   <!-- VERSION -->
                   <div id="collapseVersionModal" class="collapse backgroundfillwhite">
 
@@ -1488,11 +1488,15 @@
 
                       <div class="well">
                         <h2 id="myModalLabel">School Locator - What's New</h2>
-                        <h4>v2.99</h4>
+                        <h4>v2.99.1</h4>
                         <p>
-                          <strong>10/20/2017</strong>
-                          - Updated SQRP ratings for SY 2017-18. Added more data points to the detail panel. Updated disclaimer. Removed ADA and phone data from the comparison table (ADA information was not sufficiently accurate).</p>
-                        <h4>v2.98</h4>
+                          <strong>11/10/2017</strong>
+                          - Find Schools Near Me requires a secure connection (HTTPS). Created a modal to explain and link to secure School Locator. Updated school profile links to include http:// until profiles are on a secure connection. </p>
+                          <h4>v2.99</h4>
+                          <p>
+                            <strong>10/20/2017</strong>
+                            - Updated SQRP ratings for SY 2017-18. Added more data points to the detail panel. Updated disclaimer. Removed ADA and phone data from the comparison table (ADA information was not sufficiently accurate).</p>
+                          <h4>v2.98</h4>
                         <p>
                           <strong>10/10/2017</strong>
                           - Updated Tiers overlay for SY 2017-18.</p>
@@ -1986,6 +1990,25 @@
           </div>
           <div class="modal-body">
             Please visit <a href='https://chicagoearlylearning.org/' target='_blank'>Chicago Early Learning</a> for early childhood programs.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="FindMemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Secure Connection Required</h4>
+          </div>
+          <div class="modal-body">
+            This feature requires a secure connection.<br />
+            <a href='https://cps.edu/ScriptLibrary/Map-SchoolLocator/index.html'>Continue to the secure CPS School Locator</a>
+             and click the 'Find Schools Around Me' button again.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
