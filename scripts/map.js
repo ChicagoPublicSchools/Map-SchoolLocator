@@ -13,7 +13,7 @@
 
   var fusionTableId         = "14vFi5q2vVv8Gj0Y4cn2Xx_lE9McO2F2yy7qaIBQc" ;  // SchoolDataMerged_Oct2017
 
-  var LSCdistrictsTableId   = "12DTXu4VYBd7mW-2rBPlClAwXNMMuwnHSvSKRbsZe" ;  // LSC boundaries 2016
+  var LSCdistrictsTableId   = "1yLZ5M49X2lD_WWfvyS-VMeu2hGnxDYhNv0Fg7xnF";  // LSC boundaries FY17-18
   var NetworksTableId       = "1pPqntpZutIHOGjrmgtQBmewcRPS9ylKB2UE6CsE" ;
   var CommunityTableId      = "1uhe1AW1OkXnOUeG8GJHjv4HjlSQD860pRHI-iws" ;
   var ZipcodeTableId        = "1uv4fLfrGKW52CJfOSFCiS8-H9ESqlRM1WB-XGgM" ;
